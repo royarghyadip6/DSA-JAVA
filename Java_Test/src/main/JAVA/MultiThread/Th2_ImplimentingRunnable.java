@@ -38,7 +38,7 @@ class MyRunnable implements Runnable {
 * Q. which approach is best to define a thread?
 *  Among 2 ways to define a thread. implement runnable approach is recommended.
 *  In 1st approach our class always extends Thread class, there is no chance to extend other class.
-*  In the 2nd approach, while implementing Runnable interface, we can extend any other class Hence we wont miss any inherit benefits.
+*  In the 2nd approach, while implementing Runnable interface, we can extend any other class Hence we won't miss any inherit benefits.
 *
 * Q2. Thread class constructor.
 *   Thread thread = new Thread();

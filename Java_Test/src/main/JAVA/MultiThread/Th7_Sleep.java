@@ -60,7 +60,7 @@ class Th7_MyThread1 extends Thread {
 * This is the only case where interrupt call will be wasted.
 * */
 
-public class Th7_Sleep {
+/*public class Th7_Sleep {
     public static void main(String[] args) {
         Th7_MyThread1 th1 = new Th7_MyThread1();
         th1.start();
@@ -84,7 +84,7 @@ class Th7_MyThread1 extends Thread {
             System.err.println("I got interrupted.");
         }
     }
-}
+}*/
 
 /*
 | **Property**               | **yield()**                                                        | **join()**                                               | **sleep()**                                         |

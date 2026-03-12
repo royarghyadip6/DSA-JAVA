@@ -59,7 +59,7 @@ class Th1_Mythread2 extends Thread{
 *
 * Q2. Difference between t.start() and t.run() ?
 * In case of t.start a new thread will be created which is responsible for the execution of run method.
-* But in case of t.run() a new thread wont be created and run() will be w=executed just like a normal method call by main thread.
+* But in case of t.run() a new thread wont be created and run() will be executed just like a normal method call by main thread.
 * hence in above program, if we replace t.start() by t.run() then the output is child thread 10 times followed by main thread.
 * the total output will be executed by main thread.
 *
@@ -74,11 +74,11 @@ class Th1_Mythread2 extends Thread{
 *       }
 *
 * Q4. Overloading of run() is possible or not?
-*  Overloading of run() is always possible But thread class start() can invoke no arg run().
+*  Yes. Overloading of run() is always possible But thread class start() can invoke no arg run().
 *  The other overloaded run() we have to call like a normal method call.
 *
 * Q5. If we are not overriding run() ?
-* If we are not overriding run() then thresd class run() will be executed which have empty implementation.
+* If we are not overriding run() then these class run() will be executed which have empty implementation.
 * Hence we wont get output.
 * Note: it is highly recomended to override run(). Otherwise dont go for multithreading concept.
 *
@@ -96,4 +96,4 @@ class Th1_Mythread2 extends Thread{
 *   MT t = new MT()
 *   t.start();
 *   t.start(); // Exception will be thrown
- * */
+* */

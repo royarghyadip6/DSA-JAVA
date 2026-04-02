@@ -63,6 +63,7 @@ class Student implements Comparable<Student>{
      */
     @Override
     public int compareTo(Student other) {
+        System.out.println("This:"+this.city+" Other:"+other.city+" CompareTo:"+ this.city.compareTo(other.city));
         return this.city.compareTo(other.city);
     }
 
@@ -82,16 +83,16 @@ class Student implements Comparable<Student>{
 public class I_Comparator_Comparable {
     public static void main(String[] args) {
         List<Student> students = Arrays.asList(
-                new Student("Aarav Sharma", 20, 111, "CS", "Bangalore", 88.5f),
-                new Student("Priya Singh", 24, 132, "ECE", "Delhi", 92.0f),
-                new Student("Rahul Verma", 22, 143, "ME", "Mumbai", 75.5f),
-                new Student("Sneha Gupta", 29, 124, "CS", "Pune", 95.0f),
-                new Student("Vikram Rao", 23, 155, "ECE", "Chennai", 81.2f),
-                new Student("Ananya Das", 21, 106, "ME", "Kolkata", 88.5f),
-                new Student("Amit Patel", 22, 137, "CS", "Ahmedabad", 70.0f),
-                new Student("Ishan Khan", 20, 108, "ECE", "Bangalore", 85.0f),
-                new Student("Kavita Iyer", 25, 159, "ME", "Chennai", 91.5f),
-                new Student("Rohan Shah", 22, 110, "CS", "Mumbai", 79.0f)
+                new Student("Aarav Sharma", 20, 111, "CS", "Delhi", 88.5f),
+                new Student("Priya Singh", 24, 132, "ECE", "Kolkata", 92.0f),
+                new Student("Rahul Verma", 22, 143, "ME", "Ahmedabad", 75.5f),
+                new Student("Sneha Gupta", 29, 124, "CS", "Pune", 95.0f)
+//                new Student("Vikram Rao", 23, 155, "ECE", "Chennai", 81.2f)
+//                new Student("Ananya Das", 21, 106, "ME", "Kolkata", 88.5f),
+//                new Student("Amit Patel", 22, 137, "CS", "Ahmedabad", 70.0f),
+//                new Student("Ishan Khan", 20, 108, "ECE", "Bangalore", 85.0f),
+//                new Student("Kavita Iyer", 25, 159, "ME", "Chennai", 91.5f),
+//                new Student("Rohan Shah", 22, 110, "CS", "Mumbai", 79.0f)
         );
 
         System.out.println("######## Comparable #########");

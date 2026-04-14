@@ -2,38 +2,29 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class Test1 {
+
     public static void main(String[] args) {
+        String str1 = "abc";
+        String str2 = new String("abc");
+        System.out.println(str1 == str2);
+        System.out.println(str1.equals(str2));
 
-        Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
-                Singleton obj = Singleton.getInstance();
-                System.out.println(Thread.currentThread().getName() + " " + obj.hashCode());
-            }
-        };
-        Thread thread1 = new Thread(runnable, "thread1");
-        Thread thread2 = new Thread(runnable, "thread2");
+        String  str3 = "abc";
+        String str4 = str3.intern();
+        String  str5 = "abc";
 
-        thread2.start();
-        thread1.start();
-    }
-}
 
-class Singleton{
-    private static volatile Singleton instance;
 
-    private Singleton(){
-        System.out.println("Create Singleton instance");
-    }
+        Integer a = 158;
+        Integer b = new Integer(158);
+        System.out.println(a == b);
+        System.out.println(a.equals(b));
 
-    public static Singleton getInstance(){
-        if(instance == null){
-            synchronized (Singleton.class){
-                if(instance == null){
-                    instance = new Singleton();
-                }
-            }
-        }
-        return instance;
+        Integer c = 14;
+        System.out.println(c == 121);
+        System.out.println(c == 130);
+
+
+
     }
 }

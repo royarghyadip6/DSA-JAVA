@@ -122,3 +122,15 @@ class Th6_MyThread2 extends Thread {
 * # LifeCycle of join() > Please check this image Th6_Join_Img1.png
 *
 * */
+
+/*
+
+| Feature      | `yield()`                    | `join()`                  |
+| ------------ | ---------------------------- | ------------------------- |
+| Purpose      | Give chance to other threads | Wait for thread to finish |
+| Blocking     | ❌ No                         | ✅ Yes                     |
+| Guarantee    | ❌ No guarantee               | ✅ Guaranteed              |
+| Method Type  | Static                       | Instance                  |
+| Thread State | Runnable                     | Waiting                   |
+
+* */

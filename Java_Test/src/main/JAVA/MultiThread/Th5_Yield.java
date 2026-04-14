@@ -50,3 +50,15 @@ class Th5_MyThread extends Thread {
 * some platform won't provide proper support for yield method.
 *
 * */
+
+/*
+
+| Feature      | `yield()`                    | `join()`                  |
+| ------------ | ---------------------------- | ------------------------- |
+| Purpose      | Give chance to other threads | Wait for thread to finish |
+| Blocking     | ❌ No                         | ✅ Yes                     |
+| Guarantee    | ❌ No guarantee               | ✅ Guaranteed              |
+| Method Type  | Static                       | Instance                  |
+| Thread State | Runnable                     | Waiting                   |
+
+* */

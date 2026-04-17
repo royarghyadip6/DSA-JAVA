@@ -1,6 +1,3 @@
-Now you’re asking a **real industry-level question** 👍—this is exactly how telecom/backend interviews frame it.
-
-Let’s connect **Telecom Network Elements + Spring Boot architecture + OSI model** in a **clean, deep, interview-ready way**.
 
 ---
 

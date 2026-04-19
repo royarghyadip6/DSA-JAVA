@@ -33,6 +33,8 @@ JDK ⊃ JRE ⊃ JVM
 
 ## ⚙️ JVM Architecture
 
+<img src="Images/JVM_Architecture.png" alt="JVM Architecture">
+
 ```text
 Class Loader
      ↓

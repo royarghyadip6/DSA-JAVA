@@ -2,13 +2,13 @@
 
 ## 📑 Topics Covered:
 
-8. Personal Protective Equipment (PPE)
-9. Sterilization & Disinfection
-10. Biomedical Waste Management
-11. Isolation Precautions
-12. Hospital-Acquired Infections (HAI)
-13. Standard Precautions
-14. Post-Exposure Prophylaxis (PEP)
+8. [Personal Protective Equipment (PPE)](#-8-personal-protective-equipment-ppe--deep-dive-)
+9. [Sterilization & Disinfection](#-9-sterilization--disinfection-detailed)
+10. [Biomedical Waste Management](#-10-biomedical-waste-management-very-important-)
+11. [Isolation Precautions](#-11-isolation-precautions-detailed)
+12. [Hospital-Acquired Infections (HAI)](#-12-hospital-acquired-infection-hai)
+13. [Standard Precautions](#-13-standard-precautions-very-important)
+14. [Post-Exposure Prophylaxis (PEP)](#-14-post-exposure-prophylaxis-pep)
 
 ---
 

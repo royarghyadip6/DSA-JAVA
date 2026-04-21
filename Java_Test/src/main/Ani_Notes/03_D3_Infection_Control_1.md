@@ -3,13 +3,13 @@
 
 ## 📑 Topics Covered in Detail:
 
-1. Definition of Infection
-2. Chain of Infection
-3. Types of Infection
-4. Microorganisms
-5. Body Defense Mechanisms
-6. Asepsis (Medical & Surgical)
-7. Hand Hygiene
+1. [Definition of Infection](#-1-definition-of-infection-detailed)
+2. [Chain of Infection](#-2-chain-of-infection-very-important--core-concept)
+3. [Types of Infection](#-3-types-of-infection-detailed)
+4. [Microorganisms](#-4-microorganisms-detailed)
+5. [Body Defense Mechanisms](#-5-body-defense-mechanisms-detailed)
+6. [Asepsis (Medical & Surgical)](#-6-asepsis-very-important)
+7. [Hand Hygiene](#-7-hand-hygiene-ultra-important-)
 
 ---
 

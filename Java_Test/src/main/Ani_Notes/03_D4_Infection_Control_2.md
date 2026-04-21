@@ -99,6 +99,10 @@ PPE = **protective barriers used to prevent exposure to infectious agents**
 
 ---
 
+[Back To Top](#--day-2--infection-control-part-2-ppe--pep)
+
+---
+
 # 🧪 9. STERILIZATION & DISINFECTION (DETAILED)
 
 ---
@@ -178,6 +182,10 @@ Destruction of **most microorganisms (NOT spores)**
 
 ---
 
+[Back To Top](#--day-2--infection-control-part-2-ppe--pep)
+
+---
+
 # 🗑️ 10. BIOMEDICAL WASTE MANAGEMENT (VERY IMPORTANT ⭐⭐⭐⭐⭐)
 
 ---
@@ -229,6 +237,10 @@ Safe handling, segregation, transport, and disposal of hospital waste
 
 ---
 
+[Back To Top](#--day-2--infection-control-part-2-ppe--pep)
+
+---
+
 # 🚫 11. ISOLATION PRECAUTIONS (DETAILED)
 
 ---
@@ -275,6 +287,10 @@ Prevent spread of infection
 
 ---
 
+[Back To Top](#--day-2--infection-control-part-2-ppe--pep)
+
+---
+
 # 🏥 12. HOSPITAL-ACQUIRED INFECTION (HAI)
 
 ---
@@ -309,6 +325,10 @@ Infection acquired **after 48 hours of hospital admission**
 
 ---
 
+[Back To Top](#--day-2--infection-control-part-2-ppe--pep)
+
+---
+
 # 🧼 13. STANDARD PRECAUTIONS (VERY IMPORTANT)
 
 ---
@@ -332,6 +352,10 @@ Precautions applied to **ALL patients regardless of diagnosis**
 ## 🎯 KEY IDEA:
 
 👉 Assume every patient is potentially infectious
+
+---
+
+[Back To Top](#--day-2--infection-control-part-2-ppe--pep)
 
 ---
 
@@ -396,6 +420,10 @@ Immediate treatment after exposure to infection
 * PEP = immediate action
 
 ---
+
+---
+
+[Back To Top](#--day-2--infection-control-part-2-ppe--pep)
 
 ---
 
@@ -524,6 +552,10 @@ Immediate treatment after exposure to infection
 
 ---
 
+[Back To Top](#--day-2--infection-control-part-2-ppe--pep)
+
+---
+
 ## 🔹 BIOMEDICAL WASTE MANAGEMENT
 
 ---
@@ -583,6 +615,10 @@ Immediate treatment after exposure to infection
 
 ---
 
+[Back To Top](#--day-2--infection-control-part-2-ppe--pep)
+
+---
+
 ## 🔹 HOSPITAL-ACQUIRED INFECTION (HAI)
 
 ---
@@ -631,6 +667,10 @@ Immediate treatment after exposure to infection
 
 ---
 
+[Back To Top](#--day-2--infection-control-part-2-ppe--pep)
+
+---
+
 ## 🔹 STANDARD PRECAUTIONS
 
 ---
@@ -668,6 +708,10 @@ Immediate treatment after exposure to infection
 
 ---
 
+[Back To Top](#--day-2--infection-control-part-2-ppe--pep)
+
+---
+
 ## 🔹 PEP (POST-EXPOSURE)
 
 ---
@@ -702,6 +746,10 @@ Immediate treatment after exposure to infection
 4. [ ] D. Diagnosis
 
 <details> ✅ **Answer: B** </details>
+
+---
+
+[Back To Top](#--day-2--infection-control-part-2-ppe--pep)
 
 ---
 
@@ -761,6 +809,10 @@ Immediate treatment after exposure to infection
 4. [ ] D. Entry
 
 <details> ✅ **Answer: B** </details>
+
+---
+
+[Back To Top](#--day-2--infection-control-part-2-ppe--pep)
 
 ---
 
@@ -930,6 +982,10 @@ Immediate treatment after exposure to infection
 4. [ ] D. Treat patient
 
 <details> ✅ **Answer: B** </details>
+
+---
+
+[Back To Top](#--day-2--infection-control-part-2-ppe--pep)
 
 ---
 

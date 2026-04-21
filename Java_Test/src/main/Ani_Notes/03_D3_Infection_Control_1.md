@@ -64,6 +64,10 @@ Infection is the **invasion, growth, and multiplication of pathogenic microorgan
 
 ---
 
+[Back To Top](#--day-2--infection-control-deep-theory--part-1)
+
+---
+
 # 🔗 2. CHAIN OF INFECTION (VERY IMPORTANT – CORE CONCEPT)
 
 This is the **foundation of infection control**.
@@ -156,6 +160,10 @@ This is the **foundation of infection control**.
 
 ---
 
+[Back To Top](#--day-2--infection-control-deep-theory--part-1)
+
+---
+
 # 🦠 3. TYPES OF INFECTION (DETAILED)
 
 ---
@@ -215,6 +223,10 @@ This is the **foundation of infection control**.
 
 ---
 
+[Back To Top](#--day-2--infection-control-deep-theory--part-1)
+
+---
+
 # 🧫 4. MICROORGANISMS (DETAILED)
 
 ---
@@ -271,6 +283,10 @@ This is the **foundation of infection control**.
 
 ---
 
+[Back To Top](#--day-2--infection-control-deep-theory--part-1)
+
+---
+
 # 🛡️ 5. BODY DEFENSE MECHANISMS (DETAILED)
 
 ---
@@ -319,6 +335,10 @@ This is the **foundation of infection control**.
 
 ---
 
+[Back To Top](#--day-2--infection-control-deep-theory--part-1)
+
+---
+
 # 🧼 6. ASEPSIS (VERY IMPORTANT)
 
 ---
@@ -364,9 +384,13 @@ Asepsis = **absence of disease-causing microorganisms**
 ## ⚠️ Key Differences:
 
 | Medical          | Surgical            |
-| ---------------- | ------------------- |
+|------------------|---------------------|
 | Clean            | Sterile             |
 | Reduces microbes | Eliminates microbes |
+
+---
+
+[Back To Top](#--day-2--infection-control-deep-theory--part-1)
 
 ---
 
@@ -452,6 +476,10 @@ Asepsis = **absence of disease-causing microorganisms**
 
 ---
 
+[Back To Top](#--day-2--infection-control-deep-theory--part-1)
+
+---
+
 # 🧪 INFECTION CONTROL – 45 CASE-BASED MCQs (NORCET LEVEL)
 
 ---
@@ -470,6 +498,7 @@ Asepsis = **absence of disease-causing microorganisms**
 <details> ✅ **Answer: B**
 **Explanation:** Hand hygiene must be done **before aseptic procedure**.
 </details>
+
 ---
 
 ### **Q2.** After removing gloves, the nurse does not wash hands. Why is this incorrect?
@@ -514,6 +543,10 @@ C. Before procedure
 D. After exposure
 
 <details> ✅ **Answer: B** </details>
+
+---
+
+[Back To Top](#--day-2--infection-control-deep-theory--part-1)
 
 ---
 
@@ -578,6 +611,10 @@ Immunocompromised patient is an example of:
 
 ---
 
+[Back To Top](#--day-2--infection-control-deep-theory--part-1)
+
+---
+
 ## 🔹 TYPES OF INFECTION
 
 ---
@@ -612,6 +649,10 @@ Immunocompromised patient is an example of:
 4. [ ] D. Local
 
 <details> ✅ **Answer: C** </details>
+
+---
+
+[Back To Top](#--day-2--infection-control-deep-theory--part-1)
 
 ---
 
@@ -652,6 +693,10 @@ Immunocompromised patient is an example of:
 
 ---
 
+[Back To Top](#--day-2--infection-control-deep-theory--part-1)
+
+---
+
 ## 🔹 MICROORGANISMS
 
 ---
@@ -686,6 +731,10 @@ Immunocompromised patient is an example of:
 4. [ ] D. Parasite
 
 <details> ✅ **Answer: B** </details>
+
+---
+
+[Back To Top](#--day-2--infection-control-deep-theory--part-1)
 
 ---
 
@@ -726,6 +775,10 @@ Immunocompromised patient is an example of:
 
 ---
 
+[Back To Top](#--day-2--infection-control-deep-theory--part-1)
+
+---
+
 ## 🔹 HAND HYGIENE SCENARIOS
 
 ---
@@ -760,6 +813,10 @@ Immunocompromised patient is an example of:
 4. [ ] D. 2 min
 
 <details> ✅ **Answer: B** </details>
+
+---
+
+[Back To Top](#--day-2--infection-control-deep-theory--part-1)
 
 ---
 
@@ -819,6 +876,10 @@ Immunocompromised patient is an example of:
 4. [ ] D. Exit
 
 <details> ✅ **Answer: A** </details>
+
+---
+
+[Back To Top](#--day-2--infection-control-deep-theory--part-1)
 
 ---
 
@@ -988,6 +1049,10 @@ Immunocompromised patient is an example of:
 4. [ ] D. Indirect
 
 <details> ✅ **Answer: B** </details>
+
+---
+
+[Back To Top](#--day-2--infection-control-deep-theory--part-1)
 
 ---
 

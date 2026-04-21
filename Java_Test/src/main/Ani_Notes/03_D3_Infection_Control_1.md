@@ -982,10 +982,10 @@ Immunocompromised patient is an example of:
 
 ### **Q45.** A patient sneezing spreads infection via:
 
-1. - [ ] A. Direct contact
-2. - [x] B. Droplet
-3. -[ ] C. Vector
-4. -[x] D. Indirect
+1. [ ] A. Direct contact
+2. [ ] B. Droplet
+3. [ ] C. Vector
+4. [ ] D. Indirect
 
 <details> ✅ **Answer: B** </details>
 

@@ -35,7 +35,7 @@ These are **frequently asked in NORCET (especially scenario-based)**
 
 **Example:**
 
-* Giving best treatment and care
+* Giving the best treatment and care
 
 ---
 
@@ -286,178 +286,202 @@ No consent taken before surgery
 
 ## **Q1. A patient refuses life-saving treatment. The nurse should:**
 
-A. Inform relatives and proceed
-B. Respect the patient’s decision
-C. Ignore refusal
-D. Force treatment
+1. [ ] A. Inform relatives and proceed
+2. [ ] B. Respect the patient’s decision
+3. [ ] C. Ignore refusal
+4. [ ] D. Force treatment
 
+<details>
 ✅ **Answer: B**
 
 **Explanation:**
 Autonomy → patient has right to decide, even if decision is risky.
+</details>
+
 
 ---
 
 ## **Q2. Giving medication without patient consent is:**
 
-A. Assault
-B. Battery
-C. Negligence
-D. Malpractice
+1. [ ] A. Assault
+2. [ ] B. Battery
+3. [ ] C. Negligence
+4. [ ] D. Malpractice
 
+<details>
 ✅ **Answer: B**
 
 **Explanation:**
 Battery = physical contact without consent.
+</details>
 
 ---
 
 ## **Q3. A nurse threatens a patient to take medicine. This is:**
 
-A. Assault
-B. Battery
-C. Negligence
-D. Beneficence
+1. [ ] A. Assault
+2. [ ] B. Battery
+3. [ ] C. Negligence
+4. [ ] D. Beneficence
 
+<details>
 ✅ **Answer: A**
 
 **Explanation:**
 Assault = threat without touching.
+</details>
 
 ---
 
 ## **Q4. Which situation best represents beneficence?**
 
-A. Respecting refusal
-B. Giving best possible care
-C. Maintaining secrecy
-D. Equal treatment
+1. [ ] A. Respecting refusal
+2. [ ] B. Giving the best possible care
+3. [ ] C. Maintaining secrecy
+4. [ ] D. Equal treatment
 
+<details>
 ✅ **Answer: B**
+</details>
 
 ---
 
 ## **Q5. Which is NOT required for informed consent?**
 
-A. Voluntary decision
-B. Full explanation
-C. Family approval mandatory
-D. Patient competence
+1. [ ] A. Voluntary decision
+2. [ ] B. Full explanation
+3. [ ] C. Family approval mandatory
+4. [ ] D. Patient competence
 
+<details>
 ✅ **Answer: C**
 
 **Explanation:**
 Family approval is not mandatory if patient is competent.
+</details>
 
 ---
 
 ## **Q6. A nurse forgets to raise side rails and patient falls. This is:**
 
-A. Assault
-B. Malpractice
-C. Negligence
-D. Battery
+1. [ ] A. Assault
+2. [ ] B. Malpractice
+3. [ ] C. Negligence
+4. [ ] D. Battery
 
-✅ **Answer: C**
+<details>✅ **Answer: C** </details>
 
 ---
 
 ## **Q7. Professional negligence by a nurse is called:**
 
-A. Assault
-B. Malpractice
-C. Battery
-D. Autonomy
+1. [ ] A. Assault
+2. [ ] B. Malpractice
+3. [ ] C. Battery
+4. [ ] D. Autonomy
 
-✅ **Answer: B**
+<details>✅ **Answer: B** </details>
+
 
 ---
 
 ## **Q8. Sharing patient details with unauthorized person violates:**
 
-A. Justice
-B. Confidentiality
-C. Fidelity
-D. Veracity
+1. [ ] A. Justice
+2. [ ] B. Confidentiality
+3. [ ] C. Fidelity
+4. [ ] D. Veracity
 
-✅ **Answer: B**
+<details>
+  ✅ **Answer: B**  
+</details>
 
 ---
 
 ## **Q9. “Do no harm” refers to:**
 
-A. Beneficence
-B. Non-maleficence
-C. Justice
-D. Autonomy
+1. [ ] A. Beneficence
+2. [ ] B. Non-maleficence
+3. [ ] C. Justice
+4. [ ] D. Autonomy
 
-✅ **Answer: B**
+<details>
+ ✅ **Answer: B** 
+</details>
 
 ---
 
 ## **Q10. Equal treatment of all patients refers to:**
 
-A. Autonomy
-B. Justice
-C. Fidelity
-D. Veracity
+1. [ ] A. Autonomy
+2. [ ] B. Justice
+3. [ ] C. Fidelity
+4. [ ] D. Veracity
 
-✅ **Answer: B**
+<details>
+   ✅ **Answer: B** 
+</details>
 
 ---
 
 ## **Q11. Which is an example of veracity?**
 
-A. Respecting decisions
-B. Telling the truth
-C. Keeping promises
-D. Avoiding harm
+1. [ ] A. Respecting decisions
+2. [ ] B. Telling the truth
+3. [ ] C. Keeping promises
+4. [ ] D. Avoiding harm
 
-✅ **Answer: B**
+<details>
+  ✅ **Answer: B**  
+</details>
 
 ---
 
 ## **Q12. A nurse promises care and fulfills it. This shows:**
 
-A. Fidelity
-B. Autonomy
-C. Justice
-D. Beneficence
+1. [ ] A. Fidelity
+2. [ ] B. Autonomy
+3. [ ] C. Justice
+4. [ ] D. Beneficence
 
-✅ **Answer: A**
+<details>
+  ✅ **Answer: A** 
+</details>
 
 ---
 
 ## **Q13. Which is the BEST example of negligence?**
 
-A. Intentional harm
-B. Failure to act
-C. Physical contact
-D. Threat
+1. [ ] A. Intentional harm
+2. [ ] B. Failure to act
+3. [ ] C. Physical contact
+4. [ ] D. Threat
 
-✅ **Answer: B**
+<details>
+✅ **Answer: B**  
+</details>
 
 ---
 
 ## **Q14. Documentation is important because:**
 
-A. It replaces care
-B. It is legal evidence
-C. It is optional
-D. It delays work
+1. [ ] A. It replaces care
+2. [ ] B. It is legal evidence
+3. [ ] C. It is optional
+4. [ ] D. It delays work
 
-✅ **Answer: B**
+<details> ✅ **Answer: B** </details>
 
 ---
 
 ## **Q15. Which patient can give valid consent?**
 
-A. Unconscious patient
-B. Child
-C. Mentally sound adult
-D. Sedated patient
+1. [ ] A. Unconscious patient
+2. [ ] B. Child
+3. [ ] C. Mentally sound adult
+4. [ ] D. Sedated patient
 
-✅ **Answer: C**
+<details> ✅ **Answer: C** </details>
 
 ---
 
@@ -467,166 +491,188 @@ D. Sedated patient
 
 ## **Q16. A nurse administers wrong drug dose. This is:**
 
-A. Assault
-B. Battery
-C. Negligence
-D. Malpractice
+1. [ ] A. Assault
+2. [ ] B. Battery
+3. [ ] C. Negligence
+4. [ ] D. Malpractice
 
-✅ **Answer: D**
+<details> ✅ **Answer: D** </details>
 
 ---
 
 ## **Q17. A nurse discloses HIV status of patient publicly. This is:**
 
-A. Justice
-B. Confidentiality breach
-C. Autonomy
-D. Beneficence
+1. [ ] A. Justice
+2. [ ] B. Confidentiality breach
+3. [ ] C. Autonomy
+4. [ ] D. Beneficence
 
-✅ **Answer: B**
+<details> ✅ **Answer: B** </details>
 
 ---
 
 ## **Q18. A patient is not informed about risks before surgery. This violates:**
 
-A. Justice
-B. Consent
-C. Fidelity
-D. Veracity
+1. [ ] A. Justice
+2. [ ] B. Consent
+3. [ ] C. Fidelity
+4. [ ] D. Veracity
 
-✅ **Answer: B**
+<details> ✅ **Answer: B** </details>
 
 ---
 
 ## **Q19. Which situation shows autonomy?**
 
-A. Nurse decides treatment
-B. Patient chooses treatment
-C. Family decides
-D. Doctor decides
+1. [ ] A. Nurse decides treatment
+2. [ ] B. Patient chooses treatment
+3. [ ] C. Family decides
+4. [ ] D. Doctor decides
 
-✅ **Answer: B**
+<details> ✅ **Answer: B** </details>
 
 ---
 
 ## **Q20. Failure to monitor patient leads to harm. This is:**
 
-A. Battery
-B. Assault
-C. Negligence
-D. Justice
+1. [ ] A. Battery
+2. [ ] B. Assault
+3. [ ] C. Negligence
+4. [ ] D. Justice
 
-✅ **Answer: C**
+<details>
+✅ **Answer: C** 
+</details>
 
 ---
 
 ## **Q21. Which is NOT an ethical principle?**
 
-A. Autonomy
-B. Justice
-C. Documentation
-D. Beneficence
+1. [ ] A. Autonomy
+2. [ ] B. Justice
+3. [ ] C. Documentation
+4. [ ] D. Beneficence
 
+<details>
 ✅ **Answer: C**
+</details>
 
 ---
 
 ## **Q22. A nurse lies to comfort patient. This violates:**
 
-A. Veracity
-B. Fidelity
-C. Justice
-D. Beneficence
+1. [ ] A. Veracity
+2. [ ] B. Fidelity
+3. [ ] C. Justice
+4. [ ] D. Beneficence
 
+<details>
 ✅ **Answer: A**
+</details>
 
 ---
 
 ## **Q23. Which legal concept protects patient from unwanted touching?**
 
-A. Assault
-B. Battery
-C. Negligence
-D. Justice
+1. [ ] A. Assault
+2. [ ] B. Battery
+3. [ ] C. Negligence
+4. [ ] D. Justice
 
+<details>
 ✅ **Answer: B**
+</details>
 
 ---
 
 ## **Q24. Consent taken under pressure is:**
 
-A. Valid
-B. Invalid
-C. Legal
-D. Ethical
+1. [ ] A. Valid
+2. [ ] B. Invalid
+3. [ ] C. Legal
+4. [ ] D. Ethical
 
+<details>
 ✅ **Answer: B**
+</details>
 
 ---
 
 ## **Q25. Which is the BEST example of justice?**
 
-A. Equal care to all
-B. Respecting refusal
-C. Telling truth
-D. Keeping promise
+1. [ ] A. Equal care to all
+2. [ ] B. Respecting refusal
+3. [ ] C. Telling truth
+4. [ ] D. Keeping promise
 
+<details>
 ✅ **Answer: A**
+</details>
 
 ---
 
 ## **Q26. Which is MOST important before invasive procedure?**
 
-A. Documentation
-B. Consent
-C. Diagnosis
-D. Evaluation
+1. [ ] A. Documentation
+2. [ ] B. Consent
+3. [ ] C. Diagnosis
+4. [ ] D. Evaluation
 
+<details>
 ✅ **Answer: B**
+</details>
 
 ---
 
 ## **Q27. A nurse ignores patient complaint. This is:**
 
-A. Beneficence
-B. Negligence
-C. Fidelity
-D. Veracity
+1. [ ] A. Beneficence
+2. [ ] B. Negligence
+3. [ ] C. Fidelity
+4. [ ] D. Veracity
 
+<details>
 ✅ **Answer: B**
+</details>
 
 ---
 
 ## **Q28. A nurse follows doctor's order blindly without checking. This may lead to:**
 
-A. Autonomy
-B. Malpractice
-C. Justice
-D. Fidelity
+1. [ ] A. Autonomy
+2. [ ] B. Malpractice
+3. [ ] C. Justice
+4. [ ] D. Fidelity
 
+<details>
 ✅ **Answer: B**
+</details>
 
 ---
 
 ## **Q29. Which principle ensures truthfulness?**
 
-A. Fidelity
-B. Veracity
-C. Justice
-D. Autonomy
+1. [ ] A. Fidelity
+2. [ ] B. Veracity
+3. [ ] C. Justice
+4. [ ] D. Autonomy
 
+<details>
 ✅ **Answer: B**
+</details>
 
 ---
 
 ## **Q30. Which is a legal safeguard for nurses?**
 
-A. Ignoring rules
-B. Proper documentation
-C. Avoiding patients
-D. Skipping consent
+1. [ ] A. Ignoring rules
+2. [ ] B. Proper documentation
+3. [ ] C. Avoiding patients
+4. [ ] D. Skipping consent
 
+<details>
 ✅ **Answer: B**
+</details>
 
 ---
 

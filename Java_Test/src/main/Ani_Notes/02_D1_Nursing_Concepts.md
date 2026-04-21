@@ -200,10 +200,12 @@ Includes:
 
 ## **Q1. Which of the following is NOT a component of the nursing metaparadigm?**
 
-A. Person
-B. Health
-C. Treatment
-D. Environment
+1. [ ] A. Person
+2. [ ] B. Health
+3. [ ] C. Treatment
+4. [ ] D. Environment
+
+<details>
 
 ✅ **Answer: C. Treatment**
 
@@ -217,14 +219,18 @@ Metaparadigm includes only:
 
 👉 “Treatment” is part of care but not a core concept.
 
+</details>
+
 ---
 
 ## **Q2. The correct sequence of the nursing process is:**
 
-A. Diagnosis → Assessment → Planning → Evaluation → Implementation
-B. Assessment → Diagnosis → Planning → Implementation → Evaluation
-C. Assessment → Planning → Diagnosis → Implementation → Evaluation
-D. Planning → Assessment → Diagnosis → Evaluation → Implementation
+1. [ ] A. Diagnosis → Assessment → Planning → Evaluation → Implementation
+2. [ ] B. Assessment → Diagnosis → Planning → Implementation → Evaluation
+3. [ ] C. Assessment → Planning → Diagnosis → Implementation → Evaluation
+4. [ ] D. Planning → Assessment → Diagnosis → Evaluation → Implementation
+
+<details>
 
 ✅ **Answer: B**
 
@@ -237,14 +243,18 @@ D. Planning → Assessment → Diagnosis → Evaluation → Implementation
 * Implementation
 * Evaluation
 
+</details>
+
 ---
 
 ## **Q3. Which ethical principle refers to “doing no harm”?**
 
-A. Autonomy
-B. Justice
-C. Beneficence
-D. Non-maleficence
+1. [ ] A. Autonomy
+2. [ ] B. Justice
+3. [ ] C. Beneficence
+4. [ ] D. Non-maleficence
+
+<details>
 
 ✅ **Answer: D**
 
@@ -252,29 +262,35 @@ D. Non-maleficence
 
 * Beneficence → Do good
 * Non-maleficence → **Do no harm**
+</details>
 
 ---
 
 ## **Q4. A nurse respecting a patient’s decision to refuse treatment is an example of:**
 
-A. Justice
-B. Beneficence
-C. Autonomy
-D. Fidelity
+1. [ ] A. Justice
+2. [ ] B. Beneficence
+3. [ ] C. Autonomy
+4. [ ] D. Fidelity
 
+<details>
 ✅ **Answer: C**
 
 **Explanation:**
 Autonomy = Patient’s right to make decisions.
 
+</details>
+
 ---
 
 ## **Q5. Which step of the nursing process involves setting goals?**
 
-A. Assessment
-B. Diagnosis
-C. Planning
-D. Evaluation
+1. [ ] A. Assessment
+2. [ ] B. Diagnosis
+3. [ ] C. Planning
+4. [ ] D. Evaluation
+
+<details>
 
 ✅ **Answer: C**
 
@@ -283,137 +299,158 @@ Planning includes:
 
 * Setting goals
 * Deciding interventions
+</details>
 
 ---
 
 ## **Q6. Holistic care refers to:**
 
-A. Treating only physical illness
-B. Treating disease with medication
-C. Treating patient as a whole
-D. Treating only mental health
+1. [ ] A. Treating only physical illness
+2. [ ] B. Treating disease with medication
+3. [ ] C. Treating patient as a whole
+4. [ ] D. Treating only mental health
 
+<details>
 ✅ **Answer: C**
 
 **Explanation:**
 Holistic = physical + emotional + social + spiritual care.
+</details>
 
 ---
 
 ## **Q7. Which role involves protecting patient rights?**
 
-A. Caregiver
-B. Educator
-C. Advocate
-D. Manager
+1. [ ] A. Caregiver
+2. [ ] B. Educator
+3. [ ] C. Advocate
+4. [ ] D. Manager
 
+<details>
 ✅ **Answer: C**
 
 **Explanation:**
 Advocate = speaks for patient, protects rights.
+</details>
 
 ---
 
 ## **Q8. Identifying “impaired mobility” is part of which step?**
 
-A. Assessment
-B. Diagnosis
-C. Planning
-D. Implementation
+1. [ ] A. Assessment
+2. [ ] B. Diagnosis
+3. [ ] C. Planning
+4. [ ] D. Implementation
 
+<details>
 ✅ **Answer: B**
 
 **Explanation:**
 Diagnosis = identifying patient problems.
+</details>
 
 ---
 
 ## **Q9. Collecting vital signs is part of:**
 
-A. Planning
-B. Implementation
-C. Assessment
-D. Evaluation
+1. [ ] A. Planning
+2. [ ] B. Implementation
+3. [ ] C. Assessment
+4. [ ] D. Evaluation
 
+<details>
 ✅ **Answer: C**
 
 **Explanation:**
 Assessment = data collection (BP, pulse, symptoms).
+</details>
 
 ---
 
 ## **Q10. Which principle ensures fair treatment of all patients?**
 
-A. Autonomy
-B. Justice
-C. Beneficence
-D. Confidentiality
+1. [ ] A. Autonomy
+2. [ ] B. Justice
+3. [ ] C. Beneficence
+4. [ ] D. Confidentiality
 
+<details>
 ✅ **Answer: B**
 
 **Explanation:**
 Justice = fairness and equality.
+</details>
 
 ---
 
 ## **Q11. Giving medication to a patient is part of:**
 
-A. Diagnosis
-B. Planning
-C. Implementation
-D. Evaluation
+1. [ ] A. Diagnosis
+2. [ ] B. Planning
+3. [ ] C. Implementation
+4. [ ] D. Evaluation
 
+<details>
 ✅ **Answer: C**
 
 **Explanation:**
 Implementation = performing nursing actions.
+</details>
 
 ---
 
 ## **Q12. Evaluation step includes:**
 
-A. Setting goals
-B. Checking outcomes
-C. Identifying problems
-D. Collecting data
+1. [ ] A. Setting goals
+2. [ ] B. Checking outcomes
+3. [ ] C. Identifying problems
+4. [ ] D. Collecting data
 
+<details>
 ✅ **Answer: B**
 
 **Explanation:**
 Evaluation = Did the intervention work?
+</details>
 
 ---
 
 ## **Q13. Confidentiality means:**
 
-A. Sharing patient data with everyone
-B. Protecting patient information
-C. Ignoring patient privacy
-D. Reporting all patient details publicly
+1. [ ] A. Sharing patient data with everyone
+2. [ ] B. Protecting patient information
+3. [ ] C. Ignoring patient privacy
+4. [ ] D. Reporting all patient details publicly
 
+<details>
 ✅ **Answer: B**
+</details>
 
 ---
 
 ## **Q14. Which is an example of beneficence?**
 
-A. Respecting refusal
-B. Providing best care
-C. Not sharing info
-D. Equal treatment
+1. [ ] A. Respecting refusal
+2. [ ] B. Providing best care
+3. [ ] C. Not sharing info
+4. [ ] D. Equal treatment
 
+<details>
 ✅ **Answer: B**
+</details>
 
 ---
 
 ## **Q15. Which is NOT a role of a nurse?**
 
-A. Researcher
-B. Advocate
-C. Judge
-D. Educator
+1. [ ] A. Researcher
+2. [ ] B. Advocate
+3. [ ] C. Judge
+4. [ ] D. Educator
 
+<details>
 ✅ **Answer: C**
+</details>
 
 ---
 
@@ -423,59 +460,69 @@ D. Educator
 
 ## **Q16. A nurse collects data, identifies a problem, sets goals, and evaluates outcomes. Which step is missing?**
 
-A. Planning
-B. Implementation
-C. Diagnosis
-D. Assessment
+1. [ ] A. Planning
+2. [ ] B. Implementation
+3. [ ] C. Diagnosis
+4. [ ] D. Assessment
 
+<details>
 ✅ **Answer: B**
 
 **Explanation:**
 Sequence missing action = **Implementation**
+</details>
 
 ---
 
 ## **Q17. Which action violates ethical principles?**
 
-A. Maintaining confidentiality
-B. Ignoring patient consent
-C. Providing equal care
-D. Respecting autonomy
+1. [ ] A. Maintaining confidentiality
+2. [ ] B. Ignoring patient consent
+3. [ ] C. Providing equal care
+4. [ ] D. Respecting autonomy
 
+<details>
 ✅ **Answer: B**
+</details>
 
 ---
 
 ## **Q18. Which statement best defines nursing?**
 
-A. Only giving medicines
-B. Caring for disease only
-C. Holistic care of individuals
-D. Assisting doctors only
+1. [ ] A. Only giving medicines
+2. [ ] B. Caring for disease only
+3. [ ] C. Holistic care of individuals
+4. [ ] D. Assisting doctors only
 
+<details>
 ✅ **Answer: C**
+</details>
 
 ---
 
 ## **Q19. A nurse ensures equal care to all patients regardless of background. This reflects:**
 
-A. Justice
-B. Autonomy
-C. Beneficence
-D. Fidelity
+1. [ ] A. Justice
+2. [ ] B. Autonomy
+3. [ ] C. Beneficence
+4. [ ] D. Fidelity
 
+<details>
 ✅ **Answer: A**
+</details>
 
 ---
 
 ## **Q20. Which is the FIRST step in nursing care?**
 
-A. Diagnosis
-B. Planning
-C. Assessment
-D. Evaluation
+1. [ ] A. Diagnosis
+2. [ ] B. Planning
+3. [ ] C. Assessment
+4. [ ] D. Evaluation
 
+<details>
 ✅ **Answer: C**
+</details>
 
 ---
 

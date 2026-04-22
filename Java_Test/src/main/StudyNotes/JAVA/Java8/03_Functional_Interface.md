@@ -120,7 +120,7 @@ Lambda → provides implementation
 All built-in functional interfaces are in:
 👉 `java.util.function` package
 
-### 🧠 1. Core Idea (VERY IMPORTANT)
+### 🧠 6.1. Core Idea (VERY IMPORTANT)
 
 All built-in functional interfaces follow patterns:
 
@@ -139,7 +139,7 @@ There are mainly **4 categories**:
 
 ---
 
-### 🔥 2. Predicate<T>
+### 🔥 6.2. Predicate<T>
 
 #### 📌 Definition:
 
@@ -182,7 +182,7 @@ p1.and(p2).test(12); // true
 
 ---
 
-### 🔥🔥 3. Function<T, R>
+### 🔥 6.3. Function<T, R>
 
 #### 📌 Definition:
 
@@ -227,7 +227,7 @@ f1.andThen(f2).apply(5); // (5*2)+3 = 13
 
 ---
 
-### 🔥🔥🔥 4. Consumer<T>
+### 🔥 6.4. Consumer<T>
 
 #### 📌 Definition:
 
@@ -269,7 +269,7 @@ c1.andThen(c2).accept("java");
 
 ---
 
-### 🔥 5. Supplier<T>
+### 🔥 6.5. Supplier<T>
 
 #### 📌 Definition:
 
@@ -296,7 +296,7 @@ System.out.println(random.get());
 
 ---
 
-### ⚡ 6. Bi-Functional Interfaces (2 Inputs)
+### ⚡ 6.6. Bi-Functional Interfaces (2 Inputs)
 
 ---
 
@@ -328,7 +328,7 @@ BiFunction<Integer, Integer, Integer> add = (a, b) -> a + b;
 
 ---
 
-### ⚡ 7. Unary & Binary Operators
+### ⚡ 6.7. Unary & Binary Operators
 
 These are special types of Function.
 
@@ -354,7 +354,7 @@ BinaryOperator<Integer> add = (a, b) -> a + b;
 
 ---
 
-### ⚡ 8. Primitive Functional Interfaces (🔥 Performance)
+### ⚡ 6.8. Primitive Functional Interfaces (🔥 Performance)
 
 To avoid **boxing/unboxing overhead**:
 
@@ -384,7 +384,7 @@ IntPredicate isEven = x -> x % 2 == 0;
 
 ---
 
-### 🧠 9. Function Chaining (VERY IMPORTANT)
+### 🧠 6.9. Function Chaining (VERY IMPORTANT)
 
 ---
 
@@ -399,7 +399,7 @@ multiply.andThen(add).apply(5); // 13
 
 ---
 
-### 🔥 10. Real-World Usage (Interview Gold)
+### 🔥 6.10. Real-World Usage (Interview Gold)
 
 ---
 

@@ -6,8 +6,6 @@
 
 > A **Functional Interface** is an interface that contains **exactly one abstract method**.
 
----
-
 ### ✅ Example
 
 ```java
@@ -16,8 +14,6 @@ interface Add {
     int sum(int a, int b);
 }
 ```
-
----
 
 ### 💡 Key Point:
 
@@ -32,13 +28,9 @@ They were introduced to support:
 
 > **Lambda Expressions**
 
----
-
 ### 🔥 Core Idea:
 
 Lambda needs a **target type** → that target type is a **Functional Interface**
-
----
 
 ### Example:
 
@@ -62,14 +54,10 @@ interface Test {
 }
 ```
 
----
-
 ### 💡 Why use it?
 
 * Ensures **only one abstract method**
 * Compile-time error if violated
-
----
 
 ### ❌ Error Example
 
@@ -92,8 +80,6 @@ interface Test {
 * `default` methods ✅
 * `static` methods ✅
 * Methods from `Object` class ✅
-
----
 
 ### Example:
 
@@ -137,23 +123,46 @@ These are from `java.util.function` package.
 
 ### 🔹 1. Predicate<T>
 
-👉 Takes input, returns boolean
+👉 Takes input, returns boolean, contains test().
 
 ```java
 Predicate<Integer> isEven = n -> n % 2 == 0;
 ```
 
----
+#### Methods
+
+* `boolean test(T t)` : Returns boolean based on condition.
+* `default Predicate<T> and(Predicate<? super T> other)` : Represents logical **AND** of this predicate and the other predicate. Throws `NullPointerException` if other is null.
+* `default Predicate<T> or(Predicate<? super T> other)` : Represents logical **OR** of this predicate and the other predicate. Throws `NullPointerException` if other is null.
+* `default Predicate<T> negate()` : Represents the logical **NOT** of this predicate.
+* `static <T> Predicate<T> isEqual(Object targetRef)` : Tests if two arguments are equal according to `Objects.equals(Object, Object)`.
 
 ### 🔹 2. Function<T, R>
 
-👉 Takes input, returns output
+👉 Takes input, returns output, contains apply().
 
 ```java
-Function<Integer, Integer> square = x -> x * x;
+Function<Integer, Integer> multiplyBy2 = (n) -> n * 2;
+Function<Integer, Integer> add3 = (n) -> n + 3;
+
+// 1. andThen: (5 * 2) + 3 = 13
+// It executes multiplyBy2 FIRST, then add3.
+Function<Integer, Integer> andThenResult = multiplyBy2.andThen(add3);
+System.out.println("andThen (Multiply then Add): " + andThenResult.apply(5));
+
+// 2. compose: (5 + 3) * 2 = 16
+// It executes add3 FIRST, then multiplyBy2.
+Function<Integer, Integer> composeResult = multiplyBy2.compose(add3);
+System.out.println("compose (Add then Multiply): " + composeResult.apply(5));
 ```
 
----
+#### Methods
+
+* `R apply(T t)` : Takes input, returns output.
+* `default <V> Function<V,R> compose(Function<? super V,? extends T> before)` : First applies the before function and then applies this function. Throws `NullPointerException` if before function is null.
+* `default <V> Function<T,V> andThen(Function<? super R,? extends V> after)` : First applies this function and then applies the after function. Throws `NullPointerException` if after function is null.
+* `static <T> Function<T,T> identity()` : Always returns its input argument.
+
 
 ### 🔹 3. Consumer<T>
 
@@ -163,7 +172,10 @@ Function<Integer, Integer> square = x -> x * x;
 Consumer<String> print = s -> System.out.println(s);
 ```
 
----
+#### Methods
+
+* `void accept(T t)` : No return.
+* `default Consumer<T> andThen(Consumer<? super T> after)` : sequence this operation followed by the after operation. Throws `NullPointerException` if after function is null.
 
 ### 🔹 4. Supplier<T>
 
@@ -173,21 +185,138 @@ Consumer<String> print = s -> System.out.println(s);
 Supplier<Double> random = () -> Math.random();
 ```
 
+#### Methods
+
+* `T get()` : Does not take input, But return some output. Ex: OTP generator.
+
 ---
 
 ## 🔹 7. Primitive Functional Interfaces (Performance)
 
-To avoid boxing/unboxing:
+Standard interfaces like `Predicate<Integer>` or `Function<Integer, String>` use Generic Types, which only work with Objects. If you pass a primitive int, Java has to "box" it into an Integer object. Using these primitive specializations we can avoid that overhead, making the code faster and more memory-efficient.
 
-* `IntPredicate`
-* `IntFunction`
-* `IntConsumer`
-* etc.
+### 👉 Predicate, Consumer, & Supplier
 
----
+| Category  | int          | long          | double          | Return Type     |
+|-----------|--------------|---------------|-----------------|-----------------|
+| Predicate | IntPredicate | LongPredicate | DoublePredicate | boolean         |
+| Consumer  | IntConsumer  | LongConsumer  | DoubleConsumer  | void            |
+| Supplier  | IntSupplier  | LongSupplier  | DoubleSupplier  | int/long/double |
+
+*Note: There is also a **`BooleanSupplier`**, which takes no input and returns a `boolean`.*
+
+### 👉 Function Specializations
+Functions are more complex because they have an **input** and an **output**. Java provides three patterns:
+
+#### A. Primitive Input → Object Output
+| Interface               | Input    | Output |
+|:------------------------|:---------|:-------|
+| **`IntFunction<R>`**    | `int`    | `R`    |
+| **`LongFunction<R>`**   | `long`   | `R`    |
+| **`DoubleFunction<R>`** | `double` | `R`    |
+
+#### B. Object Input → Primitive Output
+| Interface                 | Input | Output   |
+|:--------------------------|:------|:---------|
+| **`ToIntFunction<T>`**    | `T`   | `int`    |
+| **`ToLongFunction<T>`**   | `T`   | `long`   |
+| **`ToDoubleFunction<T>`** | `T`   | `double` |
+
+#### C. Primitive Input → Primitive Output (Cross-Type)
+These are used for direct conversion between primitives.
+* **From `int`:** `IntToLongFunction`, `IntToDoubleFunction`
+* **From `long`:** `LongToIntFunction`, `LongToDoubleFunction`
+* **From `double`:** `DoubleToIntFunction`, `DoubleToLongFunction`
+
+### 👉 Operators
+Operators are special cases of Functions where the **input and output types are the same**.
+
+| Category                      | `int`               | `long`               | `double`               |
+|:------------------------------|:--------------------|:---------------------|:-----------------------|
+| **UnaryOperator** (1 input)   | `IntUnaryOperator`  | `LongUnaryOperator`  | `DoubleUnaryOperator`  |
+| **BinaryOperator** (2 inputs) | `IntBinaryOperator` | `LongBinaryOperator` | `DoubleBinaryOperator` |
+
+### 👉 Bi-Interfaces (Mixed Types)
+While there are no primitive `BiFunction` or `BiPredicate` interfaces in the standard library, there is a special set of **`BiConsumer`** interfaces used frequently in collections and streams:
+
+* **`ObjIntConsumer<T>`**: Takes an object of type `T` and a primitive `int`.
+* **`ObjLongConsumer<T>`**: Takes an object of type `T` and a primitive `long`.
+* **`ObjDoubleConsumer<T>`**: Takes an object of type `T` and a primitive `double`.
+
+### 👉 Example
+
+```java
+import java.util.function.*;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * A comprehensive demonstration of Java's primitive functional interfaces for 'int'.
+ */
+public class PrimitiveInterfaceDemo {
+
+    public static void main(String[] args) {
+        System.out.println("--- 1. BASIC PRIMITIVE INTERFACES ---");
+
+        // IntPredicate: Returns boolean
+        IntPredicate isEven = n -> n % 2 == 0;
+        System.out.println("IntPredicate (is 10 even?): " + isEven.test(10));
+
+        // IntConsumer: Returns void (side effects)
+        IntConsumer logger = n -> System.out.println("IntConsumer logging: " + n);
+        logger.accept(42);
+
+        // IntSupplier: Returns int
+        IntSupplier randomInt = () -> (int) (Math.random() * 100);
+        System.out.println("IntSupplier value: " + randomInt.getAsInt());
+
+
+        System.out.println("\n--- 2. TRANSFORMATION FUNCTIONS ---");
+
+        // IntFunction<R>: int -> Object
+        IntFunction<String> toCurrency = i -> "$" + i + ".00";
+        System.out.println("IntFunction (to String): " + toCurrency.apply(50));
+
+        // ToIntFunction<T>: Object -> int
+        ToIntFunction<String> stringLength = s -> s.length();
+        System.out.println("ToIntFunction (length of 'Gemini'): " + stringLength.applyAsInt("Gemini"));
+
+        // IntToLongFunction: int -> long
+        IntToLongFunction multiplyToLong = i -> (long) i * 1_000_000_000L;
+        System.out.println("IntToLongFunction: " + multiplyToLong.applyAsLong(2));
+
+        // IntToDoubleFunction: int -> double
+        IntToDoubleFunction divideByThree = i -> i / 3.0;
+        System.out.println("IntToDoubleFunction: " + divideByThree.applyAsDouble(10));
+
+
+        System.out.println("\n--- 3. OPERATORS (Same Input/Output) ---");
+
+        // IntUnaryOperator: 1 input, 1 output
+        IntUnaryOperator increment = n -> n + 1;
+        System.out.println("IntUnaryOperator (10 + 1): " + increment.applyAsInt(10));
+
+        // IntBinaryOperator: 2 inputs, 1 output
+        IntBinaryOperator multiply = (a, b) -> a * b;
+        System.out.println("IntBinaryOperator (5 * 4): " + multiply.applyAsInt(5, 4));
+
+
+        System.out.println("\n--- 4. HYBRID INTERFACES ---");
+
+        // ObjIntConsumer<T>: Object + int -> void
+        List<Integer> numbers = new ArrayList<>();
+        ObjIntConsumer<List<Integer>> listAdder = (list, val) -> list.add(val);
+        
+        listAdder.accept(numbers, 100);
+        listAdder.accept(numbers, 200);
+        System.out.println("ObjIntConsumer result (List contents): " + numbers);
+    }
+}
+```
 
 👉 Why important?
 
+* Avoids boxing/unboxing
 * Improves performance in streams
 
 ---
@@ -267,8 +396,6 @@ interface Calculator {
 }
 ```
 
----
-
 ### Use:
 
 ```java
@@ -314,7 +441,7 @@ Be ready for:
 
 ---
 
-### ❓ Can we create our own?
+### ❓ Can we create our own functional interfaces?
 
 <details> 👉 Yes </details>
 
@@ -322,7 +449,7 @@ Be ready for:
 
 ### ❓ What happens if 2 abstract methods exist?
 
-<details> 👉 Compilation error (if annotated) </details>
+<details> 👉 Compilation error (if annotated with @FunctionalInterface) </details>
 
 ---
 
@@ -455,6 +582,9 @@ andThen()
 compose()
 ```
 
+* f1.`andThen`(f2): Executes f1 first, then f2. (`Flow: Left to Right`)
+* f1.`compose`(f2): Executes f2 first, then f1. (`Flow: Right to Left`)
+
 ### Example:
 
 ```java
@@ -463,6 +593,8 @@ Function<Integer, Integer> f2 = x -> x + 3;
 
 f1.andThen(f2).apply(5); // (5*2)+3 = 13
 ```
+
+
 
 ---
 
@@ -668,10 +800,6 @@ list.stream()
 > Java provides built-in functional interfaces in `java.util.function` like Predicate, Function, Consumer, and Supplier, which represent common functional patterns such as condition checking, transformation, consuming data, and supplying values. These interfaces are widely used in Lambda expressions and Streams API to enable functional programming.
 
 ---
-
----
-Good—this is where interviewers actually **differentiate strong vs average candidates**.
-I’ll give you **tricky, concept-based questions** (not basic ones), along with **precise answers + explanation**.
 
 ---
 
@@ -1767,17 +1895,6 @@ transform(list, x -> x + 5);
 ```
 
 </details>
-
----
-
-# 🎯 What This Covers
-
-✔ Primitive interfaces (`IntPredicate`, etc.)
-✔ Performance optimization
-✔ Function chaining
-✔ Strategy pattern
-✔ Lazy execution
-✔ Real-world patterns
 
 ---
 

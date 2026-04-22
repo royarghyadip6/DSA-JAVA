@@ -35,7 +35,7 @@ Before Java 8, we used **anonymous classes** to pass behavior.
 
 * Reduces too much boilerplate code
 * Reduces anonymous class usages
-* Reduces functional programming support
+* Enables functional programming
 
 ### ❌ Without Lambda (Verbose)
 
@@ -707,7 +707,9 @@ Used multiple times
 <summary>Answer</summary>
 
 👉 Concise code + functional programming support
+
 👉 No boilerplate (anonymous class removed)
+
 👉 Better readability + performance
 
 </details>

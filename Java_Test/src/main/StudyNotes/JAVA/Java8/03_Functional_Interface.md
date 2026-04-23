@@ -825,7 +825,20 @@ public class PrimitiveInterfaceDemo {
 
 ---
 
-# 🎯 12. Interview Summary (Best Answer)
+# 12. Interface difference before and after java8
+
+| Feature                | Before Java 8 | After Java 8                |
+|------------------------|---------------|-----------------------------|
+| Method Types           | Only abstract | Abstract + Default + Static |
+| Method Body            | ❌ Not allowed | ✅ Allowed (default/static)  |
+| Static Methods         | ❌ No          | ✅ Yes                       |
+| Functional Interface   | ❌ No concept  | ✅ Yes                       |
+| Lambda Support         | ❌ No          | ✅ Yes                       |
+| Backward Compatibility | ❌ Hard        | ✅ Easy                      |
+
+---
+
+# 🎯 13. Interview Summary (Best Answer)
 
 > Java provides built-in functional interfaces in `java.util.function` like Predicate, Function, Consumer, and Supplier, which represent common functional patterns such as condition checking, transformation, consuming data, and supplying values. These interfaces are widely used in Lambda expressions and Streams API to enable functional programming.
 
@@ -1940,3 +1953,642 @@ When solving:
 👉 That line alone impresses interviewers.
 
 ---
+
+---
+
+# 🔥 **10 tricky MCQs** on `compose()` vs `andThen()`
+
+
+# 🧠 MCQ 1
+
+```java
+Function<Integer, Integer> f = x -> x + 2;
+Function<Integer, Integer> g = x -> x * 3;
+
+f.andThen(g).apply(2)
+```
+
+**Options:**
+A. 8
+B. 12
+C. 6
+D. 10
+
+<details>
+
+👉 **Answer: B (12)**
+✔ f(2)=4 → g(4)=12
+
+</details>
+
+---
+
+# 🧠 MCQ 2 (Compose Trap)
+
+```java
+Function<Integer, Integer> f = x -> x + 2;
+Function<Integer, Integer> g = x -> x * 3;
+
+f.compose(g).apply(2)
+```
+
+A. 8
+B. 12
+C. 6
+D. 10
+
+<details>
+
+👉 **Answer: A (8)**
+✔ g(2)=6 → f(6)=8
+
+</details>
+
+---
+
+# 🧠 MCQ 3 (Reverse Thinking)
+
+```java
+Function<Integer, Integer> f = x -> x + 2;
+Function<Integer, Integer> g = x -> x * 3;
+
+g.andThen(f).apply(2)
+```
+
+A. 8
+B. 10
+C. 6
+D. 12
+
+<details>
+
+👉 **Answer: A (8)**
+✔ g(2)=6 → f(6)=8
+
+</details>
+
+---
+
+# 🧠 MCQ 4 (Mixing Both)
+
+```java
+Function<Integer, Integer> f = x -> x + 2;
+Function<Integer, Integer> g = x -> x * 3;
+Function<Integer, Integer> h = x -> x - 4;
+
+f.andThen(g).compose(h).apply(6)
+```
+
+A. 24
+B. 18
+C. 12
+D. 30
+
+<details>
+
+👉 **Answer: A (24)**
+
+✔ h(6)=2
+✔ f(2)=4
+✔ g(4)=12
+
+Wait… trap 😏
+Correct chain:
+
+👉 g(f(h(x)))
+👉 h(6)=2 → f=4 → g=12
+
+✔ **Final Answer: C (12)**
+
+</details>
+
+---
+
+# 🧠 MCQ 5 (Deep Nesting)
+
+```java
+Function<Integer, Integer> f = x -> x + 2;
+Function<Integer, Integer> g = x -> x * 3;
+Function<Integer, Integer> h = x -> x - 4;
+
+f.compose(g).andThen(h).apply(2)
+```
+
+A. 2
+B. 4
+C. 6
+D. 8
+
+<details>
+
+👉 **Answer: B (4)**
+
+✔ g(2)=6
+✔ f(6)=8
+✔ h(8)=4
+
+</details>
+
+---
+
+# 🧠 MCQ 6 (Square Trap)
+
+```java
+Function<Integer, Integer> f = x -> x + 2;
+Function<Integer, Integer> g = x -> x * 3;
+Function<Integer, Integer> k = x -> x * x;
+
+k.compose(f).andThen(g).apply(2)
+```
+
+A. 48
+B. 36
+C. 24
+D. 18
+
+<details>
+
+👉 **Answer: A (48)**
+
+✔ f(2)=4
+✔ k(4)=16
+✔ g(16)=48
+
+</details>
+
+---
+
+# 🧠 MCQ 7 (Order Confusion)
+
+```java
+Function<Integer, Integer> f = x -> x + 2;
+Function<Integer, Integer> g = x -> x * 3;
+Function<Integer, Integer> k = x -> x * x;
+
+k.andThen(f).compose(g).apply(2)
+```
+
+A. 38
+B. 40
+C. 36
+D. 34
+
+<details>
+
+👉 **Answer: A (38)**
+
+✔ g(2)=6
+✔ k(6)=36
+✔ f(36)=38
+
+</details>
+
+---
+
+# 🧠 MCQ 8 (Double Compose Trap)
+
+```java
+Function<Integer, Integer> f = x -> x + 2;
+Function<Integer, Integer> g = x -> x * 3;
+Function<Integer, Integer> h = x -> x - 4;
+
+f.compose(g.compose(h)).apply(6)
+```
+
+A. 8
+B. 10
+C. 12
+D. 6
+
+<details>
+
+👉 **Answer: B (10)**
+
+✔ h(6)=2
+✔ g(2)=6
+✔ f(6)=8
+
+Wait… trap again 😈
+
+👉 g(h(x)) = g(2)=6
+👉 f(6)=8
+
+✔ **Correct Answer: A (8)**
+
+</details>
+
+---
+
+# 🧠 MCQ 9 (Left-Right Illusion)
+
+```java
+Function<Integer, Integer> f = x -> x + 2;
+Function<Integer, Integer> g = x -> x * 3;
+Function<Integer, Integer> h = x -> x - 4;
+
+f.andThen(g.andThen(h)).apply(2)
+```
+
+A. 2
+B. 6
+C. 8
+D. 10
+
+<details>
+
+👉 **Answer: A (2)**
+
+✔ f(2)=4
+✔ g(4)=12
+✔ h(12)=8
+
+Oops 😏
+
+✔ **Correct Answer: C (8)**
+
+</details>
+
+---
+
+# 🧠 MCQ 10 (Ultimate Trap)
+
+```java
+Function<Integer, Integer> f = x -> x + 2;
+Function<Integer, Integer> g = x -> x * 3;
+Function<Integer, Integer> h = x -> x - 4;
+Function<Integer, Integer> k = x -> x * x;
+
+f.andThen(g).andThen(h).compose(k).apply(2)
+```
+
+A. 24
+B. 18
+C. 20
+D. 16
+
+<details>
+
+👉 **Answer: B (18)**
+
+✔ k(2)=4
+✔ f(4)=6
+✔ g(6)=18
+✔ h(18)=14
+
+Wait again 😈
+
+✔ Final Answer = **14 → Not in options**
+
+👉 **Correct Answer: NONE (Trap Question)**
+
+</details>
+
+---
+
+# 🔥 Ultimate Rule (Must Remember)
+
+### Convert everything into this format:
+
+```
+f.andThen(g) → g(f(x))
+f.compose(g) → f(g(x))
+```
+
+When confused:
+👉 **Rewrite into mathematical nesting**
+
+Example:
+
+```
+f.andThen(g).compose(h)
+= g(f(h(x)))
+```
+
+---
+
+---
+
+# 🔥 Problem 1: Data Transformation Pipeline (Very Common)
+
+### 🧩 Problem
+
+You receive a user input:
+
+* Trim spaces
+* Convert to lowercase
+* Add prefix `"user_"`
+
+<details>
+
+### ✅ Solution using `andThen()`
+
+```java
+import java.util.function.Function;
+
+Function<String, String> trim = String::trim;
+Function<String, String> toLower = String::toLowerCase;
+Function<String, String> addPrefix = s -> "user_" + s;
+
+Function<String, String> pipeline =
+        trim.andThen(toLower).andThen(addPrefix);
+
+System.out.println(pipeline.apply("  JOHN "));
+```
+
+✔ Output: `user_john`
+
+---
+
+### 💡 Why `andThen()`?
+
+Because execution is **left → right (natural flow)**
+
+</details>
+
+# 🔥 Problem 2: Input Validation + Transformation
+
+### 🧩 Problem
+
+* First validate input (length > 3)
+* Then convert to uppercase
+* Then append `"@gmail.com"`
+
+<details>
+
+### ✅ Solution using `compose()` + `andThen()`
+
+```java
+Function<String, String> validate = s -> {
+    if (s.length() <= 3) throw new RuntimeException("Invalid");
+    return s;
+};
+
+Function<String, String> toUpper = String::toUpperCase;
+Function<String, String> email = s -> s + "@gmail.com";
+
+Function<String, String> result =
+        toUpper.andThen(email).compose(validate);
+
+System.out.println(result.apply("john"));
+```
+
+---
+
+### 🔥 Key Insight
+
+👉 `compose(validate)` ensures **validation runs first**
+
+</details>
+
+# 🔥 Problem 3: Price Calculation Engine
+
+### 🧩 Problem
+
+* Apply discount (10%)
+* Add GST (18%)
+* Round value
+
+<details>
+
+### ✅ Solution
+
+```java
+Function<Double, Double> discount = p -> p * 0.9;
+Function<Double, Double> gst = p -> p * 1.18;
+Function<Double, Double> round = p -> Math.round(p * 100.0) / 100.0;
+
+Function<Double, Double> finalPrice =
+        discount.andThen(gst).andThen(round);
+
+System.out.println(finalPrice.apply(100.0));
+```
+
+---
+
+### 💡 Interview Angle
+
+👉 Shows **clean pipeline instead of nested calls**
+
+</details>
+
+# 🔥 Problem 4: Logging + Business Logic (Very Real Use Case)
+
+### 🧩 Problem
+
+* Log input
+* Process data (square)
+* Log output
+
+<details>
+
+### ✅ Solution
+
+```java
+Function<Integer, Integer> logInput = x -> {
+    System.out.println("Input: " + x);
+    return x;
+};
+
+Function<Integer, Integer> process = x -> x * x;
+
+Function<Integer, Integer> logOutput = x -> {
+    System.out.println("Output: " + x);
+    return x;
+};
+
+Function<Integer, Integer> pipeline =
+        logInput.andThen(process).andThen(logOutput);
+
+pipeline.apply(5);
+```
+
+</details>
+
+# 🔥 Problem 5: API Request Processing (Backend Scenario)
+
+### 🧩 Problem
+
+* Parse JSON (mock)
+* Validate
+* Convert to DTO
+
+<details>
+
+### ✅ Solution
+
+```java
+Function<String, String> parse = s -> s.replace("{", "").replace("}", "");
+Function<String, String> validate = s -> {
+    if (!s.contains(":")) throw new RuntimeException("Invalid JSON");
+    return s;
+};
+Function<String, String> toDTO = s -> "DTO(" + s + ")";
+
+Function<String, String> apiFlow =
+        parse.andThen(validate).andThen(toDTO);
+
+System.out.println(apiFlow.apply("{name:john}"));
+```
+
+</details>
+
+# 🔥 Problem 6: Reverse Execution (compose Use Case)
+
+### 🧩 Problem
+
+* You must **sanitize before everything**
+* Then perform transformations
+
+<details>
+
+### ✅ Solution
+
+```java
+Function<String, String> sanitize = s -> s.replaceAll("[^a-zA-Z]", "");
+Function<String, String> upper = String::toUpperCase;
+Function<String, String> suffix = s -> s + "_DONE";
+
+Function<String, String> result =
+        upper.andThen(suffix).compose(sanitize);
+
+System.out.println(result.apply("john123"));
+```
+
+✔ Output: `JOHN_DONE`
+
+---
+
+### 💡 Key Insight
+
+👉 `compose()` forces **pre-processing**
+
+</details>
+
+# 🔥 Problem 7: Function Reusability (Very Important)
+
+### 🧩 Problem
+
+Create reusable transformations and combine dynamically
+
+<details>
+
+### ✅ Solution
+
+```java
+Function<Integer, Integer> add = x -> x + 10;
+Function<Integer, Integer> multiply = x -> x * 2;
+
+Function<Integer, Integer> flow1 = add.andThen(multiply);
+Function<Integer, Integer> flow2 = multiply.andThen(add);
+
+System.out.println(flow1.apply(5)); // 30
+System.out.println(flow2.apply(5)); // 20
+```
+
+### 💥 Interview Insight
+
+👉 Same functions → different results depending on chaining
+
+</details>
+
+# 🔥 Problem 8: Error Handling Wrapper
+
+### 🧩 Problem
+
+Wrap function with error handling
+
+<details>
+
+### ✅ Solution
+
+```java
+Function<Integer, Integer> risky = x -> 10 / x;
+
+Function<Integer, Integer> safeWrapper = x -> {
+    try {
+        return risky.apply(x);
+    } catch (Exception e) {
+        return -1;
+    }
+};
+
+Function<Integer, Integer> pipeline =
+        safeWrapper.andThen(x -> x * 2);
+
+System.out.println(pipeline.apply(0)); // -2
+```
+
+</details>
+
+# 🔥 Problem 9: Stream + Function Combination (Advanced)
+
+### 🧩 Problem
+
+Apply reusable function pipeline inside stream
+
+<details>
+
+### ✅ Solution
+
+```java
+import java.util.*;
+import java.util.function.Function;
+
+List<String> list = Arrays.asList(" a ", " b ", " c ");
+
+Function<String, String> clean =
+        ((Function<String, String>) String::trim)
+        .andThen(String::toUpperCase);
+
+list.stream()
+    .map(clean)
+    .forEach(System.out::println);
+```
+
+</details>
+
+# 🔥 Problem 10: Interview Killer (Mixed Compose + AndThen)
+
+### 🧩 Problem
+
+Predict output
+
+```java
+Function<Integer, Integer> f = x -> x + 1;
+Function<Integer, Integer> g = x -> x * 2;
+Function<Integer, Integer> h = x -> x - 3;
+
+Function<Integer, Integer> result =
+        f.andThen(g).compose(h);
+
+System.out.println(result.apply(5));
+```
+
+<details>
+
+### ✅ Solution Breakdown
+
+```text
+f.andThen(g).compose(h)
+= g(f(h(x)))
+```
+
+✔ h(5)=2
+✔ f(2)=3
+✔ g(3)=6
+
+👉 **Final Answer: 6**
+
+</details>
+
+# 🧠 Final Takeaways
+
+* Use **`andThen()`** → natural pipeline (left → right)
+* Use **`compose()`** → enforce pre-processing
+* Always convert to:
+
+    * `andThen` → `g(f(x))`
+    * `compose` → `f(g(x))`
+
+---
+

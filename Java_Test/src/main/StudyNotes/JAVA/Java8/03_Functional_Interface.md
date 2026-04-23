@@ -1756,7 +1756,7 @@ System.out.println(fullName.apply(first, last));
 * Multiple `IntPredicate` conditions are combined dynamically
 * Example:
 
-    * > 10
+    * Greater than 10
     * divisible by 3
 
 <details>
@@ -1789,12 +1789,11 @@ Arrays.stream(arr)
 <summary>Answer</summary>
 
 ```java
-IntFunction<Integer> multiply = x -> x * 2;
-IntFunction<Integer> add = x -> x + 5;
-IntFunction<Integer> square = x -> x * x;
+Function<Integer,Integer> multiply = x -> x * 2;
+Function<Integer,Integer> add = x -> x + 5;
+Function<Integer,Integer> square = x -> x * x;
 
-Function<Integer, Integer> pipeline =
-        multiply.andThen(add).andThen(square);
+Function<Integer, Integer> pipeline = multiply.andThen(add).andThen(square);
 
 System.out.println(pipeline.apply(3)); // ((3*2)+5)^2 = 121
 ```
@@ -1987,14 +1986,15 @@ f.andThen(g).apply(2)
 ```
 
 **Options:**
-A. 8
-B. 12
-C. 6
-D. 10
+1. [ ] A. 8
+2. [ ] B. 12
+3. [ ] C. 6
+4. [ ] D. 10
 
 <details>
 
 👉 **Answer: B (12)**
+
 ✔ f(2)=4 → g(4)=12
 
 </details>
@@ -2010,14 +2010,15 @@ Function<Integer, Integer> g = x -> x * 3;
 f.compose(g).apply(2)
 ```
 
-A. 8
-B. 12
-C. 6
-D. 10
+1. [ ] A. 8
+2. [ ] B. 12
+3. [ ] C. 6
+4. [ ] D. 10
 
 <details>
 
 👉 **Answer: A (8)**
+
 ✔ g(2)=6 → f(6)=8
 
 </details>
@@ -2033,14 +2034,15 @@ Function<Integer, Integer> g = x -> x * 3;
 g.andThen(f).apply(2)
 ```
 
-A. 8
-B. 10
-C. 6
-D. 12
+1. [ ] A. 8
+2. [ ] B. 10
+3. [ ] C. 6
+4. [ ] D. 12
 
 <details>
 
 👉 **Answer: A (8)**
+
 ✔ g(2)=6 → f(6)=8
 
 </details>
@@ -2057,23 +2059,25 @@ Function<Integer, Integer> h = x -> x - 4;
 f.andThen(g).compose(h).apply(6)
 ```
 
-A. 24
-B. 18
-C. 12
-D. 30
+1. [ ] A. 24
+2. [ ] B. 18
+3. [ ] C. 12
+4. [ ] D. 30
 
 <details>
 
 👉 **Answer: A (24)**
 
-✔ h(6)=2
-✔ f(2)=4
-✔ g(4)=12
+1. ✔ h(6)=2
+2. ✔ f(2)=4
+3. ✔ g(4)=12
 
 Wait… trap 😏
+
 Correct chain:
 
 👉 g(f(h(x)))
+
 👉 h(6)=2 → f=4 → g=12
 
 ✔ **Final Answer: C (12)**
@@ -2092,18 +2096,18 @@ Function<Integer, Integer> h = x -> x - 4;
 f.compose(g).andThen(h).apply(2)
 ```
 
-A. 2
-B. 4
-C. 6
-D. 8
+1. [ ] A. 2
+2. [ ] B. 4
+3. [ ] C. 6
+4. [ ] D. 8
 
 <details>
 
 👉 **Answer: B (4)**
 
-✔ g(2)=6
-✔ f(6)=8
-✔ h(8)=4
+1. ✔ g(2)=6
+2. ✔ f(6)=8
+3. ✔ h(8)=4
 
 </details>
 
@@ -2119,18 +2123,18 @@ Function<Integer, Integer> k = x -> x * x;
 k.compose(f).andThen(g).apply(2)
 ```
 
-A. 48
-B. 36
-C. 24
-D. 18
+1. [ ] A. 48
+2. [ ] B. 36
+3. [ ] C. 24
+4. [ ] D. 18
 
 <details>
 
 👉 **Answer: A (48)**
 
-✔ f(2)=4
-✔ k(4)=16
-✔ g(16)=48
+1. ✔ f(2)=4
+2. ✔ k(4)=16
+3. ✔ g(16)=48
 
 </details>
 
@@ -2146,18 +2150,18 @@ Function<Integer, Integer> k = x -> x * x;
 k.andThen(f).compose(g).apply(2)
 ```
 
-A. 38
-B. 40
-C. 36
-D. 34
+1. [ ] A. 38
+2. [ ] B. 40
+3. [ ] C. 36
+4. [ ] D. 34
 
 <details>
 
 👉 **Answer: A (38)**
 
-✔ g(2)=6
-✔ k(6)=36
-✔ f(36)=38
+1. ✔ g(2)=6
+2. ✔ k(6)=36
+3. ✔ f(36)=38
 
 </details>
 
@@ -2173,22 +2177,23 @@ Function<Integer, Integer> h = x -> x - 4;
 f.compose(g.compose(h)).apply(6)
 ```
 
-A. 8
-B. 10
-C. 12
-D. 6
+1. [ ] A. 8
+2. [ ] B. 10
+3. [ ] C. 12
+4. [ ] D. 6
 
 <details>
 
 👉 **Answer: B (10)**
 
-✔ h(6)=2
-✔ g(2)=6
-✔ f(6)=8
+1. ✔ h(6)=2
+2. ✔ g(2)=6
+3. ✔ f(6)=8
 
 Wait… trap again 😈
 
 👉 g(h(x)) = g(2)=6
+
 👉 f(6)=8
 
 ✔ **Correct Answer: A (8)**
@@ -2207,18 +2212,18 @@ Function<Integer, Integer> h = x -> x - 4;
 f.andThen(g.andThen(h)).apply(2)
 ```
 
-A. 2
-B. 6
-C. 8
-D. 10
+1. [ ] A. 2
+2. [ ] B. 6
+3. [ ] C. 8
+4. [ ] D. 10
 
 <details>
 
 👉 **Answer: A (2)**
 
-✔ f(2)=4
-✔ g(4)=12
-✔ h(12)=8
+1. ✔ f(2)=4
+2. ✔ g(4)=12
+3. ✔ h(12)=8
 
 Oops 😏
 
@@ -2239,19 +2244,19 @@ Function<Integer, Integer> k = x -> x * x;
 f.andThen(g).andThen(h).compose(k).apply(2)
 ```
 
-A. 24
-B. 18
-C. 20
-D. 16
+1. [ ] A. 24
+2. [ ] B. 18
+3. [ ] C. 20
+4. [ ] D. 16
 
 <details>
 
 👉 **Answer: B (18)**
 
-✔ k(2)=4
-✔ f(4)=6
-✔ g(6)=18
-✔ h(18)=14
+1. ✔ k(2)=4
+2. ✔ f(4)=6
+3. ✔ g(6)=18
+4. ✔ h(18)=14
 
 Wait again 😈
 

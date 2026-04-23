@@ -1,9 +1,8 @@
 package Java8_Features;
 
-import java.util.function.BiPredicate;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.*;
 
 public class IV_FunctionalInterface {
     public static void main(String[] args) {
@@ -82,6 +81,60 @@ Function is a functional interface in java.util.function package introduced in J
 It takes one input and returns one output.
 
 * */
+        System.out.println("--- 1. BASIC PRIMITIVE INTERFACES ---");
+
+        // IntPredicate: Returns boolean
+        IntPredicate isEven = n -> n % 2 == 0;
+        System.out.println("IntPredicate (is 10 even?): " + isEven.test(10));
+
+        // IntConsumer: Returns void (side effects)
+        IntConsumer logger = n -> System.out.println("IntConsumer logging: " + n);
+        logger.accept(42);
+
+        // IntSupplier: Returns int
+        IntSupplier randomInt = () -> (int) (Math.random() * 100);
+        System.out.println("IntSupplier value: " + randomInt.getAsInt());
+
+
+        System.out.println("\n--- 2. TRANSFORMATION FUNCTIONS ---");
+
+        // IntFunction<R>: int -> Object
+        IntFunction<String> toCurrency = i -> "$" + i + ".00";
+        System.out.println("IntFunction (to String): " + toCurrency.apply(50));
+
+        // ToIntFunction<T>: Object -> int
+        ToIntFunction<String> stringLength = s -> s.length();
+        System.out.println("ToIntFunction (length of 'Gemini'): " + stringLength.applyAsInt("Gemini"));
+
+        // IntToLongFunction: int -> long
+        IntToLongFunction multiplyToLong = i -> (long) i * 1_000_000_000L;
+        System.out.println("IntToLongFunction: " + multiplyToLong.applyAsLong(2));
+
+        // IntToDoubleFunction: int -> double
+        IntToDoubleFunction divideByThree = i -> i / 3.0;
+        System.out.println("IntToDoubleFunction: " + divideByThree.applyAsDouble(10));
+
+
+        System.out.println("\n--- 3. OPERATORS (Same Input/Output) ---");
+
+        // IntUnaryOperator: 1 input, 1 output
+        IntUnaryOperator increment = n -> n + 1;
+        System.out.println("IntUnaryOperator (10 + 1): " + increment.applyAsInt(10));
+
+        // IntBinaryOperator: 2 inputs, 1 output
+        IntBinaryOperator multiply1 = (e, d) -> e * d;
+        System.out.println("IntBinaryOperator (5 * 4): " + multiply1.applyAsInt(5, 4));
+
+
+        System.out.println("\n--- 4. HYBRID INTERFACES ---");
+
+        // ObjIntConsumer<T>: Object + int -> void
+        List<Integer> numbers = new ArrayList<>();
+        ObjIntConsumer<List<Integer>> listAdder = (list, val) -> list.add(val);
+
+        listAdder.accept(numbers, 100);
+        listAdder.accept(numbers, 200);
+        System.out.println("ObjIntConsumer result (List contents): " + numbers);
 
     }
 }

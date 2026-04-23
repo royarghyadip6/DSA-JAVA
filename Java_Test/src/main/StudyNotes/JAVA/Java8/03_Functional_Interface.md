@@ -551,7 +551,7 @@ Be ready for:
 
 ### ❓ What happens if 2 abstract methods exist?
 
-<details> 👉 Compilation error (if annotated with @FunctionalInterface) </details>
+<details> 👉 Compilation error if annotated with @FunctionalInterface. Without annotation Compilation works fine because there can have multiple abstract method in normal interface.</details>
 
 ---
 
@@ -1054,10 +1054,11 @@ Predicate<String> p = s -> s.length();
 
 👉 **Answer:**
 
-| Function       | Predicate       |
-|----------------|-----------------|
-| Returns value  | Returns boolean |
-| Transformation | Condition       |
+| Function         | Predicate       |
+|------------------|-----------------|
+| Returns value    | Returns boolean |
+| Transformation   | Condition       |
+| Contains apply() | Contains test() |
 
 </details>
 
@@ -1409,6 +1410,23 @@ operations.put("add", (x, y) -> x + y);
 operations.put("mul", (x, y) -> x * y);
 
 System.out.println(operations.get(op).apply(a, b));
+```
+
+OR
+
+Using Custom Functional Interface :
+
+```java
+String op = "mul";
+HashMap<String,Calculator> hashMap = new HashMap<>();
+hashMap.put("add", (a,b,c) -> a+b+c);
+hashMap.put("mul", (a,b,c) -> a*b*c);
+System.out.println(hashMap.get(op).operate(2, 3,4));
+
+@FunctionalInterface
+interface Calculator {
+    public int operate(int a, int b, int c);
+}
 ```
 
 👉 This replaces traditional if-else / switch
@@ -1956,7 +1974,7 @@ When solving:
 
 ---
 
-# 🔥 **10 tricky MCQs** on `compose()` vs `andThen()`
+# 🔥 **10 tricky Function Chaining MCQs** on `compose()` vs `andThen()`
 
 
 # 🧠 MCQ 1

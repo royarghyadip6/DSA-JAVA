@@ -26,11 +26,8 @@
 * Salting
 * Password storage best practices
 
-## 1.4 Spring Boot Basics
+## 1.4 Servlet Basics
 
-* Starter dependencies
-* Auto-configuration
-* Bean lifecycle
 * Filters vs Interceptors
 
 ---

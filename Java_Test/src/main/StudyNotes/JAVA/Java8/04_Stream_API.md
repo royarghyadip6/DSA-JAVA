@@ -1605,10 +1605,20 @@ list.stream()
 <details>
 <summary>Answer</summary>
 
+Integer List :
+
 ```java id="u4m1zy"
 list.stream()
     .sorted((a, b) -> b - a)
     .forEach(System.out::println);
+```
+
+String List:
+
+```java
+list.stream()
+    .sorted((a, b) -> b.compareTo(a))
+        .forEach(System.out::println);
 ```
 
 </details>
@@ -1651,6 +1661,12 @@ List<Integer> list = Arrays.asList(1,2,2,3,4,4,5);
 
 <details>
 <summary>Answer</summary>
+
+```java
+list2.stream()
+    .filter(i -> Collections.frequency(list2, i) == 1)
+    .forEach(System.out::println);
+```
 
 ```java id="t4j6pl"
 Map<Integer, Long> freq =

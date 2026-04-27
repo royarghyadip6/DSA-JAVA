@@ -334,9 +334,14 @@ list.stream().reduce(add);
 ### map:
 
 ```java
-List<List<Integer>> list = ...;
-list.stream()
-    .map(l -> l.stream());
+List<String> sentences = Arrays.asList("Hello world", "Java is fun");
+
+// 1. Using map: Result is a Stream of Arrays (Stream<String[]>)
+// You end up with [[Hello, world], [Java, is, fun]]
+System.out.println("Using map:");
+sentences.stream()
+    .map(sentence -> sentence.split(" "))
+        .forEach(arr -> System.out.println(Arrays.toString(arr)));
 ```
 
 👉 Produces: Stream<Stream>
@@ -346,11 +351,23 @@ list.stream()
 ### flatMap:
 
 ```java
-list.stream()
-    .flatMap(l -> l.stream());
+// 2. Using flatMap: Result is a Stream of Strings (Stream<String>)
+// The arrays are flattened into one sequence: [Hello, world, Java, is, fun]
+System.out.println("\nUsing flatMap:");
+sentences.stream()
+    .flatMap(sentence -> Stream.of(sentence.split(" ")))
+        .forEach(System.out::println);
 ```
 
 👉 Produces: Stream<Integer>
+
+| Feature              | map                                                                                | flatMap                                                                                                 |
+|----------------------|------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------|
+| Defination           | The `map` operation takes a function and applies it to every element in the stream | The `flatMap` operation is used when each element in your stream contains another collection or stream. |
+| Function Return Type | "Returns a Value (e.g., String, Integer)"                                          | "Returns a Stream (e.g., Stream<String>)"                                                               |
+| Output Cardinality   | 1-to-1                                                                             | 1-to-Many (or 0-to-Many)                                                                                |
+| Structure            | Maintains the original structure.                                                  | """Flattens"" the structure (removes nesting)."                                                         |
+| Use Case             | "Data conversion (e.g.User to DTO)."                                               | Handling nested collections or Optionals.                                                               |
 
 ---
 
@@ -993,6 +1010,9 @@ s.forEach(System.out::println);
 ❌ **Exception at runtime**
 
 ```text
+1
+2
+3
 IllegalStateException: stream has already been operated upon or closed
 ```
 
@@ -1134,7 +1154,7 @@ list.stream()
 <details>
 <summary>Answer</summary>
 
-❌ **ConcurrentModificationException**
+❌ **UnsupportedOperationException**
 
 💡 Trap:
 

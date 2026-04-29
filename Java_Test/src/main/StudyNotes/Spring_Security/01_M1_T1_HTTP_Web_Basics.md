@@ -307,6 +307,21 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 
 ---
 
+### **What is Statelessness in REST?**
+Statelessness means that the server does not store any client context between requests. Each individual request from the client must contain all the information (authentication tokens, parameters, and state) necessary for the server to understand and process it.
+
+### The Three Key Benefits (The "Why")
+#### **Scalability**: 
+> Since servers don't store session data, a Load Balancer can distribute requests across any number of servers. Any server can handle any request because the "state" is sent by the client.
+
+#### **Reliability**: 
+> If a server crashes, no session data is lost. The client simply retries the request with a healthy server, making the system highly fault-tolerant.
+
+#### **Simplicity**: 
+> It reduces server-side overhead. The server doesn't need to manage session timeouts, memory allocation for users, or synchronization of sessions across a cluster.
+
+---
+
 ### 💡 Golden Rule:
 
 * Monolith → Session is fine
@@ -357,6 +372,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 3. HTTP always stores user data between requests
 4. HTTP cannot support authentication
 
+<details> **2** ✅ </details>
+
 ---
 
 ## 2. A request returns **401 Unauthorized**. What is the MOST accurate reason?
@@ -365,6 +382,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 2. User is authenticated but not authorized
 3. User is not authenticated or credentials are invalid
 4. Resource does not exist
+
+<details> **3** ✅ </details>
 
 ---
 
@@ -375,6 +394,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 3. Accept
 4. Content-Type
 
+<details> **2** ✅ </details>
+
 ---
 
 ## 4. Which of the following is TRUE about GET requests?
@@ -383,6 +404,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 2. They are guaranteed to be safe
 3. They should not modify server state, but can if poorly designed
 4. They cannot have headers
+
+<details> **3** ✅ </details>
 
 ---
 
@@ -393,6 +416,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 3. Filter chain before DispatcherServlet
 4. Database layer
 
+<details> **3** ✅ </details>
+
 ---
 
 ## 6. Which scenario will MOST likely result in **403 Forbidden**?
@@ -401,6 +426,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 2. Invalid token
 3. Valid token but insufficient role
 4. Server is down
+
+<details> **3** ✅ </details>
 
 ---
 
@@ -411,6 +438,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 3. Inside JWT token
 4. Inside HTTP headers permanently
 
+<details> **2** ✅ </details>
+
 ---
 
 ## 8. Which is TRUE about JWT?
@@ -419,6 +448,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 2. JWT removes need for sending data in every request
 3. JWT must be stored only in cookies
 4. JWT is sent with every request
+
+<details> **4** ✅ </details>
 
 ---
 
@@ -429,6 +460,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 3. DELETE
 4. POST
 
+<details> **4** ✅ </details>
+
 ---
 
 ## 10. What happens if Authorization header is missing in a secured endpoint?
@@ -437,6 +470,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 2. 403 Forbidden
 3. 401 Unauthorized
 4. 404 Not Found
+
+<details> **3** ✅ </details>
 
 ---
 
@@ -447,6 +482,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 3. Accept
 4. Origin
 
+<details> **2** ✅ </details>
+
 ---
 
 ## 12. What is the key difference between PUT and PATCH?
@@ -455,6 +492,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 2. PATCH replaces entire resource
 3. PUT replaces full resource, PATCH updates partially
 4. PATCH is always idempotent
+
+<details> **3** ✅ </details>
 
 ---
 
@@ -465,6 +504,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 3. Requests depend on previous requests
 4. Requires cookies
 
+<details> **2** ✅ </details>
+
 ---
 
 ## 14. Which of the following best describes CORS?
@@ -473,6 +514,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 2. Encryption method
 3. Cross-origin request control mechanism
 4. Session management system
+
+<details> **3** ✅ </details>
 
 ---
 
@@ -483,6 +526,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 3. Source of the request (domain)
 4. HTTP method
 
+<details> **3** ✅ </details>
+
 ---
 
 ## 16. If a user sends a valid JWT but the server rejects it due to expiration, what should be returned?
@@ -491,6 +536,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 2. 403 Forbidden
 3. 401 Unauthorized
 4. 500 Internal Server Error
+
+<details> **3** ✅ </details>
 
 ---
 
@@ -501,6 +548,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 3. SecurityContext
 4. AuthenticationManager
 
+<details> **2** ✅ </details>
+
 ---
 
 ## 18. Which is TRUE about cookies?
@@ -509,6 +558,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 2. Used to maintain session state
 3. Cannot be modified
 4. Used only for caching
+
+<details> **2** ✅ </details>
 
 ---
 
@@ -519,6 +570,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 3. They permanently remove data
 4. They cannot be secured
 
+<details> **3** ✅ </details>
+
 ---
 
 ## 20. What is the MOST correct statement?
@@ -528,32 +581,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 3. Security depends on implementation, not mechanism
 4. JWT does not require validation
 
----
-
-# ✅ ANSWERS
-
----
-
-1. **2** ✅
-2. **3** ✅
-3. **2** ✅
-4. **3** ✅
-5. **3** ✅
-6. **3** ✅
-7. **2** ✅
-8. **4** ✅
-9. **4** ✅
-10. **3** ✅
-11. **2** ✅
-12. **3** ✅
-13. **2** ✅
-14. **3** ✅
-15. **3** ✅
-16. **3** ✅
-17. **2** ✅
-18. **2** ✅
-19. **3** ✅
-20. **3** ✅
+<details> **3** ✅ </details>
 
 ---
 

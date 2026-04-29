@@ -352,181 +352,181 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 
 ## 1. Which statement is TRUE about HTTP?
 
-A. HTTP is stateful but can behave stateless
-B. HTTP is stateless but can be made stateful using sessions
-C. HTTP always stores user data between requests
-D. HTTP cannot support authentication
+1. HTTP is stateful but can behave stateless
+2. HTTP is stateless but can be made stateful using sessions
+3. HTTP always stores user data between requests
+4. HTTP cannot support authentication
 
 ---
 
 ## 2. A request returns **401 Unauthorized**. What is the MOST accurate reason?
 
-A. User does not have required role
-B. User is authenticated but not authorized
-C. User is not authenticated or credentials are invalid
-D. Resource does not exist
+1. User does not have required role
+2. User is authenticated but not authorized
+3. User is not authenticated or credentials are invalid
+4. Resource does not exist
 
 ---
 
 ## 3. Which header is primarily used for JWT authentication?
 
-A. Cookie
-B. Authorization
-C. Accept
-D. Content-Type
+1. Cookie
+2. Authorization
+3. Accept
+4. Content-Type
 
 ---
 
 ## 4. Which of the following is TRUE about GET requests?
 
-A. They always modify server data
-B. They are guaranteed to be safe
-C. They should not modify server state, but can if poorly designed
-D. They cannot have headers
+1. They always modify server data
+2. They are guaranteed to be safe
+3. They should not modify server state, but can if poorly designed
+4. They cannot have headers
 
 ---
 
 ## 5. Where does Spring Security intercept a request?
 
-A. Controller layer
-B. Service layer
-C. Filter chain before DispatcherServlet
-D. Database layer
+1. Controller layer
+2. Service layer
+3. Filter chain before DispatcherServlet
+4. Database layer
 
 ---
 
 ## 6. Which scenario will MOST likely result in **403 Forbidden**?
 
-A. No token provided
-B. Invalid token
-C. Valid token but insufficient role
-D. Server is down
+1. No token provided
+2. Invalid token
+3. Valid token but insufficient role
+4. Server is down
 
 ---
 
 ## 7. In session-based authentication, where is session data stored?
 
-A. Client browser only
-B. Server memory
-C. Inside JWT token
-D. Inside HTTP headers permanently
+1. Client browser only
+2. Server memory
+3. Inside JWT token
+4. Inside HTTP headers permanently
 
 ---
 
 ## 8. Which is TRUE about JWT?
 
-A. Server must store session for JWT
-B. JWT removes need for sending data in every request
-C. JWT must be stored only in cookies
-D. JWT is sent with every request
+1. Server must store session for JWT
+2. JWT removes need for sending data in every request
+3. JWT must be stored only in cookies
+4. JWT is sent with every request
 
 ---
 
 ## 9. Which of the following is NOT idempotent?
 
-A. GET
-B. PUT
-C. DELETE
-D. POST
+1. GET
+2. PUT
+3. DELETE
+4. POST
 
 ---
 
 ## 10. What happens if Authorization header is missing in a secured endpoint?
 
-A. 200 OK
-B. 403 Forbidden
-C. 401 Unauthorized
-D. 404 Not Found
+1. 200 OK
+2. 403 Forbidden
+3. 401 Unauthorized
+4. 404 Not Found
 
 ---
 
 ## 11. Which header is mainly used in session-based authentication?
 
-A. Authorization
-B. Cookie
-C. Accept
-D. Origin
+1. Authorization
+2. Cookie
+3. Accept
+4. Origin
 
 ---
 
 ## 12. What is the key difference between PUT and PATCH?
 
-A. PUT is faster
-B. PATCH replaces entire resource
-C. PUT replaces full resource, PATCH updates partially
-D. PATCH is always idempotent
+1. PUT is faster
+2. PATCH replaces entire resource
+3. PUT replaces full resource, PATCH updates partially
+4. PATCH is always idempotent
 
 ---
 
 ## 13. Which statement is TRUE about stateless systems?
 
-A. Server stores user session
-B. Each request contains all required information
-C. Requests depend on previous requests
-D. Requires cookies
+1. Server stores user session
+2. Each request contains all required information
+3. Requests depend on previous requests
+4. Requires cookies
 
 ---
 
 ## 14. Which of the following best describes CORS?
 
-A. Authentication mechanism
-B. Encryption method
-C. Cross-origin request control mechanism
-D. Session management system
+1. Authentication mechanism
+2. Encryption method
+3. Cross-origin request control mechanism
+4. Session management system
 
 ---
 
 ## 15. What does the Origin header indicate?
 
-A. Authentication token
-B. Server IP
-C. Source of the request (domain)
-D. HTTP method
+1. Authentication token
+2. Server IP
+3. Source of the request (domain)
+4. HTTP method
 
 ---
 
 ## 16. If a user sends a valid JWT but the server rejects it due to expiration, what should be returned?
 
-A. 200 OK
-B. 403 Forbidden
-C. 401 Unauthorized
-D. 500 Internal Server Error
+1. 200 OK
+2. 403 Forbidden
+3. 401 Unauthorized
+4. 500 Internal Server Error
 
 ---
 
 ## 17. Which layer handles routing to controllers in Spring Boot?
 
-A. Filter
-B. DispatcherServlet
-C. SecurityContext
-D. AuthenticationManager
+1. Filter
+2. DispatcherServlet
+3. SecurityContext
+4. AuthenticationManager
 
 ---
 
 ## 18. Which is TRUE about cookies?
 
-A. Stored only on server
-B. Used to maintain session state
-C. Cannot be modified
-D. Used only for caching
+1. Stored only on server
+2. Used to maintain session state
+3. Cannot be modified
+4. Used only for caching
 
 ---
 
 ## 19. Why are DELETE APIs usually restricted?
 
-A. They are slow
-B. They consume more memory
-C. They permanently remove data
-D. They cannot be secured
+1. They are slow
+2. They consume more memory
+3. They permanently remove data
+4. They cannot be secured
 
 ---
 
 ## 20. What is the MOST correct statement?
 
-A. JWT is always more secure than sessions
-B. Sessions are always better than JWT
-C. Security depends on implementation, not mechanism
-D. JWT does not require validation
+1. JWT is always more secure than sessions
+2. Sessions are always better than JWT
+3. Security depends on implementation, not mechanism
+4. JWT does not require validation
 
 ---
 
@@ -534,26 +534,26 @@ D. JWT does not require validation
 
 ---
 
-1. **B** ✅
-2. **C** ✅
-3. **B** ✅
-4. **C** ✅
-5. **C** ✅
-6. **C** ✅
-7. **B** ✅
-8. **D** ✅
-9. **D** ✅
-10. **C** ✅
-11. **B** ✅
-12. **C** ✅
-13. **B** ✅
-14. **C** ✅
-15. **C** ✅
-16. **C** ✅
-17. **B** ✅
-18. **B** ✅
-19. **C** ✅
-20. **C** ✅
+1. **2** ✅
+2. **3** ✅
+3. **2** ✅
+4. **3** ✅
+5. **3** ✅
+6. **3** ✅
+7. **2** ✅
+8. **4** ✅
+9. **4** ✅
+10. **3** ✅
+11. **2** ✅
+12. **3** ✅
+13. **2** ✅
+14. **3** ✅
+15. **3** ✅
+16. **3** ✅
+17. **2** ✅
+18. **2** ✅
+19. **3** ✅
+20. **3** ✅
 
 ---
 

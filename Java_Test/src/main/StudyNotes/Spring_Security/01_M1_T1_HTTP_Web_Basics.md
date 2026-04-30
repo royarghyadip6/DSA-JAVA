@@ -372,7 +372,7 @@ Statelessness means that the server does not store any client context between re
 3. HTTP always stores user data between requests
 4. HTTP cannot support authentication
 
-<details> **2** ✅ </details>
+<details> 2 ✅ </details>
 
 ---
 

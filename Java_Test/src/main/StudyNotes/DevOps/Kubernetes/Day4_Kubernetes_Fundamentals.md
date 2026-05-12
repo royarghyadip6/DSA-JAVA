@@ -1,4 +1,4 @@
-# Day 4 — Kubernetes Fundamentals
+# Day 4 — [Kubernetes Fundamentals](https://www.geeksforgeeks.org/devops/introduction-to-kubernetes-k8s/)
 
 # 1. Introduction
 
@@ -126,10 +126,10 @@ instead of IP addresses.
 
 # 5. Kubernetes Architecture
 
-Kubernetes cluster has:
+Kubernetes [cluster](https://www.geeksforgeeks.org/devops/kubernetes-cluster/) has:
 
-* Control Plane (Master)
-* Worker Nodes
+* Control Plane (Master Node)
+* Worker [Nodes](https://www.geeksforgeeks.org/devops/kubernetes-node/)
 
 Architecture:
 
@@ -360,7 +360,7 @@ Shows:
 
 ---
 
-# 14. What is a Pod?
+# 14. [What is a Pod?](https://www.geeksforgeeks.org/devops/kubernetes-pods/)
 
 Pod is:
 
@@ -461,7 +461,7 @@ spec:
 # 19. Important YAML Fields
 
 | Field      | Purpose                |
-| ---------- | ---------------------- |
+|------------|------------------------|
 | apiVersion | Kubernetes API version |
 | kind       | Resource type          |
 | metadata   | Resource info          |

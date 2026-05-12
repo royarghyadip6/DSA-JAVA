@@ -17,7 +17,7 @@ Run complete Spring Boot + MySQL + Redis stack using Docker Compose
 
 ---
 
-# 2. Docker Networking
+# 2. [Docker Networking](https://www.geeksforgeeks.org/devops/basics-of-docker-networking/)
 
 Containers communicate using Docker networks.
 
@@ -397,92 +397,308 @@ volumes:
 
 ---
 
-# 20.1 services
+# 20.1. Services
+
+A service = one container definition.
+
+Example:
+
+```yaml id="jlwm05"
+services:
+  app:
+  mysql:
+  redis:
+```
+
+Each service:
+
+* creates container(s)
+* has network identity
+* can communicate internally
+
+---
+
+# 20.2. Networks
+
+Compose automatically creates network.
+
+Example:
+
+```text id="jlwm06"
+app ↔ mysql
+```
+
+Containers communicate using service name.
+
+Example:
+
+```properties id="’wini07"
+spring.datasource.url=jdbc:mysql://mysql:3306/testdb
+```
+
+Notice:
+
+```text id="’wini08"
+mysql
+```
+
+is service name, NOT localhost.
+
+---
+
+# 20.3. Volumes
+
+Volumes persist data.
+
+Without volumes:
+
+```text id="’wini09"
+Container deleted = data lost
+```
+
+With volumes:
+
+```text id="’wini10"
+Data survives restart
+```
+
+---
+
+# 20.4. Environment Variables
+
+Used for configuration.
+
+Example:
+
+```yaml id="’wini11"
+environment:
+  MYSQL_ROOT_PASSWORD: root
+```
+
+---
+
+# 20.5. Depends On
+
+Controls startup order.
+
+Example:
+
+```yaml id="’wini12"
+depends_on:
+  - mysql
+```
+
+Means:
+
+```text id="’wini13"
+Start mysql before app
+```
+
+Important:
+
+* does NOT guarantee DB ready
+* only container started
+
+---
+
+# Basic docker-compose.yml
+
+# Spring Boot + MySQL
+
+```yaml id="’wini14"
+services:
+
+  mysql:
+    image: mysql:8.0
+
+    container_name: mysql-container
+
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: testdb
+
+    ports:
+      - "3307:3306"
+
+    volumes:
+      - mysql-data:/var/lib/mysql
+
+  app:
+    build: .
+
+    container_name: springboot-app
+
+    ports:
+      - "8080:8080"
+
+    depends_on:
+      - mysql
+
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/testdb
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+
+volumes:
+  mysql-data:
+```
+
+---
+
+# Important Compose Sections
+
+# 20.1.1. version
+
+Old style:
+
+```yaml id="’wini15"
+version: '3.8'
+```
+
+Modern Compose:
+
+* optional
+
+---
+
+# 20.1.2. services
+
+Main section.
+
+```yaml id="’wini16"
+services:
+```
 
 Defines containers.
 
-Example:
+---
 
-```yaml id="x1q5vz"
-services:
-  mysql:
+# 20.1.3. image
+
+Use existing image.
+
+```yaml id="’wini17"
+image: mysql:8.0
 ```
 
 ---
 
-# 20.2 image
+# 20.1.4. build
 
-Specifies Docker image.
+Build from Dockerfile.
 
-Example:
-
-```yaml id="m9v2qx"
-image: mysql:8
-```
-
----
-
-# 20.3 build
-
-Builds image from Dockerfile.
-
-Example:
-
-```yaml id="u4m7qw"
+```yaml id="’wini18"
 build: .
 ```
 
+OR:
+
+```yaml id="’wini19"
+build:
+  context: .
+  dockerfile: Dockerfile.dev
+```
+
 ---
 
-# 20.4 ports
+# 20.1.5. container_name
+
+Explicit container name.
+
+```yaml id="’wini20"
+container_name: myapp
+```
+
+---
+
+# 20.1.6. ports
 
 Port mapping.
 
-Example:
-
-```yaml id="p8q1vx"
+```yaml id="’wini21"
 ports:
   - "8080:8080"
 ```
 
----
+Format:
 
-# 20.5 environment
-
-Environment variables.
-
-Example:
-
-```yaml id="t6m3qz"
-environment:
-  DB_HOST: mysql
+```text id="’wini22"
+HOST:CONTAINER
 ```
 
 ---
 
-# 20.6 volumes
+# 20.1.7. environment
+
+Environment variables.
+
+```yaml id="’wini23"
+environment:
+  MYSQL_ROOT_PASSWORD: root
+```
+
+---
+
+# 20.1.8. env_file
+
+Load variables from file.
+
+```yaml id="’wini24"
+env_file:
+  - .env
+```
+
+---
+
+# 20.1.9. volumes
 
 Persistent storage.
 
-Example:
-
-```yaml id="w2q9vx"
+```yaml id="’wini25"
 volumes:
   - mysql-data:/var/lib/mysql
 ```
 
 ---
 
-# 20.7 depends_on
+# 20.1.10. depends_on
 
-Controls startup order.
+Service dependency.
 
-Example:
-
-```yaml id="x5m1qw"
+```yaml id="’wini26"
 depends_on:
   - mysql
 ```
+
+---
+
+# 20.1.11. networks
+
+Custom networks.
+
+```yaml id="’wini27"
+networks:
+  backend:
+```
+
+---
+
+# 20.1.12. restart
+
+Restart policy.
+
+```yaml id="’wini28"
+restart: always
+```
+
+Options:
+
+* no
+* always
+* on-failure
+* unless-stopped
+
+---
 
 ---
 
@@ -770,24 +986,64 @@ ping mysql
 
 ---
 
-# 30. Summary
+# 30.  Step-by-Step Execution of a Docker Command
 
-Today you learned:
+Let’s trace a common command to understand how all components work together:
 
-✅ Docker networking
-✅ Bridge networks
-✅ Container DNS
-✅ Inter-container communication
-✅ Docker volumes
-✅ Named volumes
-✅ Bind mounts
-✅ Docker Compose
-✅ Multi-container orchestration
-✅ Spring Boot + MySQL setup
+![End -to-End Command Execution flow](Images/End-to-End_Command_Execution_flow.png)
 
-These concepts are foundational for:
+**You run the command: docker run -d -p 80:80 nginx**
 
-* Kubernetes networking
-* Persistent storage
-* Microservices
-* Production deployments
+**Client**: The Docker Client sends a REST API request to the Docker Daemon to create and run a container from the nginx image.
+
+**Daemon**: The Daemon receives the request. It first checks if the nginx image exists locally on the Host.
+
+**Registry (Pull)**: If the image is not found locally, the Daemon contacts the configured Registry (Docker Hub by default) and pulls the nginx image.
+
+**Runtime (containerd)**: The Daemon passes the image and run-configuration over to containerd.
+
+**Runtime (runc)**: containerd uses runc to create a new container. runc interfaces with the Linux kernel to create isolated namespaces and limit resources with cgroups.
+
+**Execution**: The container is started. Docker maps port 80 of the host to port 80 of the nginx container, as requested by the -p 80:80 flag. The Nginx process runs as PID 1 inside the container's isolated PID namespace.
+
+# 31. Production vs Development Compose
+
+Usually:
+
+* docker-compose.dev.yml
+* docker-compose.prod.yml
+
+---
+
+# Override Files
+
+```bash id="’wini47"
+docker compose -f docker-compose.yml -f docker-compose.prod.yml up
+```
+
+---
+
+# 32. Mapping Concepts
+
+| Compose     | Kubernetes          |
+|-------------|---------------------|
+| service     | Pod/Deployment      |
+| volumes     | PersistentVolume    |
+| environment | ConfigMap/Secret    |
+| networks    | Service/Networking  |
+| restart     | ReplicaSet behavior |
+
+---
+
+# 33. Most Important Compose Commands Cheat Sheet
+
+```bash id="’wini52"
+docker compose up -d
+docker compose down
+docker compose ps
+docker compose logs -f
+docker compose exec app bash
+docker compose restart app
+docker compose up --build
+docker compose down -v
+```

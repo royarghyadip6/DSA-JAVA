@@ -1,4 +1,3 @@
-````md id="v9k2xp"
 # Day 2 — Dockerfile + Spring Boot Containerization
 
 # 1. Introduction
@@ -14,7 +13,7 @@ Day 2 focuses on:
 Goal:
 ```text id="q1m7tz"
 Containerize a Spring Boot application successfully
-````
+```
 
 ---
 
@@ -231,7 +230,7 @@ Container always starts application.
 ## ENTRYPOINT vs CMD
 
 | ENTRYPOINT       | CMD               |
-| ---------------- | ----------------- |
+|------------------|-------------------|
 | Fixed executable | Default arguments |
 | Hard to override | Easy to override  |
 | Main process     | Optional defaults |
@@ -319,7 +318,7 @@ docker build -t springboot-app .
 Explanation:
 
 | Part           | Meaning           |
-| -------------- | ----------------- |
+|----------------|-------------------|
 | docker build   | Build image       |
 | -t             | Tag image         |
 | springboot-app | Image name        |
@@ -346,7 +345,7 @@ docker run -p 8080:8080 springboot-app
 Explanation:
 
 | Part      | Meaning                |
-| --------- | ---------------------- |
+|-----------|------------------------|
 | -p        | Port mapping           |
 | 8080:8080 | HostPort:ContainerPort |
 

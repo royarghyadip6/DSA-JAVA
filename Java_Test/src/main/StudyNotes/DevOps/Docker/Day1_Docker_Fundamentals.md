@@ -127,7 +127,7 @@ Containers
 # 3.4 VM vs Container
 
 | Feature        | VM      | Container |
-| -------------- | ------- | --------- |
+|----------------|---------|-----------|
 | OS Included    | Yes     | No        |
 | Size           | GBs     | MBs       |
 | Startup Time   | Minutes | Seconds   |
@@ -172,7 +172,12 @@ for containers.
 
 ---
 
-# 5. Docker Architecture
+# 5. [Docker Architecture](https://www.geeksforgeeks.org/devops/architecture-of-docker/)
+
+* Docker is based on a client–server model.
+* The Docker client sends requests to the Docker Daemon.
+* The Docker Daemon handles container lifecycle tasks.
+* Communication happens over a REST API using sockets or networks.
 
 Docker follows:
 
@@ -183,18 +188,97 @@ Client-Server architecture
 Flow:
 
 ```text id="r5m8qy"
-Docker Client
-      ↓
-Docker Daemon
-      ↓
-Container Runtime
+Client → Daemon → Runtime → Container
 ```
+
+![Docker Architecture](./Images/Docker_Architecture.png)
+
+```text
++--------------------------------------------------+
+|                  Docker User                     |
+|        (Developer / DevOps Engineer)             |
++--------------------------------------------------+
+                     |
+                     |  docker commands
+                     |  (docker run, build, ps)
+                     ↓
++--------------------------------------------------+
+|                  Docker Client                   |
+|                    (CLI/API)                     |
++--------------------------------------------------+
+                     |
+                     | REST API / Unix Socket
+                     ↓
++--------------------------------------------------+
+|                 Docker Daemon                    |
+|                    (dockerd)                     |
+|                                                  |
+|  Responsibilities:                               |
+|  - Build images                                  |
+|  - Run containers                                |
+|  - Manage networks                               |
+|  - Manage volumes                                |
+|  - Pull/push images                              |
++--------------------------------------------------+
+                     |
+                     |
+        +------------+-------------+
+        |                          |
+        ↓                          ↓
++------------------+     +------------------------+
+| Docker Registry  |     |   Container Runtime    |
+| (Docker Hub/ECR) |     |  (containerd / runc)   |
++------------------+     +------------------------+
+        |                          |
+        | Pull Images              | Create Containers
+        ↓                          ↓
++--------------------------------------------------+
+|                 Docker Images                    |
+|                                                  |
+|  Read-only templates containing:                 |
+|  - App code                                      |
+|  - Runtime                                       |
+|  - Dependencies                                  |
++--------------------------------------------------+
+                     |
+                     | Create running instance
+                     ↓
++--------------------------------------------------+
+|                Docker Containers                 |
+|                                                  |
+|  Running isolated applications                   |
+|                                                  |
+|  Examples:                                       |
+|  - nginx                                         |
+|  - mysql                                         |
+|  - springboot-app                                |
++--------------------------------------------------+
+                     |
+                     ↓
++--------------------------------------------------+
+|                Host Operating System             |
+|                  Linux Kernel                    |
+|                                                  |
+|  Docker uses:                                    |
+|  - Namespaces                                    |
+|  - Cgroups                                       |
+|  - Union Filesystem                              |
++--------------------------------------------------+
+```
+
+1. **Docker Client**: It is the primary interface for users. When you execute commands such as docker run or docker build, the client translates them into REST API requests and sends them to the Docker Daemon.
+2. **Docker Host**: This is the machine where the magic happens. It runs the Docker Daemon (dockerd) and provides the environment to execute and run containers.
+3. **Docker Registry**: This is a remote repository for storing and distributing your Docker images.
 
 ---
 
 # 5.1 Docker Client
 
-CLI used by developers.
+The Docker Client is the primary interface through which users interact with Docker. This is most commonly the Command Line Interface (CLI) used by developers.
+
+* It translates user commands like docker ps into REST API requests.
+* These requests are sent to the Docker Daemon for processing.
+* A single client can communicate with multiple daemons.
 
 Example:
 
@@ -206,12 +290,12 @@ docker run nginx
 
 # 5.2 Docker Daemon
 
-Background service that:
+The Docker Daemon is the persistent background process that acts as the brain of your Docker installation.
 
-* Builds images
-* Runs containers
-* Manages networking
-* Manages volumes
+* It runs on the Docker Host.
+* It listens for API requests from the Docker Client.
+* It manages all Docker objects: images, containers, networks, and volumes.
+* It can communicate with other daemons to manage Docker services in a multi-host environment (like a Docker Swarm cluster).
 
 Linux service:
 

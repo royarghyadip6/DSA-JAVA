@@ -1,9 +1,3 @@
-Good—this is the **simplest authentication mechanism**, but interviewers love it for **fundamentals + traps**.
-
-I’ll keep it **clean, deep, and practical with code + gotchas**.
-
----
-
 # 🔐 3.2 In-Memory Authentication (Deep Dive)
 
 ## What it is
@@ -31,7 +25,15 @@ In-memory authentication means:
 
 ## 🔹 Configuring Users (Core)
 
-### Option 1: Using `UserDetailsService` Bean
+Create a custom class file. Annotate with `@Configuration` and 
+`@EnableWebSecurity` and follow the below configuration. 
+
+### Option 1: Without using `UserDetailsService` Bean and PasswordEncoder (Not Recommended)
+
+
+
+
+### Option 2: Using `UserDetailsService` Bean
 
 ```java
 @Bean
@@ -100,7 +102,7 @@ No prefix added.
 ## 🔥 Key Difference
 
 | Concept   | Example | Internal   |
-| --------- | ------- | ---------- |
+|-----------|---------|------------|
 | Role      | ADMIN   | ROLE_ADMIN |
 | Authority | READ    | READ       |
 

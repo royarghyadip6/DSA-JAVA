@@ -228,7 +228,7 @@ Example:
 ### ✅ Difference between `install` and `deploy`?
 
 | Feature  | install                  | deploy            |
-| -------- | ------------------------ | ----------------- |
+|----------|--------------------------|-------------------|
 | Location | Local repository (`.m2`) | Remote repository |
 | Usage    | Local development        | Sharing with team |
 | Scope    | Personal                 | Organization-wide |
@@ -259,7 +259,7 @@ A → B → C
 👉 Defines **when a dependency is available**.
 
 | Scope    | Description                       |
-| -------- | --------------------------------- |
+|----------|-----------------------------------|
 | compile  | Default, available everywhere     |
 | test     | Only for testing                  |
 | provided | Provided by server (not packaged) |
@@ -515,7 +515,7 @@ Answer:
 ### 👉 Dependency Scope
 
 | Scope    | Meaning            |
-| -------- | ------------------ |
+|----------|--------------------|
 | compile  | Default            |
 | test     | Only for testing   |
 | provided | Provided by server |

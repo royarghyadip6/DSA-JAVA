@@ -159,7 +159,7 @@ public class Main {
 #### BeanFactory vs ApplicationContext
 
 | Feature        | BeanFactory    | ApplicationContext   |
-| -------------- | -------------- | -------------------- |
+|----------------|----------------|----------------------|
 | Initialization | Lazy           | Eager                |
 | Performance    | Faster startup | Slower startup       |
 | Memory         | Low            | Higher               |

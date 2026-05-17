@@ -332,6 +332,19 @@ Explanation:
 docker images
 ```
 
+# 5.4 Run and test the Image
+
+```bash
+docker run --rm -p 8080:8080 --name springboot-app-local  springboot-app:latest
+```
+
+# 5.5 Push to Docker Hub
+
+```bash
+docker tag springboot-app:latest argroy/springboot-app:v1.0.0
+docker push argroy/springboot-app:v1.0.0
+```
+
 ---
 
 # 6. Run Spring Boot Container

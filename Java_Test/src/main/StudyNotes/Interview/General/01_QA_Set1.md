@@ -1889,12 +1889,12 @@ Common functional interfaces:
 
 # 2. Difference Between Predicate, Function, Consumer, and Supplier
 
-| Interface | Input | Output | Purpose |
-|---|---|---|
-| Predicate<T> | Takes input | boolean | Condition checking |
-| Function<T,R> | Takes input | Returns value | Transformation |
-| Consumer<T> | Takes input | No return | Consumes data |
-| Supplier<T> | No input | Returns value | Supplies data |
+| Interface     | Input       | Output        | Purpose            | Method   |
+|---------------|-------------|---------------|--------------------|----------|
+| Predicate<T>  | Takes input | boolean       | Condition checking | test()   |
+| Function<T,R> | Takes input | Returns value | Transformation     | apply()  |
+| Consumer<T>   | Takes input | No return     | Consumes data      | accept() |
+| Supplier<T>   | No input    | Returns value | Supplies data      | get()    |
 
 Examples:
 

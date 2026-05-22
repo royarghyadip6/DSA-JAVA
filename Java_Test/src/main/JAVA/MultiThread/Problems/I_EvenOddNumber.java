@@ -20,7 +20,7 @@ public class I_EvenOddNumber {
         PrintNumbers printNumbers = new PrintNumbers();
 
         Thread thEven = new Thread(()->printNumbers.printEven(),"Even-Thread");
-        Thread thOdd = new Thread(()->printNumbers.printOdd(),"Odd-Thread");
+        Thread thOdd = new Thread(printNumbers::printOdd,"Odd-Thread");
 
         thEven.start();
         thOdd.start();

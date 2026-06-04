@@ -457,15 +457,15 @@ These long questions are frequently asked in:
 
 The functional unit of the lung is:
 
-A. Alveolus
-B. Bronchiole
-C. Trachea
-D. Pleura
+1. Alveolus
+2. Bronchiole
+3. Trachea
+4. Pleura
 
 <details>
 <summary>Answer</summary>
 
-**A. Alveolus**
+**1. Alveolus**
 
 **Explanation:** Alveoli are the primary sites of gaseous exchange between air and blood.
 
@@ -477,15 +477,15 @@ D. Pleura
 
 The normal respiratory rate of a healthy adult is:
 
-A. 8–12/min
-B. 12–20/min
-C. 20–30/min
-D. 30–40/min
+1. 8–12/min
+2. 12–20/min
+3. 20–30/min
+4. 30–40/min
 
 <details>
 <summary>Answer</summary>
 
-**B. 12–20/min**
+**2. 12–20/min**
 
 **Explanation:** Normal adult respiratory rate ranges from 12 to 20 breaths per minute.
 
@@ -497,15 +497,15 @@ D. 30–40/min
 
 Which cartilage forms the "Adam's Apple"?
 
-A. Cricoid cartilage
-B. Arytenoid cartilage
-C. Thyroid cartilage
-D. Epiglottis
+1. Cricoid cartilage
+2. Arytenoid cartilage
+3. Thyroid cartilage
+4. Epiglottis
 
 <details>
 <summary>Answer</summary>
 
-**C. Thyroid cartilage**
+**3. Thyroid cartilage**
 
 **Explanation:** The laryngeal prominence of thyroid cartilage is called Adam's apple.
 
@@ -517,15 +517,15 @@ D. Epiglottis
 
 The right lung consists of:
 
-A. 2 lobes
-B. 3 lobes
-C. 4 lobes
-D. 5 lobes
+1. 2 lobes
+2. 3 lobes
+3. 4 lobes
+4. 5 lobes
 
 <details>
 <summary>Answer</summary>
 
-**B. 3 lobes**
+**2. 3 lobes**
 
 **Explanation:** Right lung has superior, middle, and inferior lobes.
 
@@ -537,15 +537,15 @@ D. 5 lobes
 
 The left lung has fewer lobes because of:
 
-A. Larger bronchi
-B. Diaphragm position
-C. Presence of heart
-D. Pleura
+1. Larger bronchi
+2. Diaphragm position
+3. Presence of heart
+4. Pleura
 
 <details>
 <summary>Answer</summary>
 
-**C. Presence of heart**
+**3. Presence of heart**
 
 **Explanation:** Cardiac notch accommodates the heart, reducing the left lung to two lobes.
 
@@ -557,15 +557,15 @@ D. Pleura
 
 The primary stimulus for breathing is increased:
 
-A. Oxygen level
-B. Carbon dioxide level
-C. Nitrogen level
-D. Hemoglobin
+1. Oxygen level
+2. Carbon dioxide level
+3. Nitrogen level
+4. Hemoglobin
 
 <details>
 <summary>Answer</summary>
 
-**B. Carbon dioxide level**
+**2. Carbon dioxide level**
 
 **Explanation:** Increased CO₂ stimulates respiratory centers in the medulla.
 
@@ -577,15 +577,15 @@ D. Hemoglobin
 
 Which muscle is the principal muscle of inspiration?
 
-A. Rectus abdominis
-B. Internal intercostals
-C. Diaphragm
-D. Sternocleidomastoid
+1. Rectus abdominis
+2. Internal intercostals
+3. Diaphragm
+4. Sternocleidomastoid
 
 <details>
 <summary>Answer</summary>
 
-**C. Diaphragm**
+**3. Diaphragm**
 
 **Explanation:** Diaphragm contraction increases thoracic volume during inspiration.
 
@@ -597,15 +597,15 @@ D. Sternocleidomastoid
 
 Surfactant is secreted by:
 
-A. Type I pneumocytes
-B. Type II pneumocytes
-C. Macrophages
-D. Goblet cells
+1. Type I pneumocytes
+2. Type II pneumocytes
+3. Macrophages
+4. Goblet cells
 
 <details>
 <summary>Answer</summary>
 
-**B. Type II pneumocytes**
+**2. Type II pneumocytes**
 
 **Explanation:** Surfactant reduces alveolar surface tension and prevents collapse.
 
@@ -617,15 +617,15 @@ D. Goblet cells
 
 The oxygen-carrying pigment of blood is:
 
-A. Myoglobin
-B. Hemoglobin
-C. Hemosiderin
-D. Ferritin
+1. Myoglobin
+2. Hemoglobin
+3. Hemosiderin
+4. Ferritin
 
 <details>
 <summary>Answer</summary>
 
-**B. Hemoglobin**
+**2. Hemoglobin**
 
 </details>
 
@@ -635,15 +635,15 @@ D. Ferritin
 
 The respiratory center is located in:
 
-A. Cerebrum
-B. Cerebellum
-C. Medulla oblongata
-D. Thalamus
+1. Cerebrum
+2. Cerebellum
+3. Medulla oblongata
+4. Thalamus
 
 <details>
 <summary>Answer</summary>
 
-**C. Medulla oblongata**
+**3. Medulla oblongata**
 
 </details>
 
@@ -655,15 +655,15 @@ D. Thalamus
 
 A patient with COPD is encouraged to use:
 
-A. Chest percussion only
-B. Pursed-lip breathing
-C. Hyperventilation
-D. Breath holding
+1. Chest percussion only
+2. Pursed-lip breathing
+3. Hyperventilation
+4. Breath holding
 
 <details>
 <summary>Answer</summary>
 
-**B. Pursed-lip breathing**
+**2. Pursed-lip breathing**
 
 **Explanation:** It prevents airway collapse and improves gas exchange.
 
@@ -675,15 +675,15 @@ D. Breath holding
 
 The most common symptom of pneumonia is:
 
-A. Bradycardia
-B. Productive cough
-C. Constipation
-D. Hematuria
+1. Bradycardia
+2. Productive cough
+3. Constipation
+4. Hematuria
 
 <details>
 <summary>Answer</summary>
 
-**B. Productive cough**
+**2. Productive cough**
 
 </details>
 
@@ -693,15 +693,15 @@ D. Hematuria
 
 Which assessment finding is typical in pleural effusion?
 
-A. Hyperresonance
-B. Dull percussion note
-C. Loud breath sounds
-D. Wheezing
+1. Hyperresonance
+2. Dull percussion note
+3. Loud breath sounds
+4. Wheezing
 
 <details>
 <summary>Answer</summary>
 
-**B. Dull percussion note**
+**2. Dull percussion note**
 
 </details>
 
@@ -711,15 +711,15 @@ D. Wheezing
 
 A patient suddenly develops chest pain and dyspnea after surgery. The nurse suspects:
 
-A. Asthma
-B. Pulmonary embolism
-C. Bronchitis
-D. Tuberculosis
+1. Asthma
+2. Pulmonary embolism
+3. Bronchitis
+4. Tuberculosis
 
 <details>
 <summary>Answer</summary>
 
-**B. Pulmonary embolism**
+**2. Pulmonary embolism**
 
 </details>
 
@@ -729,15 +729,15 @@ D. Tuberculosis
 
 The earliest sign of hypoxia is:
 
-A. Cyanosis
-B. Confusion
-C. Restlessness
-D. Bradycardia
+1. Cyanosis
+2. Confusion
+3. Restlessness
+4. Bradycardia
 
 <details>
 <summary>Answer</summary>
 
-**C. Restlessness**
+**3. Restlessness**
 
 **Explanation:** Restlessness and anxiety are early indicators of decreased oxygenation.
 
@@ -749,15 +749,15 @@ D. Bradycardia
 
 Normal SpO₂ is:
 
-A. 70–80%
-B. 80–90%
-C. 95–100%
-D. 60–70%
+1. 70–80%
+2. 80–90%
+3. 95–100%
+4. 60–70%
 
 <details>
 <summary>Answer</summary>
 
-**C. 95–100%**
+**3. 95–100%**
 
 </details>
 
@@ -767,15 +767,15 @@ D. 60–70%
 
 A patient with asthma usually exhibits:
 
-A. Inspiratory stridor
-B. Expiratory wheeze
-C. Pleural rub
-D. Crackles only
+1. Inspiratory stridor
+2. Expiratory wheeze
+3. Pleural rub
+4. Crackles only
 
 <details>
 <summary>Answer</summary>
 
-**B. Expiratory wheeze**
+**2. Expiratory wheeze**
 
 </details>
 
@@ -785,15 +785,15 @@ D. Crackles only
 
 Tuberculosis is caused by:
 
-A. Streptococcus pneumoniae
-B. Mycobacterium tuberculosis
-C. Klebsiella
-D. Influenza virus
+1. Streptococcus pneumoniae
+2. Mycobacterium tuberculosis
+3. Klebsiella
+4. Influenza virus
 
 <details>
 <summary>Answer</summary>
 
-**B. Mycobacterium tuberculosis**
+**2. Mycobacterium tuberculosis**
 
 </details>
 
@@ -803,15 +803,15 @@ D. Influenza virus
 
 The Mantoux test is used to diagnose:
 
-A. Asthma
-B. COPD
-C. Tuberculosis infection
-D. Pneumonia
+1. Asthma
+2. COPD
+3. Tuberculosis infection
+4. Pneumonia
 
 <details>
 <summary>Answer</summary>
 
-**C. Tuberculosis infection**
+**3. Tuberculosis infection**
 
 </details>
 
@@ -821,15 +821,15 @@ D. Pneumonia
 
 The antidote for severe respiratory depression due to opioid overdose is:
 
-A. Atropine
-B. Naloxone
-C. Epinephrine
-D. Diazepam
+1. Atropine
+2. Naloxone
+3. Epinephrine
+4. Diazepam
 
 <details>
 <summary>Answer</summary>
 
-**B. Naloxone**
+**2. Naloxone**
 
 </details>
 
@@ -846,15 +846,15 @@ HCO₃⁻ = 24 mEq/L
 
 The patient has:
 
-A. Respiratory acidosis
-B. Respiratory alkalosis
-C. Metabolic acidosis
-D. Metabolic alkalosis
+1. Respiratory acidosis
+2. Respiratory alkalosis
+3. Metabolic acidosis
+4. Metabolic alkalosis
 
 <details>
 <summary>Answer</summary>
 
-**A. Respiratory acidosis**
+**1. Respiratory acidosis**
 
 **Explanation:** Low pH + High PaCO₂ indicates respiratory acidosis.
 
@@ -866,15 +866,15 @@ D. Metabolic alkalosis
 
 A patient receiving oxygen therapy develops dry nasal mucosa. The nurse should:
 
-A. Stop oxygen
-B. Increase flow rate
-C. Add humidification
-D. Restrict fluids
+1. Stop oxygen
+2. Increase flow rate
+3. Add humidification
+4. Restrict fluids
 
 <details>
 <summary>Answer</summary>
 
-**C. Add humidification**
+**3. Add humidification**
 
 </details>
 
@@ -884,15 +884,15 @@ D. Restrict fluids
 
 Which position is best for a patient with severe dyspnea?
 
-A. Supine
-B. Trendelenburg
-C. Semi-Fowler's/Fowler's
-D. Prone
+1. Supine
+2. Trendelenburg
+3. Semi-Fowler's/Fowler's
+4. Prone
 
 <details>
 <summary>Answer</summary>
 
-**C. Semi-Fowler's/Fowler's**
+**3. Semi-Fowler's/Fowler's**
 
 </details>
 
@@ -902,15 +902,15 @@ D. Prone
 
 A patient with pneumothorax is expected to have:
 
-A. Increased breath sounds
-B. Absent breath sounds
-C. Cardiac murmur
-D. Loud crackles
+1. Increased breath sounds
+2. Absent breath sounds
+3. Cardiac murmur
+4. Loud crackles
 
 <details>
 <summary>Answer</summary>
 
-**B. Absent breath sounds**
+**2. Absent breath sounds**
 
 </details>
 
@@ -920,15 +920,15 @@ D. Loud crackles
 
 Which oxygen delivery device provides the highest oxygen concentration?
 
-A. Nasal cannula
-B. Simple mask
-C. Venturi mask
-D. Non-rebreather mask
+1. Nasal cannula
+2. Simple mask
+3. Venturi mask
+4. Non-rebreather mask
 
 <details>
 <summary>Answer</summary>
 
-**D. Non-rebreather mask**
+**4. Non-rebreather mask**
 
 </details>
 
@@ -937,350 +937,350 @@ D. Non-rebreather mask
 # High-Yield NORCET Questions (26–50)
 
 26. Gas exchange occurs by:
-    A. Osmosis
-    B. Filtration
-    C. Diffusion
-    D. Active transport
+    1. Osmosis
+    2. Filtration
+    3. Diffusion
+    4. Active transport
 
 <details><summary>Answer</summary>
 
-C. Diffusion
+3. Diffusion
 
 </details>
 
 ---
 
 27. Vital capacity equals:
-    A. TV+IRV+ERV
-    B. TV+RV
-    C. IRV+RV
-    D. ERV+RV
+    1. TV+IRV+ERV
+    2. TV+RV
+    3. IRV+RV
+    4. ERV+RV
 
 <details><summary>Answer</summary>
 
-A. TV + IRV + ERV
+1. TV + IRV + ERV
 
 </details>
 
 ---
 
 28. Normal tidal volume:
-    A. 100 mL
-    B. 250 mL
-    C. 500 mL
-    D. 1000 mL
+    1. 100 mL
+    2. 250 mL
+    3. 500 mL
+    4. 1000 mL
 
 <details><summary>Answer</summary>
 
-C. 500 mL
+3. 500 mL
 
 </details>
 
 ---
 
 29. Which respiratory disease is obstructive?
-    A. Asthma
-    B. Pulmonary fibrosis
-    C. ARDS
-    D. Pleural effusion
+    1. Asthma
+    2. Pulmonary fibrosis
+    3. ARDS
+    4. Pleural effusion
 
 <details><summary>Answer</summary>
 
-A. Asthma
+1. Asthma
 
 </details>
 
 ---
 
 30. Clubbing is commonly seen in:
-    A. Chronic hypoxia
-    B. Hypertension
-    C. Diabetes
-    D. Anemia
+    1. Chronic hypoxia
+    2. Hypertension
+    3. Diabetes
+    4. Anemia
 
 <details><summary>Answer</summary>
 
-A. Chronic hypoxia
+1. Chronic hypoxia
 
 </details>
 
 ---
 
 31. The strongest stimulus for central chemoreceptors is:
-    A. O₂
-    B. CO₂
-    C. Nitrogen
-    D. Potassium
+    1. O₂
+    2. CO₂
+    3. Nitrogen
+    4. Potassium
 
 <details><summary>Answer</summary>
 
-B. CO₂
+2. CO₂
 
 </details>
 
 ---
 
 32. Crackles are commonly heard in:
-    A. Pulmonary edema
-    B. Asthma
-    C. Croup
-    D. Epiglottitis
+    1. Pulmonary edema
+    2. Asthma
+    3. Croup
+    4. Epiglottitis
 
 <details><summary>Answer</summary>
 
-A. Pulmonary edema
+1. Pulmonary edema
 
 </details>
 
 ---
 
 33. Which condition causes hyperresonance?
-    A. Pneumonia
-    B. Pleural effusion
-    C. Pneumothorax
-    D. Atelectasis
+    1. Pneumonia
+    2. Pleural effusion
+    3. Pneumothorax
+    4. Atelectasis
 
 <details><summary>Answer</summary>
 
-C. Pneumothorax
+3. Pneumothorax
 
 </details>
 
 ---
 
 34. Chest physiotherapy helps:
-    A. Increase BP
-    B. Mobilize secretions
-    C. Reduce pulse
-    D. Increase glucose
+    1. Increase BP
+    2. Mobilize secretions
+    3. Reduce pulse
+    4. Increase glucose
 
 <details><summary>Answer</summary>
 
-B. Mobilize secretions
+2. Mobilize secretions
 
 </details>
 
 ---
 
 35. The normal pH of blood:
-    A. 6.8–7.0
-    B. 7.35–7.45
-    C. 7.5–8.0
-    D. 8.0–8.5
+    1. 6.8–7.0
+    2. 7.35–7.45
+    3. 7.5–8.0
+    4. 8.0–8.5
 
 <details><summary>Answer</summary>
 
-B. 7.35–7.45
+2. 7.35–7.45
 
 </details>
 
 ---
 
 36. Respiratory alkalosis commonly occurs in:
-    A. Hypoventilation
-    B. Hyperventilation
-    C. Renal failure
-    D. Diarrhea
+    1. Hypoventilation
+    2. Hyperventilation
+    3. Renal failure
+    4. Diarrhea
 
 <details><summary>Answer</summary>
 
-B. Hyperventilation
+2. Hyperventilation
 
 </details>
 
 ---
 
 37. A chest tube is primarily used to:
-    A. Reduce fever
-    B. Remove air/fluid from pleural space
-    C. Increase oxygen
-    D. Control BP
+    1. Reduce fever
+    2. Remove air/fluid from pleural space
+    3. Increase oxygen
+    4. Control BP
 
 <details><summary>Answer</summary>
 
-B. Remove air/fluid from pleural space
+2. Remove air/fluid from pleural space
 
 </details>
 
 ---
 
 38. Which vaccine helps prevent severe TB?
-    A. DPT
-    B. BCG
-    C. OPV
-    D. MMR
+    1. DPT
+    2. BCG
+    3. OPV
+    4. MMR
 
 <details><summary>Answer</summary>
 
-B. BCG
+2. BCG
 
 </details>
 
 ---
 
 39. The apex of the lung extends:
-    A. Below diaphragm
-    B. Above clavicle
-    C. Behind sternum
-    D. Into abdomen
+    1. Below diaphragm
+    2. Above clavicle
+    3. Behind sternum
+    4. Into abdomen
 
 <details><summary>Answer</summary>
 
-B. Above clavicle
+2. Above clavicle
 
 </details>
 
 ---
 
 40. Cilia in the respiratory tract function to:
-    A. Produce oxygen
-    B. Filter and move mucus
-    C. Produce surfactant
-    D. Exchange gases
+    1. Produce oxygen
+    2. Filter and move mucus
+    3. Produce surfactant
+    4. Exchange gases
 
 <details><summary>Answer</summary>
 
-B. Filter and move mucus
+2. Filter and move mucus
 
 </details>
 
 ---
 
 41. The hallmark symptom of asthma:
-    A. Wheezing
-    B. Hematemesis
-    C. Jaundice
-    D. Dysuria
+    1. Wheezing
+    2. Hematemesis
+    3. Jaundice
+    4. Dysuria
 
 <details><summary>Answer</summary>
 
-A. Wheezing
+1. Wheezing
 
 </details>
 
 ---
 
 42. The most reliable indicator of oxygenation:
-    A. Pulse rate
-    B. Respiratory rate
-    C. ABG PaO₂
-    D. Blood pressure
+    1. Pulse rate
+    2. Respiratory rate
+    3. ABG PaO₂
+    4. Blood pressure
 
 <details><summary>Answer</summary>
 
-C. ABG PaO₂
+3. ABG PaO₂
 
 </details>
 
 ---
 
 43. A patient with severe COPD should receive oxygen:
-    A. 10–15 L/min routinely
-    B. High concentration always
-    C. Carefully monitored low flow oxygen
-    D. No oxygen
+    1. 10–15 L/min routinely
+    2. High concentration always
+    3. Carefully monitored low flow oxygen
+    4. No oxygen
 
 <details><summary>Answer</summary>
 
-C. Carefully monitored low flow oxygen
+3. Carefully monitored low flow oxygen
 
 </details>
 
 ---
 
 44. Which structure prevents food entering trachea?
-    A. Uvula
-    B. Epiglottis
-    C. Tonsil
-    D. Glottis
+    1. Uvula
+    2. Epiglottis
+    3. Tonsil
+    4. Glottis
 
 <details><summary>Answer</summary>
 
-B. Epiglottis
+2. Epiglottis
 
 </details>
 
 ---
 
 45. ARDS stands for:
-    A. Acute Respiratory Distress Syndrome
-    B. Acute Renal Disease Syndrome
-    C. Airway Restrictive Disease State
-    D. Advanced Respiratory Dysfunction Syndrome
+    1. Acute Respiratory Distress Syndrome
+    2. Acute Renal Disease Syndrome
+    3. Airway Restrictive Disease State
+    4. Advanced Respiratory Dysfunction Syndrome
 
 <details><summary>Answer</summary>
 
-A. Acute Respiratory Distress Syndrome
+1. Acute Respiratory Distress Syndrome
 
 </details>
 
 ---
 
 46. Cyanosis becomes visible when deoxygenated Hb exceeds:
-    A. 1 g/dL
-    B. 2 g/dL
-    C. 5 g/dL
-    D. 10 g/dL
+    1. 1 g/dL
+    2. 2 g/dL
+    3. 5 g/dL
+    4. 10 g/dL
 
 <details><summary>Answer</summary>
 
-C. 5 g/dL
+3. 5 g/dL
 
 </details>
 
 ---
 
 47. Which lobe is absent in the left lung?
-    A. Superior
-    B. Inferior
-    C. Middle
-    D. Apical
+    1. Superior
+    2. Inferior
+    3. Middle
+    4. Apical
 
 <details><summary>Answer</summary>
 
-C. Middle
+3. Middle
 
 </details>
 
 ---
 
 48. Pulmonary surfactant primarily:
-    A. Increases surface tension
-    B. Decreases surface tension
-    C. Increases mucus
-    D. Causes bronchospasm
+    1. Increases surface tension
+    2. Decreases surface tension
+    3. Increases mucus
+    4. Causes bronchospasm
 
 <details><summary>Answer</summary>
 
-B. Decreases surface tension
+2. Decreases surface tension
 
 </details>
 
 ---
 
 49. Which is a restrictive lung disease?
-    A. Asthma
-    B. COPD
-    C. Pulmonary fibrosis
-    D. Bronchitis
+    1. Asthma
+    2. COPD
+    3. Pulmonary fibrosis
+    4. Bronchitis
 
 <details><summary>Answer</summary>
 
-C. Pulmonary fibrosis
+3. Pulmonary fibrosis
 
 </details>
 
 ---
 
 50. The best indicator of adequate ventilation is:
-    A. SpO₂
-    B. Pulse
-    C. PaCO₂
-    D. Temperature
+    1. SpO₂
+    2. Pulse
+    3. PaCO₂
+    4. Temperature
 
 <details><summary>Answer</summary>
 
-C. PaCO₂
+3. PaCO₂
 
 **Explanation:** Ventilation is best assessed by carbon dioxide elimination, reflected by PaCO₂ levels.
 
@@ -1314,15 +1314,15 @@ C. PaCO₂
 
 The right main bronchus differs from the left main bronchus because it is:
 
-A. Longer, narrower, more horizontal
-B. Shorter, wider, more vertical
-C. Longer, wider, more horizontal
-D. Shorter, narrower, more horizontal
+1. Longer, narrower, more horizontal
+2. Shorter, wider, more vertical
+3. Longer, wider, more horizontal
+4. Shorter, narrower, more horizontal
 
 <details>
 <summary>Answer</summary>
 
-✅ **B. Shorter, wider, more vertical**
+✅ **2. Shorter, wider, more vertical**
 
 **Explanation:** Aspirated foreign bodies most commonly enter the right main bronchus due to its anatomical orientation.
 
@@ -1334,15 +1334,15 @@ D. Shorter, narrower, more horizontal
 
 The respiratory membrane consists of all EXCEPT:
 
-A. Alveolar epithelium
-B. Basement membrane
-C. Capillary endothelium
-D. Pleural membrane
+1. Alveolar epithelium
+2. Basement membrane
+3. Capillary endothelium
+4. Pleural membrane
 
 <details>
 <summary>Answer</summary>
 
-✅ **D. Pleural membrane**
+✅ **4. Pleural membrane**
 
 </details>
 
@@ -1352,15 +1352,15 @@ D. Pleural membrane
 
 Which alveolar cells are responsible for phagocytosis?
 
-A. Type I pneumocytes
-B. Type II pneumocytes
-C. Alveolar macrophages
-D. Club cells
+1. Type I pneumocytes
+2. Type II pneumocytes
+3. Alveolar macrophages
+4. Club cells
 
 <details>
 <summary>Answer</summary>
 
-✅ **C. Alveolar macrophages**
+✅ **3. Alveolar macrophages**
 
 </details>
 
@@ -1370,15 +1370,15 @@ D. Club cells
 
 Anatomical dead space in adults is approximately:
 
-A. 50 mL
-B. 100 mL
-C. 150 mL
-D. 300 mL
+1. 50 mL
+2. 100 mL
+3. 150 mL
+4. 300 mL
 
 <details>
 <summary>Answer</summary>
 
-✅ **C. 150 mL**
+✅ **3. 150 mL**
 
 </details>
 
@@ -1388,15 +1388,15 @@ D. 300 mL
 
 The Hering-Breuer reflex prevents:
 
-A. Alveolar collapse
-B. Overinflation of lungs
-C. Airway obstruction
-D. Bronchoconstriction
+1. Alveolar collapse
+2. Overinflation of lungs
+3. Airway obstruction
+4. Bronchoconstriction
 
 <details>
 <summary>Answer</summary>
 
-✅ **B. Overinflation of lungs**
+✅ **2. Overinflation of lungs**
 
 </details>
 
@@ -1406,15 +1406,15 @@ D. Bronchoconstriction
 
 The strongest determinant of oxygen diffusion across alveoli is:
 
-A. Hemoglobin level
-B. Surface area
-C. Partial pressure gradient
-D. Respiratory rate
+1. Hemoglobin level
+2. Surface area
+3. Partial pressure gradient
+4. Respiratory rate
 
 <details>
 <summary>Answer</summary>
 
-✅ **C. Partial pressure gradient**
+✅ **3. Partial pressure gradient**
 
 </details>
 
@@ -1424,15 +1424,15 @@ D. Respiratory rate
 
 Surfactant mainly contains:
 
-A. Cholesterol
-B. Phospholipids
-C. Triglycerides
-D. Glycogen
+1. Cholesterol
+2. Phospholipids
+3. Triglycerides
+4. Glycogen
 
 <details>
 <summary>Answer</summary>
 
-✅ **B. Phospholipids**
+✅ **2. Phospholipids**
 
 </details>
 
@@ -1442,15 +1442,15 @@ D. Glycogen
 
 Functional residual capacity (FRC) equals:
 
-A. TV + IRV
-B. IRV + ERV
-C. ERV + RV
-D. TV + RV
+1. TV + IRV
+2. IRV + ERV
+3. ERV + RV
+4. TV + RV
 
 <details>
 <summary>Answer</summary>
 
-✅ **C. ERV + RV**
+✅ **3. ERV + RV**
 
 </details>
 
@@ -1460,15 +1460,15 @@ D. TV + RV
 
 The normal V/Q ratio is:
 
-A. 0.2
-B. 0.5
-C. 0.8
-D. 1.5
+1. 0.2
+2. 0.5
+3. 0.8
+4. 1.5
 
 <details>
 <summary>Answer</summary>
 
-✅ **C. 0.8**
+✅ **3. 0.8**
 
 </details>
 
@@ -1478,15 +1478,15 @@ D. 1.5
 
 Carbon dioxide is primarily transported in blood as:
 
-A. Dissolved CO₂
-B. Carbaminohemoglobin
-C. Bicarbonate ions
-D. Carbonic acid
+1. Dissolved CO₂
+2. Carbaminohemoglobin
+3. Bicarbonate ions
+4. Carbonic acid
 
 <details>
 <summary>Answer</summary>
 
-✅ **C. Bicarbonate ions**
+✅ **3. Bicarbonate ions**
 
 </details>
 
@@ -1500,15 +1500,15 @@ D. Carbonic acid
 
 **Reason (R):** Surfactant decreases alveolar surface tension.
 
-A. Both true; R explains A
-B. Both true; R doesn't explain A
-C. A true; R false
-D. A false; R true
+1. Both true; R explains A
+2. Both true; R doesn't explain A
+3. A true; R false
+4. A false; R true
 
 <details>
 <summary>Answer</summary>
 
-✅ **A. Both true; R explains A**
+✅ **1. Both true; R explains A**
 
 </details>
 
@@ -1520,10 +1520,10 @@ D. A false; R true
 
 **Reason:** Peripheral chemoreceptors are located in carotid and aortic bodies.
 
-A. Both true; R explains A
-B. Both true; R doesn't explain A
-C. A true; R false
-D. A false; R true
+1. Both true; R explains A
+2. Both true; R doesn't explain A
+3. A true; R false
+4. A false; R true
 
 <details>
 <summary>Answer</summary>
@@ -1542,10 +1542,10 @@ D. A false; R true
 
 **Reason:** Cyanosis depends on absolute amount of reduced hemoglobin.
 
-A. Both true; R explains A
-B. Both true; R doesn't explain A
-C. A true; R false
-D. Both false
+1. Both true; R explains A
+2. Both true; R doesn't explain A
+3. A true; R false
+4. Both false
 
 <details>
 <summary>Answer</summary>
@@ -1562,10 +1562,10 @@ D. Both false
 
 **Reason:** High-flow oxygen can suppress hypoxic drive.
 
-A. Both true; R explains A
-B. Both true; R doesn't explain A
-C. A true; R false
-D. A false; R true
+1. Both true; R explains A
+2. Both true; R doesn't explain A
+3. A true; R false
+4. A false; R true
 
 <details>
 <summary>Answer</summary>
@@ -1582,10 +1582,10 @@ D. A false; R true
 
 **Reason:** Atelectasis increases ventilation in affected alveoli.
 
-A. Both true
-B. Both false
-C. A true; R false
-D. A false; R true
+1. Both true
+2. Both false
+3. A true; R false
+4. A false; R true
 
 <details>
 <summary>Answer</summary>
@@ -1608,10 +1608,10 @@ A COPD patient has:
 
 Interpretation:
 
-A. Acute respiratory acidosis
-B. Chronic compensated respiratory acidosis
-C. Metabolic acidosis
-D. Respiratory alkalosis
+1. Acute respiratory acidosis
+2. Chronic compensated respiratory acidosis
+3. Metabolic acidosis
+4. Respiratory alkalosis
 
 <details>
 <summary>Answer</summary>
@@ -1635,10 +1635,10 @@ Patient suddenly develops:
 
 Diagnosis?
 
-A. Pulmonary edema
-B. Tension pneumothorax
-C. Bronchitis
-D. Atelectasis
+1. Pulmonary edema
+2. Tension pneumothorax
+3. Bronchitis
+4. Atelectasis
 
 <details>
 <summary>Answer</summary>
@@ -1655,10 +1655,10 @@ Medical emergency.
 
 A patient with pulmonary embolism is most likely to have:
 
-A. Low V/Q ratio
-B. High V/Q ratio
-C. Normal V/Q ratio
-D. Zero ventilation
+1. Low V/Q ratio
+2. High V/Q ratio
+3. Normal V/Q ratio
+4. Zero ventilation
 
 <details>
 <summary>Answer</summary>
@@ -1675,10 +1675,10 @@ Ventilation present, perfusion absent.
 
 A postoperative patient develops fever, diminished breath sounds, and hypoxemia on Day 2. Most likely cause?
 
-A. Pulmonary embolism
-B. Pneumonia
-C. Atelectasis
-D. COPD
+1. Pulmonary embolism
+2. Pneumonia
+3. Atelectasis
+4. COPD
 
 <details>
 <summary>Answer</summary>
@@ -1695,10 +1695,10 @@ Most common postoperative respiratory complication.
 
 A patient with ARDS has:
 
-A. Increased lung compliance
-B. Decreased lung compliance
-C. Increased surfactant
-D. Hyperinflation
+1. Increased lung compliance
+2. Decreased lung compliance
+3. Increased surfactant
+4. Hyperinflation
 
 <details>
 <summary>Answer</summary>
@@ -1715,10 +1715,10 @@ D. Hyperinflation
 
 Which statement regarding oxygen therapy is FALSE?
 
-A. Oxygen is a drug.
-B. Requires prescription.
-C. Has no adverse effects.
-D. Requires monitoring.
+1. Oxygen is a drug.
+2. Requires prescription.
+3. Has no adverse effects.
+4. Requires monitoring.
 
 <details>
 <summary>Answer</summary>
@@ -1735,10 +1735,10 @@ Oxygen toxicity can occur.
 
 The earliest sign of respiratory distress in children is:
 
-A. Cyanosis
-B. Bradycardia
-C. Nasal flaring
-D. Hypotension
+1. Cyanosis
+2. Bradycardia
+3. Nasal flaring
+4. Hypotension
 
 <details>
 <summary>Answer</summary>
@@ -1753,10 +1753,10 @@ D. Hypotension
 
 Most sensitive indicator of tissue oxygenation:
 
-A. SpO₂
-B. PaO₂
-C. Lactate level
-D. Respiratory rate
+1. SpO₂
+2. PaO₂
+3. Lactate level
+4. Respiratory rate
 
 <details>
 <summary>Answer</summary>
@@ -1773,10 +1773,10 @@ Frequently asked PGIMER concept.
 
 A patient has severe asthma. Which finding suggests impending respiratory failure?
 
-A. Wheezing
-B. Productive cough
-C. Silent chest
-D. Tachypnea
+1. Wheezing
+2. Productive cough
+3. Silent chest
+4. Tachypnea
 
 <details>
 <summary>Answer</summary>
@@ -1793,10 +1793,10 @@ Very high-yield emergency question.
 
 Which respiratory disease shows reversible airway obstruction?
 
-A. COPD
-B. Asthma
-C. Bronchiectasis
-D. Pulmonary fibrosis
+1. COPD
+2. Asthma
+3. Bronchiectasis
+4. Pulmonary fibrosis
 
 <details>
 <summary>Answer</summary>
@@ -1815,10 +1815,10 @@ pH = 7.50
 PaCO₂ = 30
 HCO₃⁻ = 24
 
-A. Respiratory alkalosis
-B. Metabolic alkalosis
-C. Respiratory acidosis
-D. Normal
+1. Respiratory alkalosis
+2. Metabolic alkalosis
+3. Respiratory acidosis
+4. Normal
 
 <details>
 <summary>Answer</summary>
@@ -1835,10 +1835,10 @@ pH = 7.25
 PaCO₂ = 40
 HCO₃⁻ = 16
 
-A. Metabolic acidosis
-B. Respiratory acidosis
-C. Respiratory alkalosis
-D. Mixed alkalosis
+1. Metabolic acidosis
+2. Respiratory acidosis
+3. Respiratory alkalosis
+4. Mixed alkalosis
 
 <details>
 <summary>Answer</summary>
@@ -1855,10 +1855,10 @@ pH = 7.48
 PaCO₂ = 48
 HCO₃⁻ = 34
 
-A. Metabolic alkalosis
-B. Respiratory alkalosis
-C. Respiratory acidosis
-D. Mixed acidosis
+1. Metabolic alkalosis
+2. Respiratory alkalosis
+3. Respiratory acidosis
+4. Mixed acidosis
 
 <details>
 <summary>Answer</summary>
@@ -1880,10 +1880,10 @@ The oxygen dissociation curve shifts RIGHT in:
 3. Acidosis
 4. Increased 2,3-BPG
 
-A. 1,2 only
-B. 1,2,3 only
-C. 1,2,4 only
-D. 1,2,3,4
+1. 1,2 only
+2. 1,2,3 only
+3. 1,2,4 only
+4. 1,2,3,4
 
 <details>
 <summary>Answer</summary>
@@ -1898,10 +1898,10 @@ D. 1,2,3,4
 
 Which condition shifts the oxygen dissociation curve LEFT?
 
-A. Fever
-B. Acidosis
-C. Alkalosis
-D. Exercise
+1. Fever
+2. Acidosis
+3. Alkalosis
+4. Exercise
 
 <details>
 <summary>Answer</summary>
@@ -1916,10 +1916,10 @@ D. Exercise
 
 Most common cause of respiratory arrest after opioid overdose:
 
-A. Bronchospasm
-B. Central respiratory depression
-C. Pulmonary edema
-D. Pneumonia
+1. Bronchospasm
+2. Central respiratory depression
+3. Pulmonary edema
+4. Pneumonia
 
 <details>
 <summary>Answer</summary>
@@ -1934,10 +1934,10 @@ D. Pneumonia
 
 ARDS is characterized by:
 
-A. Cardiogenic pulmonary edema
-B. Non-cardiogenic pulmonary edema
-C. Bronchospasm
-D. Pleural effusion
+1. Cardiogenic pulmonary edema
+2. Non-cardiogenic pulmonary edema
+3. Bronchospasm
+4. Pleural effusion
 
 <details>
 <summary>Answer</summary>
@@ -1952,10 +1952,10 @@ D. Pleural effusion
 
 Gold standard for diagnosis of pulmonary embolism:
 
-A. Chest X-ray
-B. D-dimer
-C. CT Pulmonary Angiography
-D. ECG
+1. Chest X-ray
+2. D-dimer
+3. CT Pulmonary Angiography
+4. ECG
 
 <details>
 <summary>Answer</summary>

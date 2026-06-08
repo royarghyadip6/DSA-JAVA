@@ -2,6 +2,7 @@ package Java8_Features;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /*
     Stream API is a way to express and process collections of objects.
@@ -38,8 +39,34 @@ import java.util.stream.Collectors;
 public class V_Stream {
     public static void main(String[] args) {
 
-        List<Integer> numbers = Arrays.asList(1,2,3,4,5,6,7,8,9,10,5,3,2);
+        List<Integer> numbers = Arrays.asList(1,2,3,4,5,6,7,8,9,10,5,3,2,10,5,5,3,4,7,5);
         List<String> names = Arrays.asList("Arghya", "Roy", "Java", "Spring", "Boot", "Roy");
+
+//      allMatch > Returns whether all elements of this stream match the provided predicate
+        boolean match = numbers.stream().allMatch(number -> number % 5 == 0);
+        System.out.println("All Match: "+match);
+
+//      anyMatch > Returns whether any elements of this stream match the provided predicate.
+        match = numbers.stream().anyMatch(number -> number % 5 == 0);
+        System.out.println("Any Match: "+match);
+
+//      noneMatch
+        match = numbers.stream().noneMatch(number -> number % 5 == 0);
+        System.out.println("No Match: "+match);
+
+        //      builder() >
+        Stream<String> streamBuilder = Stream.<String>builder().add("a").add("b").add("c").build();
+        System.out.println("StreamBuilder: "+streamBuilder);
+
+        String concat = streamBuilder.collect(StringBuilder::new, StringBuilder::append,
+                        StringBuilder::append)
+                .toString();
+
+
+//      Collect
+
+        List<String> asList = names.stream().collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
+
 
         // 1️⃣ Find even numbers
         List<Integer> evens = numbers.stream()

@@ -118,13 +118,190 @@ Normal method call.
 ### 5. What are Thread States?
 
 ```text
+NEW           -> Created but not started
+  |
+start()
+  v
+RUNNABLE      -> Ready or running
+  |
+  +-------> BLOCKED       -> Waiting for synchronized lock
+  |
+  +-------> WAITING       -> Waiting indefinitely (wait/join)
+  |
+  +-------> TIMED_WAITING -> Waiting for specified time (sleep)
+  |
+  v
+TERMINATED    -> Execution completed
+```
+
+#### 5.1. NEW
+
+**Thread created but `start()` not called**
+
+```java
+Thread t = new Thread(() -> {
+    System.out.println("Hello");
+});
+
+System.out.println(t.getState());
+```
+
+**Output**
+
+```text
 NEW
+```
+
+---
+
+#### 5.2. RUNNABLE
+
+**Thread started**
+
+```java
+Thread t = new Thread(() -> {
+    while(true) {
+        // Keep thread alive
+    }
+});
+
+t.start();
+
+System.out.println(t.getState());
+```
+
+**Output**
+
+```text
 RUNNABLE
+```
+
+**Explanation:** Thread is running or waiting for CPU.
+
+---
+
+#### 5.3. BLOCKED
+
+**Waiting to acquire a synchronized lock**
+
+```java
+Object lock = new Object();
+
+Thread t1 = new Thread(() -> {
+    synchronized(lock) {
+        try {
+            Thread.sleep(5000);
+        } catch(Exception e) {}
+    }
+});
+
+Thread t2 = new Thread(() -> {
+    synchronized(lock) {
+    }
+});
+
+t1.start();
+Thread.sleep(100);
+
+t2.start();
+Thread.sleep(100);
+
+System.out.println(t2.getState());
+```
+
+**Output**
+
+```text
 BLOCKED
+```
+
+**Explanation:** `t2` is waiting for `lock` held by `t1`.
+
+---
+
+#### 5.4. WAITING
+
+**Waiting until another thread notifies**
+
+```java
+Object lock = new Object();
+
+Thread t = new Thread(() -> {
+    synchronized(lock) {
+        try {
+            lock.wait();
+        } catch(Exception e) {}
+    }
+});
+
+t.start();
+
+Thread.sleep(100);
+
+System.out.println(t.getState());
+```
+
+**Output**
+
+```text
 WAITING
+```
+
+**Explanation:** `wait()` causes indefinite waiting.
+
+---
+
+#### 5.5. TIMED_WAITING
+
+**Waiting for a fixed time**
+
+```java
+Thread t = new Thread(() -> {
+    try {
+        Thread.sleep(5000);
+    } catch(Exception e) {}
+});
+
+t.start();
+
+Thread.sleep(100);
+
+System.out.println(t.getState());
+```
+
+**Output**
+
+```text
 TIMED_WAITING
+```
+
+**Explanation:** `sleep(5000)` waits for 5 seconds.
+
+---
+
+#### 5.6. TERMINATED
+
+**Thread execution finished**
+
+```java
+Thread t = new Thread(() -> {
+    System.out.println("Done");
+});
+
+t.start();
+t.join();
+
+System.out.println(t.getState());
+```
+
+**Output**
+
+```text
+Done
 TERMINATED
 ```
+
+**Explanation:** `run()` method completed.
 
 ---
 

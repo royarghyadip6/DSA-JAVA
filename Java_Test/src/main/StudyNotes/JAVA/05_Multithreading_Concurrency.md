@@ -29,9 +29,19 @@ Process
 **Method 1: Extend Thread**
 
 ```java
+// 1. Inherit from the Thread class
 class MyThread extends Thread {
+    @Override
     public void run() {
-        System.out.println("Running");
+        System.out.println("Thread is running by extending Thread class!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // 2. Instantiate and start the thread directly
+        MyThread thread = new MyThread();
+        thread.start();
     }
 }
 ```
@@ -39,9 +49,50 @@ class MyThread extends Thread {
 **Method 2: Implement Runnable (Preferred)**
 
 ```java
-class MyTask implements Runnable {
+// 1. Define the task by implementing Runnable
+class MyRunnable implements Runnable {
+    @Override
     public void run() {
-        System.out.println("Running");
+        System.out.println("Thread is running via Runnable interface!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // 2. Create an instance of your task
+        MyRunnable runnable = new MyRunnable();
+        
+        // 3. Pass the task into a Thread object and start it
+        Thread thread = new Thread(runnable);
+        thread.start(); 
+    }
+}
+```
+
+**Method 3: Using a Lambda Expression (Modern & Concise)**
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        // Create and start a thread inline using a Lambda expression
+        Thread thread = new Thread(() -> {
+            System.out.println("Thread is running via Lambda expression!");
+        });
+        
+        thread.start();
+    }
+}
+```
+
+**Method 4: Creating Virtual Threads (Java 21+)**
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        // Create and start a lightweight virtual thread
+        Thread.ofVirtual().start(() -> {
+            System.out.println("Running inside a Virtual Thread!");
+        });
     }
 }
 ```

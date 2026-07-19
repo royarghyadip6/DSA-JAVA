@@ -99,7 +99,7 @@ public class Main {
 
 ---
 
-### 4. Difference between start() and run()?
+### 4. [Difference between start() and run()?](https://www.geeksforgeeks.org/java/difference-between-thread-start-and-thread-run-in-java/)
 
 ```java
 thread.start();

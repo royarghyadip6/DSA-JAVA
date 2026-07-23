@@ -242,7 +242,18 @@ Most specific rule: class wins over interface; subinterface default wins over su
 
 ### Q7. Difference between `Function.identity()` and `x -> x`?
 
-**Answer:** Functionally identical. `Function.identity()` returns a **pre-built singleton** reference — slightly cleaner and can be reused. Prefer it in streams: `.map(Function.identity())` or `.filter(Objects::nonNull)`.
+**Answer:** Functionally identical. `Function.identity()` returns a **pre-built singleton** reference — slightly cleaner and can be reused. Prefer it in streams: `.map(Function.identity())` or `.filter(Objects::nonNull)`. While logically equivalent, they differ significantly in **type flexibility**, **instance management**, and **readability**.
+
+---
+
+#### 📊 Quick Comparison Matrix
+
+| Feature | `Function.identity()` | `x -> x` |
+| :--- | :--- | :--- |
+| **Return / Target Type** | Strictly `Function<T, T>` | Inferred dynamically from target context |
+| **Instance Management** | Singleton instance per generic type | Generated per distinct code location |
+| **Readability & Intent** | Explicitly expresses intent | Shorter, but depends on variable naming |
+| **Compatibility** | Fails with non-`Function` interfaces | Works with any matching `@FunctionalInterface` |
 
 ---
 

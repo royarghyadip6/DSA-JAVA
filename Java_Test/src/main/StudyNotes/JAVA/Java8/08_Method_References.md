@@ -77,97 +77,84 @@ ClassName::methodName
 
 ---
 
-## ✅ 1. Static Method Reference
+There are exactly four types of method references:
 
-### Syntax:
+---
 
+### 1. Reference to a Static Method
+This type replaces a lambda expression that calls an existing static utility method. 
+* **Syntax:** `ContainingClass::staticMethodName`
+* **Lambda Equivalent:** `(args) -> ContainingClass.staticMethodName(args)`
+
+**Example:**
 ```java
-ClassName::staticMethod
-```
+// Lambda expression
+Function<String, Integer> lambda = (s) -> Integer.parseInt(s);
 
-### Example:
-
-```java
-Integer::parseInt
-```
-
-👉 Equivalent to:
-
-```java
-s -> Integer.parseInt(s)
+// Method reference
+Function<String, Integer> methodRef = Integer::parseInt;
 ```
 
 ---
 
-## ✅ 2. Instance Method of a Particular Object
+### 2. Reference to an Instance Method of a Particular Object
+This is used when you invoke an instance method on a specific, already existing object variable. It is also referred to as a **bound** method reference.
+* **Syntax:** `containingObject::instanceMethodName`
+* **Lambda Equivalent:** `(args) -> containingObject.instanceMethodName(args)`
 
-### Syntax:
-
+**Example:**
 ```java
-object::instanceMethod
-```
+String searchStr = "Hello World";
 
-### Example:
+// Lambda expression
+Predicate<String> lambda = (s) -> searchStr.contains(s);
 
-```java
-System.out::println
-```
-
-👉 Equivalent to:
-
-```java
-x -> System.out.println(x)
+// Method reference (bound to the 'searchStr' object)
+Predicate<String> methodRef = searchStr::contains;
 ```
 
 ---
 
-## ✅ 3. Instance Method of Arbitrary Object (IMPORTANT)
+### 3. Reference to an Instance Method of an Arbitrary Object of a Particular Type
+This type is used when the method being called is an instance method, but the target object is not determined until runtime. The first parameter of the lambda acts as the target object executing the method. This is also known as an **unbound** method reference.
+* **Syntax:** `ContainingType::methodName`
+* **Lambda Equivalent:** `(instance, args) -> instance.methodName(args)`
 
-### Syntax:
-
+**Example:**
 ```java
-ClassName::instanceMethod
-```
+// Lambda expression (takes a string and calls its instance method)
+Function<String, String> lambda = (s) -> s.toLowerCase();
 
-### Example:
-
-```java
-String::toUpperCase
-```
-
-👉 Equivalent to:
-
-```java
-s -> s.toUpperCase()
+// Method reference
+Function<String, String> methodRef = String::toLowerCase;
 ```
 
 ---
 
-### 💡 Special Behavior
+### 4. Reference to a Constructor
+This allows you to reference a class constructor to instantiate objects without explicitly typing the `new` keyword inside the functional expression.
+* **Syntax:** `ClassName::new`
+* **Lambda Equivalent:** `(args) -> new ClassName(args)`
 
-👉 The object is **passed automatically as first argument**
+**Example:**
+```java
+// Lambda expression
+Supplier<List<String>> lambda = () -> new ArrayList<>();
+
+// Method reference
+Supplier<List<String>> methodRef = ArrayList::new;
+```
 
 ---
 
-## ✅ 4. Constructor Reference
+### Quick Comparison Table
 
-### Syntax:
-
-```java
-ClassName::new
-```
-
-### Example:
-
-```java
-Supplier<List<String>> s = ArrayList::new;
-```
-
-👉 Equivalent to:
-
-```java
-() -> new ArrayList<>()
-```
+| Type | Syntax | Lambda Equivalent |
+| :--- | :--- | :--- |
+| **Static Method** | `Math::abs` | `x -> Math.abs(x)` |
+| **Particular Object** | `myObj::foo` | `x -> myObj.foo(x)` |
+| **Arbitrary Object** | `String::isEmpty` | `s -> s.isEmpty()` |
+| **Constructor** | `HashSet::new` | `() -> new HashSet()` |
 
 ---
 

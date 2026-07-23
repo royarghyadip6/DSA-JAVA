@@ -30,13 +30,13 @@ New API rules:
 
 | Type | Has Date? | Has Time? | Has Zone? | Use When |
 |------|-----------|-----------|-----------|----------|
-| `LocalDate` | ✅ | ❌ | ❌ | Birthday, due date |
-| `LocalTime` | ❌ | ✅ | ❌ | Store opening hours |
-| `LocalDateTime` | ✅ | ✅ | ❌ | Meeting without zone |
-| `ZonedDateTime` | ✅ | ✅ | ✅ | Global events, audits |
-| `Instant` | Timeline point (UTC) | | | Logs, DB timestamps |
-| `Duration` | Time amount (hours, seconds) | | | "2 hours 30 min" |
-| `Period` | Date amount (years, months, days) | | | "1 year 2 months" |
+| [`LocalDate`](https://www.geeksforgeeks.org/java/java-time-localdate-class-in-java/) | ✅ | ❌ | ❌ | Birthday, due date |
+| [`LocalTime`](https://www.geeksforgeeks.org/java/java-time-localtime-class-in-java/) | ❌ | ✅ | ❌ | Store opening hours |
+| [`LocalDateTime`](https://www.geeksforgeeks.org/java/java-time-localdatetime-class-in-java/) | ✅ | ✅ | ❌ | Meeting without zone |
+| [`ZonedDateTime`](https://www.geeksforgeeks.org/java/java-time-zoneddatetime-class-in-java/) | ✅ | ✅ | ✅ | Global events, audits |
+| [`Instant`](https://www.geeksforgeeks.org/java/java-time-instant-class-in-java/) | Timeline point (UTC) | | | Logs, DB timestamps |
+| [`Duration`](https://www.geeksforgeeks.org/java/java-time-duration-class-in-java/) | Time amount (hours, seconds) | | | "2 hours 30 min" |
+| [`Period`](https://www.geeksforgeeks.org/java/java-time-period-class-in-java/) | Date amount (years, months, days) | | | "1 year 2 months" |
 
 **Golden rule:** Use `Local*` for business logic; add `ZoneId` only at the boundary (UI, API, DB).
 

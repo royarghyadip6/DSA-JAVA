@@ -230,7 +230,7 @@ Runnable r = () -> System.out.println(x); // OK
 
 ---
 
-### Q6. How do you resolve the diamond problem?
+### Q6. [How do you resolve the diamond problem?](https://www.geeksforgeeks.org/java/diamond-problem-in-java/)
 
 **Answer:** Class must **override** the conflicting method. Inside override:
 - `InterfaceName.super.methodName()` to call specific default

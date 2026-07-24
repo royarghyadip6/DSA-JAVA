@@ -8,7 +8,7 @@
 
 ## Theory (Easy to Remember)
 
-### 1. CompletableFuture — Async Without Callback Hell
+### 1. [CompletableFuture](https://www.geeksforgeeks.org/java/completablefuture-in-java/) — Async Without Callback Hell
 
 - **`CompletableFuture<T>`** = a result that will arrive **later**, and you can chain actions on it.
 - Implements **`CompletionStage`** — fluent API for async pipelines.

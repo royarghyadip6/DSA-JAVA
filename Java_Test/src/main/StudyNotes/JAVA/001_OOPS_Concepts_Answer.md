@@ -3,24 +3,7 @@
 1. **Encapsulation** – Binding data and methods together and restricting direct access to data.
 2. **Abstraction** – Hiding implementation details and showing only essential functionality.
 3. **Inheritance** – Acquiring properties and behaviors from a parent class.
-4. **Polymorphism** – One interface, multiple implementations.
-
-**Example:**
-
-```java
-class Animal {
-    void sound() {
-        System.out.println("Animal Sound");
-    }
-}
-
-class Dog extends Animal {
-    @Override
-    void sound() {
-        System.out.println("Bark");
-    }
-}
-```
+4. **Polymorphism** – One entity, multiple forms.
 
 ---
 
@@ -59,12 +42,19 @@ class Employee {
 
 # 3. Difference between Abstraction and Interface
 
-| Abstraction                                       | Interface                                   |
-|---------------------------------------------------|---------------------------------------------|
-| OOP concept                                       | Java implementation of abstraction          |
-| Can be achieved using abstract class or interface | Interface is one way to achieve abstraction |
-| May contain both abstract and concrete methods    | Java 8+: abstract, default, static methods  |
-| Can have state (instance variables)               | Only constants (public static final)        |
+| Feature                      | Abstract Class (Before Java 8) | Interface (Before Java 8)            | Abstract Class (Java 8+)    | Interface (Java 8+)                                |
+|------------------------------|--------------------------------|--------------------------------------|-----------------------------|----------------------------------------------------|
+| Purpose                      | Partial abstraction            | Full abstraction                     | Partial abstraction         | Full abstraction + default behavior                |
+| Methods                      | Abstract + Concrete methods    | Only abstract methods                | Abstract + Concrete methods | Abstract + Default + Static methods                |
+| Variables                    | Instance, Static, Final        | Only `public static final` constants | Same                        | Same                                               |
+| Constructor                  | ✅ Allowed                      | ❌ Not Allowed                        | ✅ Allowed                   | ❌ Not Allowed                                      |
+| Object Creation              | ❌ Cannot instantiate           | ❌ Cannot instantiate                 | ❌ Cannot instantiate        | ❌ Cannot instantiate                               |
+| Multiple Inheritance         | ❌ Not supported                | ✅ Supported                          | ❌ Not supported             | ✅ Supported                                        |
+| Access Modifiers for Methods | Any access modifier            | Only `public abstract`               | Any access modifier         | `public`, `default`, `static`, `private` (Java 9+) |
+| State (Instance Variables)   | ✅ Can maintain state           | ❌ Cannot maintain state              | ✅ Can maintain state        | ❌ Cannot maintain state                            |
+| Method Implementation        | Can have implementation        | Cannot have implementation           | Can have implementation     | Can have implementation via `default` methods      |
+| Inheritance Keyword          | `extends`                      | `implements`                         | `extends`                   | `implements`                                       |
+
 
 **Interview Answer:**
 
@@ -110,16 +100,11 @@ Polymorphism means **one interface, multiple forms**.
 
 A parent reference can point to different child objects and invoke their specific implementations.
 
-```java
-Animal a = new Dog();
-a.sound();
-```
+Types of polymorphism:
 
-Output:
+1. **Compile-Time Polymorphism (Method Overloading)** – Occurs when multiple methods in the same class share the same name but differ in parameter lists (type, number or order of parameters). The compiler decides which method to invoke based on the method signature at compile time (static binding). Common use-cases include convenience overloads and supporting different input types.
 
-```text
-Bark
-```
+2. **Runtime Polymorphism (Method Overriding)** – Happens when a subclass provides a specific implementation for a method declared in its superclass. The actual method that gets executed is determined at runtime based on the object's actual type (dynamic binding). This requires inheritance and non-static, non-final methods.
 
 ---
 
@@ -152,12 +137,12 @@ a.sound();
 
 # 7. Method Overloading vs Method Overriding
 
-| Overloading                                    | Overriding                         |
-|------------------------------------------------|------------------------------------|
-| Same method name, different parameters         | Same method signature              |
-| Same class                                     | Parent-child relationship          |
-| Compile-time polymorphism                      | Runtime polymorphism               |
-| Return type may differ (with different params) | Return type must be same/covariant |
+| Overloading                                                                   | Overriding                         |
+|-------------------------------------------------------------------------------|------------------------------------|
+| Same method name,but must differ in the number, type, or order of parameters. | Same method signature              |
+| Same class                                                                    | Parent-child relationship          |
+| Compile-time polymorphism                                                     | Runtime polymorphism               |
+| Return type may differ (with different params)                                | Return type must be same/covariant |
 
 ### Overloading
 
@@ -204,28 +189,21 @@ animal.sound(); // Runtime decides which method to call
 
 **Yes.**
 
-The JVM calls only:
-
-```java
-public static void main(String[] args)
-```
-
-but we can define additional overloaded versions.
+The JVM calls only `public static void main(String[] args)` but we can define additional overloaded versions.
 
 ```java
 public class Test {
-
+    
     public static void main(String[] args) {
-
         System.out.println("JVM calls this method");
-
         // Calling overloaded version manually
         main(100);
     }
-
+    
     public static void main(int num) {
         System.out.println("Overloaded main(): " + num);
     }
+    
 }
 ```
 
@@ -240,11 +218,11 @@ Overloaded main(): 100
 
 # 9. Can We Override Static Methods?
 
-**No.**
-
-Static methods belong to the class, not the object.
+**No.** Static methods belong to the class, not the object.
 
 If a child defines the same static method, it is called **method hiding**, not overriding.
+
+If a subclass defines a static method with the same signature as a static method in the superclass, then the method in the subclass hides the one in the superclass. This mechanism happens because the **static method is resolved at the compile time**. Static method bind during the compile time using the **type of reference not a type of object**.
 
 ```java
 class Parent {
@@ -284,9 +262,7 @@ Parent
 
 # 10. Can We Override Private Methods?
 
-**No.**
-
-Private methods are not inherited by child classes.
+**No.** Private methods are not inherited by child classes.
 
 ```java
 class Parent {
@@ -318,6 +294,13 @@ Composition is preferred because it provides **loose coupling** and **better fle
 ### Example
 
 ```java
+public class Interview {
+    public static void main(String[] args) {
+        Car car = new Car();
+        car.startCar();
+    }
+}
+
 class Engine {
     void start() {
         System.out.println("Engine Started");
@@ -325,10 +308,9 @@ class Engine {
 }
 
 class Car {
-
     // HAS-A relationship
     private Engine engine = new Engine();
-
+    
     void startCar() {
         engine.start();
     }
@@ -409,7 +391,6 @@ class MySQLDatabase {
 }
 
 class UserService {
-
     // Direct dependency
     private MySQLDatabase db = new MySQLDatabase();
 
@@ -504,7 +485,7 @@ Teacher and Student are associated.
 # 17. Difference Between Association, Aggregation and Composition
 
 | Feature               | Association  | Aggregation    | Composition      |
-| --------------------- | ------------ | -------------- | ---------------- |
+|-----------------------|--------------|----------------|------------------|
 | Relationship          | Uses         | HAS-A          | Strong HAS-A     |
 | Ownership             | No ownership | Weak ownership | Strong ownership |
 | Independent Lifecycle | Yes          | Yes            | No               |

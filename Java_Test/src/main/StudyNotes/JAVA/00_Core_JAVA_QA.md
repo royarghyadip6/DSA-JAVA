@@ -2152,3 +2152,796 @@ These topics are heavily asked in **L2, L3, Lead Developer, Senior Java Develope
 50. Production troubleshooting (heap dump, thread dump, GC logs)
 
 The next logical **Part 5** would be a complete **Spring, Spring Boot, Hibernate/JPA, Microservices, Kafka, REST API, Security, Docker, Kubernetes, System Design, and Production Support interview question bank**, which is typically expected for 5–8 year Java backend developers.
+
+# Java Backend Developer (5–8 Years)
+
+# Part 5: Spring, Spring Boot, JPA/Hibernate, REST, Microservices, Kafka, Security, Docker, Kubernetes, System Design
+
+This section covers the majority of questions asked in **service-based companies, product companies, fintech, banking, e-commerce, and startup interviews**.
+
+---
+
+# 50. Spring Framework Fundamentals
+
+## Spring Core
+
+1. What is Spring Framework?
+2. Why Spring became popular?
+3. Advantages of Spring?
+4. What are Spring modules?
+5. What is IoC?
+6. What is Dependency Injection?
+7. Why DI is important?
+8. Types of Dependency Injection?
+
+---
+
+## Dependency Injection
+
+9. Constructor Injection vs Setter Injection?
+10. Which one is preferred and why?
+11. What happens if multiple constructors exist?
+12. Why constructor injection is recommended?
+
+---
+
+## Spring Container
+
+13. BeanFactory vs ApplicationContext?
+14. What is Spring Container?
+15. How beans are managed?
+
+---
+
+## Bean Scope
+
+16. Singleton scope?
+17. Prototype scope?
+18. Request scope?
+19. Session scope?
+20. Application scope?
+
+---
+
+## Bean Lifecycle
+
+21. Explain Bean lifecycle.
+22. Bean initialization?
+23. Bean destruction?
+24. @PostConstruct?
+25. @PreDestroy?
+26. InitializingBean?
+27. DisposableBean?
+
+---
+
+## Bean Creation
+
+28. @Component
+29. @Service
+30. @Repository
+31. @Controller
+32. Difference among them?
+
+---
+
+# 51. Spring Annotations
+
+## Frequently Asked
+
+1. @Autowired
+2. @Qualifier
+3. @Primary
+4. @Value
+5. @Bean
+6. @Configuration
+
+---
+
+## Advanced
+
+7. @Lazy
+8. @DependsOn
+9. @Profile
+10. @PropertySource
+
+---
+
+## Scenario
+
+11. What happens when multiple beans of same type exist?
+12. How Spring resolves dependency ambiguity?
+
+---
+
+# 52. Spring AOP
+
+## Very Frequently Asked
+
+1. What is AOP?
+2. Why AOP?
+3. Cross-cutting concerns?
+
+---
+
+## Terminologies
+
+4. Aspect
+5. Advice
+6. Join Point
+7. Pointcut
+8. Weaving
+
+---
+
+## Types of Advice
+
+9. Before
+10. After
+11. AfterReturning
+12. AfterThrowing
+13. Around
+
+---
+
+## Advanced
+
+14. How Spring AOP works internally?
+15. JDK Dynamic Proxy vs CGLIB?
+16. Which proxy gets created?
+
+---
+
+## Real World
+
+17. Logging using AOP?
+18. Transaction management using AOP?
+19. Security using AOP?
+
+---
+
+# 53. Spring Boot
+
+## Basics
+
+1. What is Spring Boot?
+2. Why Spring Boot?
+3. Difference between Spring and Spring Boot?
+4. Advantages of Spring Boot?
+
+---
+
+## Auto Configuration
+
+5. What is auto-configuration?
+6. How auto-configuration works?
+7. @EnableAutoConfiguration?
+8. Spring Factories mechanism?
+
+---
+
+## Starter Dependencies
+
+9. What are starters?
+10. Why starters introduced?
+
+---
+
+## Frequently Asked
+
+11. @SpringBootApplication?
+12. Components inside @SpringBootApplication?
+13. Embedded Tomcat?
+14. Can Spring Boot run without Tomcat?
+
+---
+
+## Profiles
+
+15. What are Profiles?
+16. application.properties vs application.yml?
+17. Environment specific configuration?
+
+---
+
+## Actuator
+
+18. What is Actuator?
+19. Health endpoint?
+20. Metrics endpoint?
+
+---
+
+## Advanced
+
+21. How Spring Boot starts internally?
+22. What happens when SpringApplication.run() executes?
+
+---
+
+# 54. REST API
+
+## Basics
+
+1. What is REST?
+2. REST principles?
+3. REST constraints?
+
+---
+
+## HTTP Methods
+
+4. GET
+5. POST
+6. PUT
+7. PATCH
+8. DELETE
+
+---
+
+## Frequently Asked
+
+9. PUT vs PATCH?
+10. POST vs PUT?
+11. Idempotent methods?
+12. Safe methods?
+
+---
+
+## Status Codes
+
+13. 200
+14. 201
+15. 204
+16. 400
+17. 401
+18. 403
+19. 404
+20. 409
+21. 500
+
+---
+
+## API Design
+
+22. REST API naming conventions?
+23. Versioning strategies?
+24. URI design best practices?
+
+---
+
+## Advanced
+
+25. Pagination?
+26. Sorting?
+27. Filtering?
+28. HATEOAS?
+29. API Gateway?
+
+---
+
+# 55. Exception Handling in Spring Boot
+
+## Frequently Asked
+
+1. @ExceptionHandler
+2. @ControllerAdvice
+3. @RestControllerAdvice
+4. ResponseEntityExceptionHandler
+
+---
+
+## Advanced
+
+5. Global Exception Handling?
+6. Standard error response design?
+7. Custom exception hierarchy?
+
+---
+
+# 56. Spring Data JPA
+
+## Basics
+
+1. What is JPA?
+2. What is Hibernate?
+3. Difference between JPA and Hibernate?
+4. Why JPA?
+
+---
+
+## Entity
+
+5. @Entity
+6. @Table
+7. @Id
+8. @GeneratedValue
+
+---
+
+## Relationships
+
+9. OneToOne
+10. OneToMany
+11. ManyToOne
+12. ManyToMany
+
+---
+
+## Frequently Asked
+
+13. mappedBy?
+14. Owning side?
+15. Cascade types?
+16. orphanRemoval?
+
+---
+
+# 57. Hibernate Internals
+
+## Most Asked
+
+1. Hibernate architecture?
+2. Session?
+3. SessionFactory?
+4. EntityManager?
+5. Persistence Context?
+
+---
+
+## Entity States
+
+6. Transient
+7. Persistent
+8. Detached
+9. Removed
+
+---
+
+## Fetching
+
+10. Lazy Loading
+11. Eager Loading
+12. FetchType.LAZY
+13. FetchType.EAGER
+
+---
+
+## Advanced
+
+14. N+1 Query Problem?
+15. How to solve N+1 issue?
+16. Fetch Join?
+17. Entity Graph?
+
+---
+
+## Caching
+
+18. First Level Cache?
+19. Second Level Cache?
+20. Query Cache?
+
+---
+
+# 58. Transactions
+
+## Extremely Important
+
+1. What is transaction?
+2. ACID properties?
+
+---
+
+## Spring Transactions
+
+3. @Transactional
+4. Propagation types?
+5. Isolation levels?
+
+---
+
+## Propagation
+
+6. REQUIRED
+7. REQUIRES_NEW
+8. SUPPORTS
+9. MANDATORY
+10. NEVER
+
+---
+
+## Isolation
+
+11. READ_UNCOMMITTED
+12. READ_COMMITTED
+13. REPEATABLE_READ
+14. SERIALIZABLE
+
+---
+
+## Advanced
+
+15. Dirty Read?
+16. Non-repeatable Read?
+17. Phantom Read?
+
+---
+
+# 59. SQL & Database Questions
+
+## Frequently Asked
+
+1. Primary Key?
+2. Foreign Key?
+3. Unique Key?
+4. Composite Key?
+
+---
+
+## Joins
+
+5. Inner Join
+6. Left Join
+7. Right Join
+8. Full Join
+9. Cross Join
+10. Self Join
+
+---
+
+## Advanced
+
+11. Index?
+12. Clustered Index?
+13. Non-clustered Index?
+14. Composite Index?
+
+---
+
+## Query Optimization
+
+15. Explain query optimization techniques.
+16. Why index not used?
+17. How to analyze slow query?
+
+---
+
+# 60. Microservices
+
+## Basics
+
+1. What are Microservices?
+2. Monolith vs Microservices?
+3. Advantages?
+4. Challenges?
+
+---
+
+## Service Communication
+
+5. REST communication?
+6. Feign Client?
+7. WebClient?
+
+---
+
+## Service Discovery
+
+8. Eureka?
+9. Service Registry?
+10. Client-side Discovery?
+
+---
+
+## API Gateway
+
+11. Why API Gateway?
+12. Spring Cloud Gateway?
+13. Gateway benefits?
+
+---
+
+## Distributed Systems
+
+14. Distributed transaction?
+15. Saga Pattern?
+16. Choreography Saga?
+17. Orchestration Saga?
+
+---
+
+# 61. Kafka
+
+## Extremely Important
+
+### Basics
+
+1. What is Kafka?
+2. Why Kafka?
+3. Kafka architecture?
+
+---
+
+## Components
+
+4. Producer
+5. Consumer
+6. Broker
+7. Topic
+8. Partition
+9. Offset
+
+---
+
+## Frequently Asked
+
+10. Why partitioning?
+11. Consumer Group?
+12. Consumer Group Rebalancing?
+
+---
+
+## Advanced
+
+13. How ordering works?
+14. How Kafka achieves high throughput?
+15. Retention policy?
+16. Replication factor?
+
+---
+
+## Reliability
+
+17. ISR?
+18. Leader election?
+19. Producer ACKS?
+
+---
+
+## Exactly Once
+
+20. At-most-once?
+21. At-least-once?
+22. Exactly-once delivery?
+
+---
+
+## Production
+
+23. How to handle duplicate messages?
+24. Idempotent consumer?
+25. Dead Letter Queue?
+
+---
+
+# 62. Spring Security
+
+## Basics
+
+1. What is Spring Security?
+2. Authentication vs Authorization?
+3. How Spring Security works?
+
+---
+
+## Frequently Asked
+
+4. UserDetailsService?
+5. PasswordEncoder?
+6. BCrypt?
+
+---
+
+## JWT
+
+7. What is JWT?
+8. JWT structure?
+9. JWT advantages?
+
+---
+
+## OAuth
+
+10. OAuth2?
+11. OAuth vs JWT?
+12. Access Token?
+13. Refresh Token?
+
+---
+
+## Advanced
+
+14. Security filter chain?
+15. How JWT validation works?
+16. CSRF?
+17. CORS?
+
+---
+
+# 63. Docker
+
+## Basics
+
+1. What is Docker?
+2. Why Docker?
+3. VM vs Docker?
+
+---
+
+## Frequently Asked
+
+4. Image?
+5. Container?
+6. Dockerfile?
+
+---
+
+## Commands
+
+7. build
+8. run
+9. ps
+10. logs
+11. exec
+
+---
+
+## Advanced
+
+12. Multi-stage build?
+13. Docker networking?
+14. Docker volumes?
+
+---
+
+# 64. Kubernetes
+
+## Basics
+
+1. What is Kubernetes?
+2. Why Kubernetes?
+3. Container orchestration?
+
+---
+
+## Components
+
+4. Pod
+5. Deployment
+6. ReplicaSet
+7. Service
+8. ConfigMap
+9. Secret
+
+---
+
+## Advanced
+
+10. Ingress?
+11. Load Balancer?
+12. Horizontal Pod Autoscaler?
+
+---
+
+## Production
+
+13. Rolling update?
+14. Blue-Green deployment?
+15. Canary deployment?
+
+---
+
+# 65. System Design (Backend Developer)
+
+## Frequently Asked
+
+1. Design URL Shortener.
+2. Design Notification Service.
+3. Design Parking Lot.
+4. Design Rate Limiter.
+5. Design Food Delivery System.
+6. Design E-Commerce Cart.
+
+---
+
+## Scalability
+
+7. Horizontal Scaling?
+8. Vertical Scaling?
+9. Load Balancer?
+
+---
+
+## Database
+
+10. SQL vs NoSQL?
+11. Sharding?
+12. Replication?
+
+---
+
+## Caching
+
+13. Redis?
+14. Cache Aside Pattern?
+15. Write Through?
+16. Write Back?
+
+---
+
+## Messaging
+
+17. Kafka vs RabbitMQ?
+18. Async communication benefits?
+
+---
+
+# 66. Production Support Questions
+
+## Real Experience Based
+
+1. How do you investigate a slow application?
+2. How do you analyze high CPU usage?
+3. How do you analyze memory leak?
+4. How do you collect thread dump?
+5. How do you collect heap dump?
+
+---
+
+## JVM
+
+6. GC log analysis?
+7. Full GC issue troubleshooting?
+8. OutOfMemoryError troubleshooting?
+
+---
+
+## Database
+
+9. Slow SQL troubleshooting?
+10. Deadlock troubleshooting?
+
+---
+
+## Microservices
+
+11. Service-to-service timeout troubleshooting?
+12. Circuit breaker use cases?
+13. Retry strategy?
+
+---
+
+# Top 100 Must-Prepare Topics for 5–8 Years Java Backend Interviews
+
+* Core Java Internals
+* Collections Internals
+* HashMap Internals
+* ConcurrentHashMap
+* JVM Architecture
+* Garbage Collection
+* Java Memory Model
+* Multithreading
+* Executor Framework
+* CompletableFuture
+* Design Patterns
+* SOLID Principles
+* Spring Core
+* Spring Boot
+* Spring Security
+* REST APIs
+* JPA/Hibernate
+* Transactions
+* SQL Optimization
+* Microservices
+* Kafka
+* Redis
+* Docker
+* Kubernetes
+* System Design
+* Production Support
+* Performance Tuning
+
+After mastering Parts 1–5, you'll have coverage of roughly **90–95% of Java backend interview questions typically asked for 5–8 years experience** across companies such as TCS, Infosys, Wipro, Accenture, Cognizant, Capgemini, IBM, Deloitte, HCL, LTIMindtree, as well as many product companies.
+
+A useful next step would be **Part 6: 300+ scenario-based, tricky, output-based, and real production interview questions with answers**, because those are what usually differentiate senior candidates from mid-level candidates.

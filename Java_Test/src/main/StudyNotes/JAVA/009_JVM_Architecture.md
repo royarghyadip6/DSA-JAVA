@@ -104,6 +104,8 @@ JVM Memory
 5. Native Method Stack
 ```
 
+![JVM_Architecture.png](Images/JVM_Architecture.png)
+
 ### Memory Diagram
 
 ```text
@@ -909,6 +911,75 @@ Object becomes unreachable
           ↓
 Garbage Collector reclaims memory
 ```
+
+---
+
+# 21. [Differences Between JDK, JRE and JVM](https://www.geeksforgeeks.org/java/differences-jdk-jre-jvm/)
+
+![img.png](Images/JDK_JRE_JVM.png)
+
+### **JDK (Java Development Kit)**
+
+JDK is a software development kit used to build Java applications. It contains the JRE and a set of development tools.
+
+* Includes compiler (javac), debugger, and utilities like jar and javadoc.
+* Provides the JRE, so it also allows running Java programs.
+* Required by developers to write, compile, and debug code.
+
+#### **Components of JDK:**
+
+* JRE (JVM + libraries)
+* Development tools (compiler, jar, javadoc, debugger)
+
+#### **Working of JDK**
+
+* Source Code (.java): Developer writes a Java program.
+* Compilation: The JDK’s compiler (javac) converts the code into bytecode stored in .class files.
+* Execution: The JVM executes the bytecode, translating it into native instructions.
+
+### JRE (Java Runtime Environment)
+JRE provides an environment to run Java programs but does not include development tools. It is intended for end-users who only need to execute applications.
+
+* Contains the JVM and standard class libraries.
+* Provides all runtime requirements for Java applications.
+* Does not support compilation or debugging.
+* JRE is only for running applications, not for developing them.
+* It is platform-dependent (different builds for different OS).
+
+#### **Working of JRE:**
+* Class Loading: Loads compiled .class files into memory.
+* Bytecode Verification: Ensures security and validity of bytecode.
+* Execution: Uses the JVM (interpreter + JIT compiler) to execute instructions and make system calls.
+
+### **JVM (Java Virtual Machine)**
+JVM is the core execution engine of Java. It is responsible for converting bytecode into machine-specific instructions.
+
+* Part of both JDK and JRE.
+* Performs memory management and garbage collection.
+* Provides portability by executing the same bytecode on different platforms.
+* JVM implementations are platform-dependent.
+* Bytecode is platform-independent and can run on any JVM.
+* Modern JVMs rely heavily on Just-In-Time (JIT) compilation for performance.
+
+![JVM_Architecture.png](Images/JVM_Architecture.png)
+
+#### **Working of JVM:**
+* Loading: Class loader loads bytecode into memory.
+* Linking: Performs verification, preparation, and resolution.
+* Initialization: Executes class constructors and static initializers.
+* Execution: Interprets or compiles bytecode into native code.
+
+> JVM is the virtual machine that executes Java bytecode and manages memory, class loading, and garbage collection. JRE is the runtime environment that contains JVM and the required libraries to run Java applications. JDK is the complete development kit that contains JRE, JVM, and development tools such as javac, jar, and jdb. In short: JDK is used to develop Java applications, JRE is used to run them, and JVM is the engine that actually executes the bytecode.
+
+| Feature                       | JVM | JRE | JDK |
+|-------------------------------|-----|-----|-----|
+| Executes Java Program         | ✅   | ✅   | ✅   |
+| Contains JVM                  | ❌   | ✅   | ✅   |
+| Contains Compiler (javac)     | ❌   | ❌   | ✅   |
+| Used for Development          | ❌   | ❌   | ✅   |
+| Used for Running Applications | ✅   | ✅   | ✅   |
+| Contains Development Tools    | ❌   | ❌   | ✅   |
+| Contains Runtime Libraries    | ❌   | ✅   | ✅   |
 
 ---
 

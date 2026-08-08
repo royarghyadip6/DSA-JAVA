@@ -1,5 +1,8 @@
 # 1. What is Garbage Collection (GC)?
 
+<details>
+<summary>Show Answer</summary>
+
 ### Definition
 
 Garbage Collection is the JVM process of automatically reclaiming memory occupied by objects that are no longer reachable.
@@ -34,9 +37,14 @@ GC Removes
 
 > Garbage Collection removes unreachable objects from Heap memory automatically.
 
+</details>
+
 ---
 
 # 2. How Does an Object Become Eligible for GC?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Case 1: Nullifying Reference
 
@@ -105,9 +113,14 @@ Eligible for GC.
 
 > Reachability matters, not reference count.
 
+</details>
+
 ---
 
 # 3. Can We Force GC?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Answer
 
@@ -139,9 +152,14 @@ does NOT guarantee GC execution.
 
 > We can request garbage collection using System.gc(), but JVM decides whether and when to perform it.
 
+</details>
+
 ---
 
 # 4. Difference Between `finalize()` and GC
+
+<details>
+<summary>Show Answer</summary>
 
 | GC                              | finalize()                            |
 |---------------------------------|---------------------------------------|
@@ -177,9 +195,14 @@ try-with-resources
 
 > finalize() is deprecated and should not be used for resource cleanup.
 
+</details>
+
 ---
 
 # 5. Reference Types in Java
+
+<details>
+<summary>Show Answer</summary>
 
 Java provides four important reference types:
 
@@ -190,9 +213,14 @@ Java provides four important reference types:
 4. Phantom
 ```
 
+</details>
+
 ---
 
 # 6. Strong Reference
+
+<details>
+<summary>Show Answer</summary>
 
 ### Example
 
@@ -213,9 +241,14 @@ GC cannot remove the object.
 
 > Normal object references are strong references.
 
+</details>
+
 ---
 
 # 7. Weak Reference
+
+<details>
+<summary>Show Answer</summary>
 
 ### Example
 
@@ -248,9 +281,14 @@ Memory-sensitive data
 
 > Weakly referenced objects are collected during the next GC cycle.
 
+</details>
+
 ---
 
 # 8. Soft Reference
+
+<details>
+<summary>Show Answer</summary>
 
 ### Example
 
@@ -276,9 +314,14 @@ Application Cache
 
 > Soft references survive normal GC and are removed only when memory becomes scarce.
 
+</details>
+
 ---
 
 # 9. Phantom Reference
+
+<details>
+<summary>Show Answer</summary>
 
 ### Example
 
@@ -317,9 +360,14 @@ Framework Internals
 
 > Phantom references are used to receive notification after an object becomes eligible for reclamation.
 
+</details>
+
 ---
 
 # 10. System.gc() Guarantee?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Answer
 
@@ -353,9 +401,14 @@ Performance Considerations
 
 > System.gc() is only a suggestion to JVM.
 
+</details>
+
 ---
 
 # 11. How Reachability Analysis Works?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Modern GC Algorithm
 
@@ -407,9 +460,14 @@ Both become eligible.
 
 > JVM uses reachability analysis, not reference counting.
 
+</details>
+
 ---
 
 # 12. What are GC Roots?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Definition
 
@@ -495,17 +553,27 @@ Object survives GC.
 
 > GC Roots are special references such as stack variables, active threads, static fields, and JNI references. During reachability analysis, any object reachable from a GC Root is considered alive.
 
+</details>
+
 ---
 
 # 5–8 Year Interview Rapid Fire
 
 ### Q: Does Java use reference counting?
 
+<details>
+<summary>Show Answer</summary>
+
 **Answer:** ❌ No. Java uses reachability analysis.
+
+</details>
 
 ---
 
 ### Q: Is an object with circular references eligible for GC?
+
+<details>
+<summary>Show Answer</summary>
 
 ```java id="a6c5n4"
 e1.ref = e2;
@@ -514,39 +582,69 @@ e2.ref = e1;
 
 **Answer:** ✅ Yes, if no GC Root can reach them.
 
+</details>
+
 ---
 
 ### Q: Which reference is strongest?
+
+<details>
+<summary>Show Answer</summary>
 
 ```text
 Strong > Soft > Weak > Phantom
 ```
 
+</details>
+
 ---
 
 ### Q: Which reference is commonly used for caches?
 
+<details>
+<summary>Show Answer</summary>
+
 **Answer:** SoftReference
+
+</details>
 
 ---
 
 ### Q: Can System.gc() force GC?
 
+<details>
+<summary>Show Answer</summary>
+
 **Answer:** No, it only requests GC.
+
+</details>
 
 ---
 
 ### Q: What replaced finalize()?
 
+<details>
+<summary>Show Answer</summary>
+
 **Answer:** `AutoCloseable`, `try-with-resources`, and `Cleaner` API.
 
+</details>
+
 ---
+
+<details>
+<summary>Show Answer</summary>
 
 ### Interview One-Liner
 
 > Garbage Collection in Java is based on reachability analysis. Objects not reachable from GC Roots become eligible for collection. JVM automatically reclaims memory using different reference strengths and GC algorithms, while `System.gc()` only requests—not guarantees—garbage collection.
 
+</details>
+
 # 13. What is Serial GC?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Definition
 
@@ -590,9 +688,14 @@ Development environments
 
 > Serial GC uses one GC thread and causes Stop-The-World pauses during collection.
 
+</details>
+
 ---
 
 # 14. What is Parallel GC?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Definition
 
@@ -641,9 +744,14 @@ Applications where throughput matters
 
 > Parallel GC focuses on maximizing throughput, not minimizing pause times.
 
+</details>
+
 ---
 
 # 15. What is CMS GC (Concurrent Mark Sweep)?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Definition
 
@@ -682,9 +790,14 @@ Concurrent Sweep
 
 > CMS reduced pause times but suffered from memory fragmentation and was eventually replaced by G1.
 
+</details>
+
 ---
 
 # 16. What is G1 GC?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Definition
 
@@ -743,9 +856,14 @@ Collect those regions first
 
 > G1 balances throughput and pause time, which is why it became the default GC since Java 9.
 
+</details>
+
 ---
 
 # 17. What is ZGC?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Definition
 
@@ -797,9 +915,14 @@ Large Enterprise Systems
 
 > ZGC prioritizes low latency over maximum throughput.
 
+</details>
+
 ---
 
 # 18. What is Shenandoah GC?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Definition
 
@@ -836,9 +959,14 @@ Moves objects concurrently while application threads continue running.
 
 > Like ZGC, Shenandoah focuses on minimizing pause times rather than maximizing throughput.
 
+</details>
+
 ---
 
 # 19. Comparison of Major GCs
+
+<details>
+<summary>Show Answer</summary>
 
 | GC         | Pause Time | Throughput | Heap Size    | Status    |
 |------------|------------|------------|--------------|-----------|
@@ -849,9 +977,14 @@ Moves objects concurrently while application threads continue running.
 | ZGC        | Very Low   | Good       | Very Large   | Supported |
 | Shenandoah | Very Low   | Good       | Large        | Supported |
 
+</details>
+
 ---
 
 # 20. Which GC Did Your Application Use and Why?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Interview-Ready Answer (Most Common)
 
@@ -887,3 +1020,5 @@ or check startup logs.
 ### Interview One-Liner
 
 > For most modern Java enterprise applications, G1 GC is the preferred choice because it provides predictable pause times, good throughput, and efficient handling of multi-GB heaps. For ultra-low-latency systems, ZGC or Shenandoah are typically considered.
+
+</details>

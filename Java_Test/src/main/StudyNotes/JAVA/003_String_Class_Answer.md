@@ -1,5 +1,8 @@
 # 1. Why is String Immutable?
 
+<details>
+<summary>Show Answer</summary>
+
 **Answer:**
 
 Once a String object is created, its value cannot be changed.
@@ -33,9 +36,14 @@ Java
 
 > If String were mutable, changing its value would break String Pool sharing and HashMap key behavior.
 
+</details>
+
 ---
 
 # 2. Benefits of Immutability
+
+<details>
+<summary>Show Answer</summary>
 
 ### Advantages
 
@@ -82,9 +90,14 @@ String url = "jdbc:mysql://localhost:3306/test";
 
 > Thread safety, security, String Pool, and hashCode caching are the major reasons for String immutability.
 
+</details>
+
 ---
 
 # 3. Difference Between String, StringBuilder, and StringBuffer
+
+<details>
+<summary>Show Answer</summary>
 
 | Feature         | String                 | StringBuilder                       | StringBuffer                       |
 |-----------------|------------------------|-------------------------------------|------------------------------------|
@@ -115,9 +128,14 @@ Java 8
 
 > StringBuilder is generally preferred unless thread safety is required.
 
+</details>
+
 ---
 
 # 4. What is String Pool?
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:**
 
@@ -149,9 +167,14 @@ Only one object is created and shared.
 * Reduces memory consumption.
 * Improves performance.
 
+</details>
+
 ---
 
 # 5. What is SCP (String Constant Pool)?
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:**
 
@@ -172,9 +195,14 @@ Only one object exists in SCP.
 
 > String Pool and SCP are often used interchangeably in interviews.
 
+</details>
+
 ---
 
 # 6. Difference Between Heap and String Pool
+
+<details>
+<summary>Show Answer</summary>
 
 | Heap                  | String Pool                   |
 |-----------------------|-------------------------------|
@@ -208,9 +236,14 @@ String Pool
 
 > String Pool is a special part of Heap dedicated to String literal optimization.
 
+</details>
+
 ---
 
 # 7. How Many Objects Are Created?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Code
 
@@ -241,9 +274,14 @@ Both references point to the same pooled String.
 
 > Since `"Java"` already exists in the String Pool, the second assignment reuses the same object. Only one object is created.
 
+</details>
+
 ---
 
 # 8. How Many Objects Are Created?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Code
 
@@ -289,9 +327,14 @@ created in Heap
 
 > `new String()` always creates a new Heap object even if the literal already exists in the String Pool.
 
+</details>
+
 ---
 
 # 9. equals() vs ==
+
+<details>
+<summary>Show Answer</summary>
 
 | equals()              | ==                    |
 |-----------------------|-----------------------|
@@ -352,9 +395,14 @@ Because both references point to the same pooled object.
 
 > For Strings, always use `equals()` when comparing values. `==` should only be used when you intentionally want to compare object references.
 
+</details>
+
 ---
 
 # 10. What is `intern()` Method?
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:**
 
@@ -397,9 +445,14 @@ String Pool
 
 > `intern()` is used to move/reuse Strings from the String Pool to save memory.
 
+</details>
+
 ---
 
 # 11. How Does String Pool Work Internally?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Example
 
@@ -469,9 +522,14 @@ s1  s2  s3
 
 > Before creating a String literal, JVM always checks the String Pool. If found, it reuses the existing object.
 
+</details>
+
 ---
 
 # 12. Why is String Final?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Declaration
 
@@ -521,9 +579,14 @@ Pooling relies on String objects never changing.
 
 > String is final mainly to preserve immutability, security, thread safety, and String Pool consistency.
 
+</details>
+
 ---
 
 # 13. Why is String Used as HashMap Key?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Answer
 
@@ -578,9 +641,14 @@ str.hashCode(); // Reused
 
 > String is an ideal HashMap key because immutability guarantees that hashCode and equals behavior never changes after insertion.
 
+</details>
+
 ---
 
 # 14. Why is StringBuilder Faster?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Example
 
@@ -632,9 +700,14 @@ No new String object on every append.
 
 > StringBuilder is faster because it modifies an internal character buffer instead of creating new objects repeatedly.
 
+</details>
+
 ---
 
 # 15. Difference Between `concat()` and `+` Operator
+
+<details>
+<summary>Show Answer</summary>
 
 | concat()                                                | + Operator                         |
 |---------------------------------------------------------|------------------------------------|
@@ -703,9 +776,14 @@ String result =
 
 > For a few concatenations, `+` is fine. For loops or large string manipulations, prefer `StringBuilder` because repeated `+` creates many temporary objects.
 
+</details>
+
 ---
 
 # 16. How is `hashCode()` Calculated for String?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Formula Used Internally
 
@@ -763,9 +841,14 @@ for (char ch : value) {
 
 > String hashCode is content-based. Two Strings with the same content always produce the same hashCode.
 
+</details>
+
 ---
 
 # 17. Why is String hashCode Cached?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Problem
 
@@ -837,9 +920,14 @@ Its content can never change.
 
 > If String were mutable, cached hashCode could become invalid after modification.
 
+</details>
+
 ---
 
 # 18. Explain String Memory Optimization in Java 8
+
+<details>
+<summary>Show Answer</summary>
 
 ### 1. String Pool Reuse
 
@@ -910,9 +998,14 @@ Latin characters consume less memory.
 
 > The biggest String memory optimization in Java 8 is String Pool reuse.
 
+</details>
+
 ---
 
 # 19. Can an Immutable Class Be Broken?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Answer
 
@@ -976,9 +1069,14 @@ public Address getAddress() {
 
 > Immutable classes are only truly immutable when all mutable state is protected through defensive copying.
 
+</details>
+
 ---
 
 # 20. How Would You Design Your Own Immutable Class?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Rules
 
@@ -1067,3 +1165,5 @@ Bangalore
 ### Interview Answer (Short)
 
 > To create an immutable class, make the class final, fields private final, initialize them through the constructor, avoid setters, and use defensive copying for mutable objects in constructors and getters. This ensures the object's state cannot be modified after creation.
+
+</details>

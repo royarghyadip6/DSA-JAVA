@@ -1,5 +1,8 @@
 # 1. What Happens When a Java Program Starts?
 
+<details>
+<summary>Show Answer</summary>
+
 ### Example
 
 ```java
@@ -46,9 +49,14 @@ Machine Code
 
 > When a Java program starts, JVM loads the required classes, verifies bytecode, initializes classes, allocates memory, and executes the `main()` method through the Execution Engine.
 
+</details>
+
 ---
 
 # 2. Explain JVM Architecture
+
+<details>
+<summary>Show Answer</summary>
 
 ### High-Level Diagram
 
@@ -88,9 +96,14 @@ Native Libraries
 
 > JVM architecture consists of Class Loader, Runtime Memory Areas, Execution Engine, JNI, and Native Libraries. Together they load, manage, and execute Java applications.
 
+</details>
+
 ---
 
 # 3. What are JVM Memory Areas?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Runtime Data Areas
 
@@ -127,9 +140,14 @@ Native Method Stack
 
 > Heap and Metaspace are shared among threads, while Stack, PC Register, and Native Method Stack are thread-specific.
 
+</details>
+
 ---
 
 # 4. Heap vs Stack
+
+<details>
+<summary>Show Answer</summary>
 
 | Heap           | Stack                  |
 |----------------|------------------------|
@@ -157,9 +175,14 @@ emp -------------------> Employee Object
 
 > Objects live in Heap, references (local variables) live in Stack.
 
+</details>
+
 ---
 
 # 5. What is Method Area?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Purpose
 
@@ -189,9 +212,14 @@ Stored in Method Area/Metaspace.
 
 > Method Area contains class-related metadata and static members.
 
+</details>
+
 ---
 
 # 6. What is Metaspace?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Java 8+
 
@@ -222,9 +250,14 @@ Metaspace uses native memory and can grow dynamically.
 
 > Metaspace replaced PermGen in Java 8 and stores class metadata outside the Heap.
 
+</details>
+
 ---
 
 # 7. What is Program Counter (PC) Register?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Purpose
 
@@ -254,9 +287,14 @@ Each thread has its own PC Register.
 
 > PC Register helps JVM know which instruction should execute next.
 
+</details>
+
 ---
 
 # 8. What is Native Method Stack?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Purpose
 
@@ -286,9 +324,14 @@ Native Method Stack
 
 > Native Method Stack is used when JVM invokes platform-specific native code.
 
+</details>
+
 ---
 
 # 9. What is Class Loader Subsystem?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Responsibility
 
@@ -332,9 +375,14 @@ Application ClassLoader
 
 > Class Loader dynamically loads classes only when required.
 
+</details>
+
 ---
 
 # 10. What is Execution Engine?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Responsibility
 
@@ -392,9 +440,14 @@ Unused object becomes eligible for GC.
 
 > Execution Engine executes bytecode using Interpreter and JIT Compiler, while GC handles memory cleanup.
 
+</details>
+
 ---
 
 # 11. What is Runtime Constant Pool?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Example
 
@@ -418,9 +471,14 @@ These are loaded into Runtime Constant Pool.
 
 > Runtime Constant Pool is part of Method Area/Metaspace and stores constants used by the class.
 
+</details>
+
 ---
 
 # 12. Which JVM Memory Areas are Shared and Which are Thread-Specific?
+
+<details>
+<summary>Show Answer</summary>
 
 | Memory Area         | Shared/Thread Specific |
 |---------------------|------------------------|
@@ -438,9 +496,14 @@ A very common question:
 > **Shared:** Heap, Metaspace(Method Area)
 > **Thread Specific:** Stack, PC Register, Native Method Stack
 
+</details>
+
 ---
 
 # 13. Typical Interview Diagram of JVM Architecture
+
+<details>
+<summary>Show Answer</summary>
 
 ```text
                     JVM
@@ -489,7 +552,12 @@ Remember this one-liner:
 
 > **Class Loader loads classes → Runtime Data Areas store data → Execution Engine executes bytecode → GC cleans memory → JNI interacts with native code.**
 
+</details>
+
 # 11. What is Parent Delegation Model?
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:**
 
@@ -533,9 +601,14 @@ Loads String.class
 
 > Parent Delegation follows "parent-first" loading. Child ClassLoader loads the class only if parent cannot.
 
+</details>
+
 ---
 
 # 12. Types of Class Loaders
+
+<details>
+<summary>Show Answer</summary>
 
 Java provides three built-in ClassLoaders:
 
@@ -559,9 +632,14 @@ Application CL
 
 > Most application classes are loaded by the Application ClassLoader.
 
+</details>
+
 ---
 
 # 13. What is Bootstrap ClassLoader?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Responsibility
 
@@ -604,9 +682,14 @@ Bootstrap ClassLoader is implemented in native code (C/C++), not Java.
 
 > Bootstrap ClassLoader loads JDK core classes and is represented as null in Java code.
 
+</details>
+
 ---
 
 # 14. What is Platform (Extension) ClassLoader?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Responsibility
 
@@ -648,9 +731,14 @@ Extension ClassLoader
 Platform ClassLoader
 ```
 
+</details>
+
 ---
 
 # 15. What is Application ClassLoader?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Responsibility
 
@@ -685,9 +773,14 @@ jdk.internal.loader.ClassLoaders$AppClassLoader
 
 > User-defined classes are generally loaded by the Application ClassLoader.
 
+</details>
+
 ---
 
 # 16. Explain Complete Class Loading Lifecycle
+
+<details>
+<summary>Show Answer</summary>
 
 ### Lifecycle
 
@@ -724,9 +817,14 @@ Linking
 Initialization
 ```
 
+</details>
+
 ---
 
 # 17. Loading vs Linking vs Initialization
+
+<details>
+<summary>Show Answer</summary>
 
 | Phase          | Purpose                                    |
 |----------------|--------------------------------------------|
@@ -774,9 +872,14 @@ Static Block Executes
 
 > Static blocks execute only during Initialization, not Loading.
 
+</details>
+
 ---
 
 # 18. What is Verification Phase?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Purpose
 
@@ -809,9 +912,14 @@ Java Security Model depends on verification.
 
 > Verification prevents malicious or corrupted bytecode from crashing JVM.
 
+</details>
+
 ---
 
 # 19. What is Resolution Phase?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Purpose
 
@@ -844,9 +952,14 @@ Actual Memory Address
 
 > Resolution replaces symbolic references from the constant pool with actual runtime references.
 
+</details>
+
 ---
 
 # 20. Explain JVM Execution Flow
+
+<details>
+<summary>Show Answer</summary>
 
 ### Example
 
@@ -910,41 +1023,71 @@ Object becomes unreachable
 Garbage Collector reclaims memory
 ```
 
+</details>
+
 ---
 
 # 5–8 Year Interview Rapid-Fire Questions
 
 ### Q: Which ClassLoader loads String class?
 
+<details>
+<summary>Show Answer</summary>
+
 **Answer:** Bootstrap ClassLoader
+
+</details>
 
 ---
 
 ### Q: Why is Bootstrap ClassLoader shown as null?
 
+<details>
+<summary>Show Answer</summary>
+
 **Answer:** Because it is implemented in native code, not Java.
+
+</details>
 
 ---
 
 ### Q: Which phase allocates memory for static variables?
 
+<details>
+<summary>Show Answer</summary>
+
 **Answer:** Preparation phase (part of Linking)
+
+</details>
 
 ---
 
 ### Q: Which phase executes static blocks?
 
+<details>
+<summary>Show Answer</summary>
+
 **Answer:** Initialization phase
+
+</details>
 
 ---
 
 ### Q: Which phase converts symbolic references to actual references?
 
+<details>
+<summary>Show Answer</summary>
+
 **Answer:** Resolution phase
+
+</details>
 
 ---
 
 ### Q: What is the order of class loading lifecycle?
+
+<details>
+<summary>Show Answer</summary>
 
 ```text
 Loading
@@ -954,8 +1097,17 @@ Linking
 Initialization
 ```
 
+</details>
+
 ---
 
 ### Q: Why is Parent Delegation important?
 
+<details>
+<summary>Show Answer</summary>
+
 **Answer:** Prevents duplicate loading and protects core Java classes from being replaced by malicious classes.
+
+</details>
+
+---

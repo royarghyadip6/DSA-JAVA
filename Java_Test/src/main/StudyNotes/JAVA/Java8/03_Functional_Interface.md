@@ -526,6 +526,8 @@ Be ready for:
 ### ❓ Can a functional interface have multiple methods?
 
 <details>
+<summary>Answer</summary>
+
 👉 Yes (but only one abstract)
 </details>
 
@@ -533,25 +535,37 @@ Be ready for:
 
 ### ❓ Is `Runnable` a functional interface?
 
-<details>👉 Yes (one abstract method `run()`)</details>
+<details>
+<summary>Answer</summary>
+
+👉 Yes (one abstract method `run()`)</details>
 
 ---
 
 ### ❓ Why do we need functional interfaces?
 
-<details>👉 To support Lambda expressions </details>
+<details>
+<summary>Answer</summary>
+
+👉 To support Lambda expressions </details>
 
 ---
 
 ### ❓ Can we create our own functional interfaces?
 
-<details> 👉 Yes </details>
+<details>
+<summary>Answer</summary>
+
+👉 Yes </details>
 
 ---
 
 ### ❓ What happens if 2 abstract methods exist?
 
-<details> 👉 Compilation error if annotated with @FunctionalInterface. Without annotation Compilation works fine because there can have multiple abstract method in normal interface.</details>
+<details>
+<summary>Answer</summary>
+
+👉 Compilation error if annotated with @FunctionalInterface. Without annotation Compilation works fine because there can have multiple abstract method in normal interface.</details>
 
 ---
 
@@ -569,7 +583,9 @@ interface Test {
 }
 ```
 
-<details> 
+<details>
+<summary>Answer</summary>
+
 👉 Still valid!
 Because `toString()` belongs to `Object`
 </details>
@@ -852,7 +868,8 @@ public class PrimitiveInterfaceDemo {
 
 ## ❓ 1. Can a functional interface have multiple methods?
 
-<details> 
+<details>
+<summary>Answer</summary>
 
 👉 **Answer: YES**
 
@@ -875,7 +892,8 @@ interface Test {
 }
 ```
 
-<details> 
+<details>
+<summary>Answer</summary>
 
 👉 **Answer: YES ✅**
 
@@ -903,7 +921,8 @@ interface C extends A, B {
 }
 ```
 
-<details> 
+<details>
+<summary>Answer</summary>
 
 👉 **Answer: YES ✅**
 
@@ -931,7 +950,8 @@ interface C extends A, B {
 }
 ```
 
-<details> 
+<details>
+<summary>Answer</summary>
 
 👉 **Answer: NOT a functional interface ❌**
 
@@ -950,7 +970,8 @@ interface Test {
 }
 ```
 
-<details> 
+<details>
+<summary>Answer</summary>
 
 👉 **Answer: NO ❌**
 
@@ -962,7 +983,8 @@ interface Test {
 
 ## ❓ 6. Can we override default methods in functional interface?
 
-<details> 
+<details>
+<summary>Answer</summary>
 
 👉 **Answer: YES ✅**
 
@@ -999,7 +1021,8 @@ class C implements A, B {
 }
 ```
 
-<details> 
+<details>
+<summary>Answer</summary>
 
 👉 **Answer: Compilation Error ❌**
 
@@ -1017,7 +1040,8 @@ public void show() {
 
 ## ❓ 8. Can Lambda work without functional interface?
 
-<details> 
+<details>
+<summary>Answer</summary>
 
 👉 **Answer: NO ❌**
 
@@ -1035,7 +1059,8 @@ public void show() {
 Predicate<String> p = s -> s.length();
 ```
 
-<details> 
+<details>
+<summary>Answer</summary>
 
 👉 **Answer: INVALID ❌**
 
@@ -1050,7 +1075,8 @@ Predicate<String> p = s -> s.length();
 
 ## ❓ 10. Difference: Function vs Predicate?
 
-<details> 
+<details>
+<summary>Answer</summary>
 
 👉 **Answer:**
 
@@ -1071,7 +1097,8 @@ Function<Integer, Integer> f = x -> x * 2;
 System.out.println(f.andThen(x -> x + 3).apply(5));
 ```
 
-<details> 
+<details>
+<summary>Answer</summary>
 
 👉 **Answer: 13**
 
@@ -1091,7 +1118,8 @@ Function<Integer, Integer> f = x -> x * 2;
 System.out.println(f.compose(x -> x + 3).apply(5));
 ```
 
-<details> 
+<details>
+<summary>Answer</summary>
 
 👉 **Answer: 16**
 
@@ -1111,7 +1139,8 @@ Predicate<String> p = s -> s.isEmpty();
 p.test(null);
 ```
 
-<details> 
+<details>
+<summary>Answer</summary>
 
 👉 **Answer: Runtime Exception ❌**
 
@@ -1123,7 +1152,8 @@ p.test(null);
 
 ## ❓ 14. Supplier vs Callable?
 
-<details> 
+<details>
+<summary>Answer</summary>
 
 👉 **Answer:**
 
@@ -1139,7 +1169,8 @@ p.test(null);
 
 ## ❓ 15. Why do we have primitive functional interfaces?
 
-<details> 
+<details>
+<summary>Answer</summary>
 
 👉 **Answer:**
 To avoid:
@@ -1156,7 +1187,8 @@ IntPredicate p = x -> x % 2 == 0;
 
 ## ❓ 16. Is Runnable a functional interface?
 
-<details> 
+<details>
+<summary>Answer</summary>
 
 👉 **Answer: YES ✅**
 
@@ -1170,7 +1202,8 @@ void run();
 
 ## ❓ 17. Can a functional interface extend another functional interface?
 
-<details> 
+<details>
+<summary>Answer</summary>
 
 👉 **Answer: YES ✅**
 
@@ -1190,7 +1223,8 @@ interface Test {
 }
 ```
 
-<details> 
+<details>
+<summary>Answer</summary>
 
 👉 **Answer: VALID ✅** 
 
@@ -1200,7 +1234,8 @@ interface Test {
 
 ## ❓ 19. Can a functional interface have constructors?
 
-<details> 
+<details>
+<summary>Answer</summary>
 
 👉 **Answer: NO ❌**
 
@@ -1217,7 +1252,8 @@ Function<Integer, Boolean>
 Predicate<Integer>
 ```
 
-<details> 
+<details>
+<summary>Answer</summary>
 
 👉 **Answer: Predicate**
 
@@ -1992,6 +2028,7 @@ f.andThen(g).apply(2)
 4. [ ] D. 10
 
 <details>
+<summary>Answer</summary>
 
 👉 **Answer: B (12)**
 
@@ -2016,6 +2053,7 @@ f.compose(g).apply(2)
 4. [ ] D. 10
 
 <details>
+<summary>Answer</summary>
 
 👉 **Answer: A (8)**
 
@@ -2040,6 +2078,7 @@ g.andThen(f).apply(2)
 4. [ ] D. 12
 
 <details>
+<summary>Answer</summary>
 
 👉 **Answer: A (8)**
 
@@ -2065,6 +2104,7 @@ f.andThen(g).compose(h).apply(6)
 4. [ ] D. 30
 
 <details>
+<summary>Answer</summary>
 
 👉 **Answer: A (24)**
 
@@ -2102,6 +2142,7 @@ f.compose(g).andThen(h).apply(2)
 4. [ ] D. 8
 
 <details>
+<summary>Answer</summary>
 
 👉 **Answer: B (4)**
 
@@ -2129,6 +2170,7 @@ k.compose(f).andThen(g).apply(2)
 4. [ ] D. 18
 
 <details>
+<summary>Answer</summary>
 
 👉 **Answer: A (48)**
 
@@ -2156,6 +2198,7 @@ k.andThen(f).compose(g).apply(2)
 4. [ ] D. 34
 
 <details>
+<summary>Answer</summary>
 
 👉 **Answer: A (38)**
 
@@ -2183,6 +2226,7 @@ f.compose(g.compose(h)).apply(6)
 4. [ ] D. 6
 
 <details>
+<summary>Answer</summary>
 
 👉 **Answer: B (10)**
 
@@ -2218,6 +2262,7 @@ f.andThen(g.andThen(h)).apply(2)
 4. [ ] D. 10
 
 <details>
+<summary>Answer</summary>
 
 👉 **Answer: A (2)**
 
@@ -2250,6 +2295,7 @@ f.andThen(g).andThen(h).compose(k).apply(2)
 4. [ ] D. 16
 
 <details>
+<summary>Answer</summary>
 
 👉 **Answer: B (18)**
 
@@ -2302,6 +2348,7 @@ You receive a user input:
 * Add prefix `"user_"`
 
 <details>
+<summary>Answer</summary>
 
 ### ✅ Solution using `andThen()`
 
@@ -2337,6 +2384,7 @@ Because execution is **left → right (natural flow)**
 * Then append `"@gmail.com"`
 
 <details>
+<summary>Answer</summary>
 
 ### ✅ Solution using `compose()` + `andThen()`
 
@@ -2372,6 +2420,7 @@ System.out.println(result.apply("john"));
 * Round value
 
 <details>
+<summary>Answer</summary>
 
 ### ✅ Solution
 
@@ -2403,6 +2452,7 @@ System.out.println(finalPrice.apply(100.0));
 * Log output
 
 <details>
+<summary>Answer</summary>
 
 ### ✅ Solution
 
@@ -2436,6 +2486,7 @@ pipeline.apply(5);
 * Convert to DTO
 
 <details>
+<summary>Answer</summary>
 
 ### ✅ Solution
 
@@ -2463,6 +2514,7 @@ System.out.println(apiFlow.apply("{name:john}"));
 * Then perform transformations
 
 <details>
+<summary>Answer</summary>
 
 ### ✅ Solution
 
@@ -2494,6 +2546,7 @@ System.out.println(result.apply("john123"));
 Create reusable transformations and combine dynamically
 
 <details>
+<summary>Answer</summary>
 
 ### ✅ Solution
 
@@ -2521,6 +2574,7 @@ System.out.println(flow2.apply(5)); // 20
 Wrap function with error handling
 
 <details>
+<summary>Answer</summary>
 
 ### ✅ Solution
 
@@ -2550,6 +2604,7 @@ System.out.println(pipeline.apply(0)); // -2
 Apply reusable function pipeline inside stream
 
 <details>
+<summary>Answer</summary>
 
 ### ✅ Solution
 
@@ -2588,6 +2643,7 @@ System.out.println(result.apply(5));
 ```
 
 <details>
+<summary>Answer</summary>
 
 ### ✅ Solution Breakdown
 

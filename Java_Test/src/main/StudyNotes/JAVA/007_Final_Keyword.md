@@ -1,5 +1,8 @@
 # 1. What is a `final` Variable?
 
+<details>
+<summary>Show Answer</summary>
+
 **Answer:**
 
 A `final` variable can be assigned a value only once.
@@ -29,9 +32,14 @@ class Employee {
 
 > A final variable must be initialized exactly once—either during declaration, instance initialization, or constructor execution.
 
+</details>
+
 ---
 
 # 2. What is a `final` Method?
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:**
 
@@ -63,9 +71,14 @@ class Child extends Parent {
 
 > Final methods are inherited but cannot be overridden.
 
+</details>
+
 ---
 
 # 3. What is a `final` Class?
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:**
 
@@ -94,9 +107,14 @@ Character
 
 > Final classes are often used when inheritance could break security or immutability.
 
+</details>
+
 ---
 
 # 4. Why is String Final?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Declaration
 
@@ -148,9 +166,14 @@ Both can safely share the same pooled object because String cannot be modified.
 
 > String is final mainly to guarantee immutability, security, and String Pool optimization.
 
+</details>
+
 ---
 
 # 5. Can a Final Reference Object Be Modified?
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:** ✅ Yes
 
@@ -188,9 +211,14 @@ final StringBuilder sb = new StringBuilder("Java");
 
 > Final restricts reference reassignment, not object mutation.
 
+</details>
+
 ---
 
 # 6. Difference Between `final` and Immutable
+
+<details>
+<summary>Show Answer</summary>
 
 | final                              | Immutable                  |
 |------------------------------------|----------------------------|
@@ -232,9 +260,14 @@ Java
 
 > `final` reference ≠ immutable object.
 
+</details>
+
 ---
 
 # 7. Why Must Local Variables Used in Lambda Be Effectively Final?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Example
 
@@ -284,9 +317,14 @@ If modifications were allowed, consistency issues would occur.
 
 > Lambdas capture values, not local variables themselves. Therefore local variables must be final or effectively final.
 
+</details>
+
 ---
 
 # 8. How Does JVM Optimize Final Variables?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Example
 
@@ -335,9 +373,14 @@ Compiler may inline the value directly.
 
 > Final constants allow compile-time optimizations such as constant folding and inlining.
 
+</details>
+
 ---
 
 # 9. Can Final Fields Change Through Reflection?
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:** ⚠️ Yes, in some cases.
 
@@ -382,3 +425,5 @@ Recent Java versions have stronger restrictions around reflective access, especi
 ### Interview Point
 
 > Although `final` prevents normal code from modifying a field, reflection can bypass access checks and potentially modify it, which is one reason reflection should be used carefully.
+
+</details>

@@ -1,5 +1,8 @@
 # 1. What is a Static Variable?
 
+<details>
+<summary>Show Answer</summary>
+
 **Answer:**
 
 A static variable belongs to the **class**, not to individual objects.
@@ -48,9 +51,14 @@ e2
 
 > Static variables are commonly used for constants, counters, and shared configuration.
 
+</details>
+
 ---
 
 # 2. What is a Static Method?
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:**
 
@@ -85,9 +93,14 @@ public class Test {
 
 > Static methods are used for utility/helper methods because they don't depend on object state.
 
+</details>
+
 ---
 
 # 3. Why is `main()` Static?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Signature
 
@@ -115,9 +128,14 @@ To avoid this dependency, `main()` is made static.
 
 > `main()` is static so that JVM can invoke it directly using the class name without creating an object.
 
+</details>
+
 ---
 
 # 4. Can a Static Method Access Instance Variables?
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:** ❌ Directly No
 
@@ -166,9 +184,14 @@ class Employee {
 
 > A static method can access instance members only through an object reference.
 
+</details>
+
 ---
 
 # 5. Can a Static Method be Overridden?
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:** ❌ No
 
@@ -218,9 +241,14 @@ Compiler chooses `Parent.show()`.
 
 > Static methods use static binding (compile-time binding), so runtime polymorphism does not apply.
 
+</details>
+
 ---
 
 # 6. Can a Static Block be Overloaded?
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:** ❌ No
 
@@ -254,9 +282,14 @@ Block 2
 
 > A class can have multiple static blocks, executed in the order they appear.
 
+</details>
+
 ---
 
 # 7. Static Block vs Instance Block
+
+<details>
+<summary>Show Answer</summary>
 
 | Static Block                       | Instance Block                         |
 |------------------------------------|----------------------------------------|
@@ -303,9 +336,14 @@ Constructor
 
 > Static block executes once per class loading, instance block executes for every object creation.
 
+</details>
+
 ---
 
 # 8. Order of Execution
+
+<details>
+<summary>Show Answer</summary>
 
 ### Example
 
@@ -393,7 +431,12 @@ Constructors
 >
 > **Parent Static → Child Static → Parent Instance → Parent Constructor → Child Instance → Child Constructor**.
 
+</details>
+
 # 9. What is a Static Nested Class?
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:**
 
@@ -434,9 +477,14 @@ Static Nested Class
 
 > A static nested class behaves like a normal class logically grouped inside another class.
 
+</details>
+
 ---
 
 # 10. Use Cases of Static Nested Class
+
+<details>
+<summary>Show Answer</summary>
 
 ### 1. Builder Pattern (Very Common)
 
@@ -501,9 +549,14 @@ No Outer object required.
 
 > Static nested classes are commonly used in Builder Design Pattern and for logically grouping helper classes.
 
+</details>
+
 ---
 
 # 11. Memory Allocation of Static Members
+
+<details>
+<summary>Show Answer</summary>
 
 ### Example
 
@@ -552,9 +605,14 @@ shared by all objects.
 
 > Static members are loaded when the class is loaded and shared by all instances.
 
+</details>
+
 ---
 
 # 12. When Does a Static Block Execute?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Answer
 
@@ -611,9 +669,14 @@ Class.forName("Test");
 
 > Static blocks execute during class initialization, not object creation.
 
+</details>
+
 ---
 
 # 13. Explain Class Loading Process
+
+<details>
+<summary>Show Answer</summary>
 
 ### Example
 
@@ -693,9 +756,14 @@ Initialization
 
 > Static blocks execute in the Initialization phase of class loading.
 
+</details>
+
 ---
 
 # 14. What Happens if a Static Block Throws Exception?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Example
 
@@ -749,9 +817,14 @@ because JVM marks the class initialization as failed.
 
 > Any unchecked exception from a static block causes `ExceptionInInitializerError`.
 
+</details>
+
 ---
 
 # 15. How Many Times Does a Static Block Execute?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Answer
 
@@ -809,3 +882,5 @@ Static block executes once, constructors execute three times.
 ### Interview Point
 
 > A static block executes once per class loading. If a different ClassLoader loads the same class, the static block can execute again for that ClassLoader.
+
+</details>

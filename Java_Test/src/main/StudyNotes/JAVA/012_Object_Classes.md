@@ -1,5 +1,8 @@
 # 1. Why Override `equals()`?
 
+<details>
+<summary>Show Answer</summary>
+
 ### Default Behavior
 
 `Object.equals()` compares memory addresses (references).
@@ -63,9 +66,14 @@ true
 
 > We override equals() when logical equality is more important than reference equality.
 
+</details>
+
 ---
 
 # 2. Why Override `hashCode()`?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Purpose
 
@@ -99,9 +107,14 @@ then both must generate the same hashCode.
 
 > hashCode() improves lookup performance and must be consistent with equals().
 
+</details>
+
 ---
 
 # 3. Contract Between `equals()` and `hashCode()`
+
+<details>
+<summary>Show Answer</summary>
 
 ### Rule 1
 
@@ -151,9 +164,14 @@ public int hashCode() {
 
 > Equal objects must have equal hashCodes, but equal hashCodes do not guarantee equality.
 
+</details>
+
 ---
 
 # 4. What Happens if `equals()` is Overridden but `hashCode()` is Not?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Example
 
@@ -212,9 +230,14 @@ Different hash buckets are searched.
 
 > Overriding equals() without hashCode() breaks HashMap/HashSet behavior.
 
+</details>
+
 ---
 
 # 5. Difference Between `==` and `equals()`
+
+<details>
+<summary>Show Answer</summary>
 
 | ==                     | equals()                          |
 |------------------------|-----------------------------------|
@@ -244,9 +267,14 @@ true
 
 > `==` checks whether two references point to the same object, while equals() checks logical equality.
 
+</details>
+
 ---
 
 # 6. Important Methods in Object Class
+
+<details>
+<summary>Show Answer</summary>
 
 Every class implicitly extends:
 
@@ -272,9 +300,14 @@ java.lang.Object
 
 > Object class is the root class of Java's inheritance hierarchy.
 
+</details>
+
 ---
 
 # 7. What is `clone()`?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Purpose
 
@@ -305,9 +338,14 @@ Employee e2 = (Employee) e1.clone();
 
 > clone() creates a field-by-field copy of an object.
 
+</details>
+
 ---
 
 # 8. What is `finalize()`?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Purpose
 
@@ -341,9 +379,14 @@ AutoCloseable
 
 > finalize() should be avoided in modern Java.
 
+</details>
+
 ---
 
 # 9. What are `wait()`, `notify()`, and `notifyAll()`?
+
+<details>
+<summary>Show Answer</summary>
 
 Used for thread communication.
 
@@ -385,9 +428,14 @@ synchronized(lock) {
 
 > These methods belong to Object because every object can act as a monitor lock.
 
+</details>
+
 ---
 
 # 10. How Does HashMap Use `hashCode()` and `equals()` Internally?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Put Operation
 
@@ -458,9 +506,14 @@ HashMap:
 
 > HashMap uses hashCode() to find the bucket and equals() to identify the correct key within that bucket.
 
+</details>
+
 ---
 
 # 11. Can Two Unequal Objects Have the Same hashCode()?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Answer
 
@@ -506,9 +559,14 @@ false
 
 > Hash collisions are allowed and handled by HashMap using equals().
 
+</details>
+
 ---
 
 # 12. Can Two Equal Objects Have Different hashCodes()?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Answer
 
@@ -547,17 +605,27 @@ will behave incorrectly.
 
 > Equal objects with different hashCodes violate the equals-hashCode contract.
 
+</details>
+
 ---
 
 # 5–8 Year Interview Rapid Fire
 
 ### Q: Which method should be overridden along with equals()?
 
+<details>
+<summary>Show Answer</summary>
+
 **Answer:** `hashCode()`
+
+</details>
 
 ---
 
 ### Q: Does HashMap call equals() first?
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:** No.
 
@@ -569,15 +637,25 @@ Bucket Selection
 equals()
 ```
 
+</details>
+
 ---
 
 ### Q: Why does Object class have wait/notify methods?
 
+<details>
+<summary>Show Answer</summary>
+
 **Answer:** Because every object can act as a monitor lock.
+
+</details>
 
 ---
 
 ### Q: Can hashCode values be negative?
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:** Yes.
 
@@ -587,9 +665,14 @@ int hashCode()
 
 returns any integer.
 
+</details>
+
 ---
 
 ### Q: Root class of Java?
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:**
 
@@ -597,8 +680,15 @@ returns any integer.
 java.lang.Object
 ```
 
+</details>
+
 ---
+
+<details>
+<summary>Show Answer</summary>
 
 ### Interview One-Liner
 
 > HashMap relies on both hashCode() and equals(). hashCode() determines the bucket, and equals() identifies the exact object within that bucket. Therefore, whenever equals() is overridden, hashCode() must also be overridden to maintain the contract and ensure correct collection behavior.
+
+</details>

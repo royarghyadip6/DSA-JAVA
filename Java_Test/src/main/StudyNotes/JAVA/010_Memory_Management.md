@@ -1,5 +1,8 @@
 # 1. Stack Memory vs Heap Memory
 
+<details>
+<summary>Show Answer</summary>
+
 | Stack Memory                             | Heap Memory                  |
 |------------------------------------------|------------------------------|
 | Stores local variables and method frames | Stores objects               |
@@ -34,9 +37,14 @@ emp ------------------> Employee Object
 
 > Local variables live in Stack, objects live in Heap.
 
+</details>
+
 ---
 
 # 2. What Causes Memory Leak in Java?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Definition
 
@@ -78,9 +86,14 @@ GC cannot remove them.
 
 > Memory leak in Java means unnecessary object retention, not lost memory like C/C++.
 
+</details>
+
 ---
 
 # 3. Is Java Completely Free from Memory Leaks?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Answer
 
@@ -115,9 +128,14 @@ GC Cannot Remove
 
 > Java is not completely free from memory leaks because reachable but unused objects can still consume memory.
 
+</details>
+
 ---
 
 # 4. What is OutOfMemoryError (OOM)?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Definition
 
@@ -146,9 +164,14 @@ Java heap space
 
 > OOM is an Error, not an Exception, because JVM cannot safely recover from it.
 
+</details>
+
 ---
 
 # 5. Different Types of OutOfMemoryError
+
+<details>
+<summary>Show Answer</summary>
 
 ## Java Heap Space
 
@@ -207,9 +230,14 @@ Off-heap memory exhausted.
 
 > Most commonly seen OOMs are Heap Space and Metaspace.
 
+</details>
+
 ---
 
 # 6. What are Heap Generations?
+
+<details>
+<summary>Show Answer</summary>
 
 Heap is divided to optimize GC.
 
@@ -238,9 +266,14 @@ Weak Generational Hypothesis
 
 > Heap generations reduce GC cost by treating short-lived and long-lived objects differently.
 
+</details>
+
 ---
 
 # 7. What is Young Generation?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Purpose
 
@@ -270,9 +303,14 @@ Eden Space
 
 > Every newly created object starts in Young Generation.
 
+</details>
+
 ---
 
 # 8. What is Eden Space?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Purpose
 
@@ -307,9 +345,14 @@ Eden Space
 
 > Most objects die in Eden Space before reaching Old Generation.
 
+</details>
+
 ---
 
 # 9. What is Survivor Space?
+
+<details>
+<summary>Show Answer</summary>
 
 Young Generation contains:
 
@@ -339,9 +382,14 @@ Old Generation
 
 > Survivor spaces act as temporary holding areas for surviving objects.
 
+</details>
+
 ---
 
 # 10. What is Old Generation?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Purpose
 
@@ -372,9 +420,14 @@ Old Gen
 
 > Objects surviving multiple Minor GCs are promoted to Old Generation.
 
+</details>
+
 ---
 
 # 11. Minor GC
+
+<details>
+<summary>Show Answer</summary>
 
 ### Definition
 
@@ -401,9 +454,14 @@ Live Objects → Survivor
 
 > Minor GC cleans Eden and Survivor spaces.
 
+</details>
+
 ---
 
 # 12. Major GC
+
+<details>
+<summary>Show Answer</summary>
 
 ### Definition
 
@@ -426,9 +484,14 @@ Major GC
 
 > Major GC targets long-lived objects in Old Generation.
 
+</details>
+
 ---
 
 # 13. Full GC
+
+<details>
+<summary>Show Answer</summary>
 
 ### Definition
 
@@ -488,9 +551,14 @@ Full GC
 
 These are very common **real-world production interview questions** for 6–8 years experienced Java developers. Interviewers usually expect practical answers rather than textbook definitions.
 
+</details>
+
 ---
 
 # 14. Explain Memory Leak from HashMap
+
+<details>
+<summary>Show Answer</summary>
 
 ### Problem
 
@@ -567,9 +635,14 @@ for custom keys.
 
 > HashMap memory leaks usually happen when entries are never removed due to improper key design, causing objects to remain strongly referenced and preventing garbage collection.
 
+</details>
+
 ---
 
 # 15. Explain Memory Leak in Listener Registration
+
+<details>
+<summary>Show Answer</summary>
 
 ### Problem
 
@@ -643,9 +716,14 @@ WeakReference
 
 > Listener leaks occur when publishers keep references to listeners after they are no longer needed, preventing garbage collection.
 
+</details>
+
 ---
 
 # 16. Explain Memory Leak in ThreadLocal
+
+<details>
+<summary>Show Answer</summary>
 
 ### Very Important Interview Question
 
@@ -716,9 +794,14 @@ try {
 
 > ThreadLocal leaks are common in thread pools because worker threads live much longer than individual requests.
 
+</details>
+
 ---
 
 # 17. Heap Dump Analysis Experience?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Interview-Ready Answer
 
@@ -764,9 +847,14 @@ GC Roots
 MAT
 ```
 
+</details>
+
 ---
 
 # 18. How Did You Solve a Memory Issue in Production?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Sample Answer (Very Strong)
 
@@ -805,3 +893,5 @@ Production Verification
 ### One-Liner for Interview
 
 > When diagnosing memory issues, I usually start with JVM metrics and GC behavior, then capture a heap dump, analyze retained objects and GC roots using Eclipse MAT, identify the retaining reference chain, implement the fix, and validate it through load testing before deployment.
+
+</details>

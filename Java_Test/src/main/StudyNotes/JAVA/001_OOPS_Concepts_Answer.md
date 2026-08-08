@@ -1,13 +1,21 @@
 # 1. What are the Four Pillars of OOP?
 
+<details>
+<summary>Show Answer</summary>
+
 1. **Encapsulation** – Binding data and methods together and restricting direct access to data.
 2. **Abstraction** – Hiding implementation details and showing only essential functionality.
 3. **Inheritance** – Acquiring properties and behaviors from a parent class.
 4. **Polymorphism** – One entity, multiple forms.
 
+</details>
+
 ---
 
 # 2. Difference between Abstraction and Encapsulation
+
+<details>
+<summary>Show Answer</summary>
 
 | Abstraction                                    | Encapsulation                                        |
 |------------------------------------------------|------------------------------------------------------|
@@ -38,9 +46,14 @@ class Employee {
 }
 ```
 
+</details>
+
 ---
 
 # 3. Difference between Abstraction and Interface
+
+<details>
+<summary>Show Answer</summary>
 
 | Feature                      | Abstract Class (Before Java 8) | Interface (Before Java 8)            | Abstract Class (Java 8+)    | Interface (Java 8+)                                |
 |------------------------------|--------------------------------|--------------------------------------|-----------------------------|----------------------------------------------------|
@@ -55,14 +68,18 @@ class Employee {
 | Method Implementation        | Can have implementation        | Cannot have implementation           | Can have implementation     | Can have implementation via `default` methods      |
 | Inheritance Keyword          | `extends`                      | `implements`                         | `extends`                   | `implements`                                       |
 
-
 **Interview Answer:**
 
 > Abstraction is a concept, whereas Interface is a mechanism provided by Java to implement abstraction.
 
+</details>
+
 ---
 
 # 4. Difference between Inheritance and Composition
+
+<details>
+<summary>Show Answer</summary>
 
 | Inheritance             | Composition             |
 |-------------------------|-------------------------|
@@ -92,9 +109,14 @@ class Car {
 
 > Composition is generally preferred over inheritance because it provides better flexibility and lower coupling.
 
+</details>
+
 ---
 
 # 5. What is Polymorphism?
+
+<details>
+<summary>Show Answer</summary>
 
 Polymorphism means **one interface, multiple forms**.
 
@@ -106,9 +128,14 @@ Types of polymorphism:
 
 2. **Runtime Polymorphism (Method Overriding)** – Happens when a subclass provides a specific implementation for a method declared in its superclass. The actual method that gets executed is determined at runtime based on the object's actual type (dynamic binding). This requires inheritance and non-static, non-final methods.
 
+</details>
+
 ---
 
 # 6. Compile-Time vs Runtime Polymorphism
+
+<details>
+<summary>Show Answer</summary>
 
 | Compile-Time        | Runtime                   |
 |---------------------|---------------------------|
@@ -133,9 +160,14 @@ Animal a = new Dog();
 a.sound();
 ```
 
+</details>
+
 ---
 
 # 7. Method Overloading vs Method Overriding
+
+<details>
+<summary>Show Answer</summary>
 
 | Overloading                                                                   | Overriding                         |
 |-------------------------------------------------------------------------------|------------------------------------|
@@ -183,9 +215,14 @@ Animal animal = new Dog();
 animal.sound(); // Runtime decides which method to call
 ```
 
+</details>
+
 ---
 
 # 8. Can We Overload main() Method?
+
+<details>
+<summary>Show Answer</summary>
 
 **Yes.**
 
@@ -214,9 +251,14 @@ JVM calls this method
 Overloaded main(): 100
 ```
 
+</details>
+
 ---
 
 # 9. Can We Override Static Methods?
+
+<details>
+<summary>Show Answer</summary>
 
 **No.** Static methods belong to the class, not the object.
 
@@ -258,9 +300,14 @@ Parent
 
 > Static methods are resolved at compile time, so they cannot participate in runtime polymorphism.
 
+</details>
+
 ---
 
 # 10. Can We Override Private Methods?
+
+<details>
+<summary>Show Answer</summary>
 
 **No.** Private methods are not inherited by child classes.
 
@@ -284,9 +331,14 @@ This is a new method in `Child`, not an overridden method.
 
 > Since private methods are not visible outside their class, they are not inherited and therefore cannot be overridden.
 
+</details>
+
 ---
 
 # 11. Why is Composition Preferred Over Inheritance?
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:**
 Composition is preferred because it provides **loose coupling** and **better flexibility**. With composition, behavior can be changed at runtime by replacing dependent objects, whereas inheritance creates a strong dependency between parent and child.
@@ -321,9 +373,14 @@ class Car {
 
 > "Favor Composition over Inheritance" is a common design principle because it improves maintainability and flexibility.
 
+</details>
+
 ---
 
 # 12. What is the IS-A Relationship?
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:**
 IS-A represents **Inheritance**. A child class is a specialized version of a parent class.
@@ -348,9 +405,14 @@ Dog IS-A Animal
 
 > Use inheritance only when a true IS-A relationship exists.
 
+</details>
+
 ---
 
 # 13. What is the HAS-A Relationship?
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:**
 HAS-A represents **Composition/Aggregation**, where one class contains another class as a member.
@@ -374,9 +436,14 @@ class Car {
 Car HAS-A Engine
 ```
 
+</details>
+
 ---
 
 # 14. What is Tight Coupling?
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:**
 Tight coupling means one class is heavily dependent on another class's implementation. Changes in one class may require changes in another.
@@ -406,9 +473,14 @@ class UserService {
 * Difficult to replace implementation
 * Less maintainable
 
+</details>
+
 ---
 
 # 15. What is Loose Coupling?
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:**
 Loose coupling means classes depend on abstractions (interfaces) rather than concrete implementations.
@@ -450,9 +522,14 @@ class UserService {
 
 > Spring Framework promotes loose coupling through Dependency Injection.
 
+</details>
+
 ---
 
 # 16. What is Association?
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:**
 Association is a relationship where two independent objects are connected and can interact with each other.
@@ -480,9 +557,14 @@ Teacher and Student are associated.
 
 > Association is the broadest relationship; Aggregation and Composition are specialized forms of Association.
 
+</details>
+
 ---
 
 # 17. Difference Between Association, Aggregation and Composition
+
+<details>
+<summary>Show Answer</summary>
 
 | Feature               | Association  | Aggregation    | Composition      |
 |-----------------------|--------------|----------------|------------------|
@@ -556,9 +638,14 @@ Aggregation → Weak HAS-A
 Composition → Strong HAS-A
 ```
 
+</details>
+
 ---
 
 # 18. What is Covariant Return Type?
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:**
 Covariant return type allows an overridden method to return a subtype of the original return type.
@@ -592,9 +679,14 @@ class Child extends Parent {
 
 > Introduced in Java 5 to make overriding more flexible.
 
+</details>
+
 ---
 
 # 19. Can Constructors Be Inherited?
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:**
 No.
@@ -621,9 +713,14 @@ class Child extends Parent {
 
 Even though Parent's constructor executes, it is **not inherited**.
 
+</details>
+
 ---
 
 # 20. Why Can't Constructors Be Overridden?
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:**
 Constructors cannot be overridden because:
@@ -667,9 +764,14 @@ Child Constructor
 
 > Constructors participate in constructor chaining using `super()`, but they do not participate in method overriding.
 
+</details>
+
 ---
 
 # 21. Explain Real-Life Use of Polymorphism in Your Project
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:**
 
@@ -710,9 +812,14 @@ private PaymentService paymentService;
 
 > In my projects, polymorphism is commonly used through interfaces and Spring Dependency Injection. The application depends on the interface, and Spring injects the required implementation at runtime, making the code loosely coupled and easy to maintain.
 
+</details>
+
 ---
 
 # 22. How Does Dynamic Method Dispatch Work Internally?
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:**
 
@@ -758,9 +865,14 @@ Dog Barks
 
 > Method call is determined at runtime using the actual object type, not the reference type.
 
+</details>
+
 ---
 
 # 23. What Happens if Parent and Child Contain Same Field Name?
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:**
 
@@ -826,9 +938,14 @@ Child
 
 > Variables follow reference type (static binding), methods follow object type (dynamic binding).
 
+</details>
+
 ---
 
 # 24. Why Java Doesn't Support Multiple Inheritance Through Classes?
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:**
 
@@ -882,9 +999,14 @@ class C implements A, B {
 
 > Java supports multiple inheritance through interfaces but not through classes to avoid the Diamond Problem.
 
+</details>
+
 ---
 
 # 25. How Does JVM Resolve Overridden Methods?
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:**
 
@@ -941,3 +1063,5 @@ Child
 **Interview Point:**
 
 > Overridden methods are resolved using dynamic binding at runtime, which is the foundation of runtime polymorphism.
+
+</details>

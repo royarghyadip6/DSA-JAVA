@@ -1,5 +1,8 @@
 # 1. Difference Between Abstract Class and Interface
 
+<details>
+<summary>Show Answer</summary>
+
 ## Before Java 8
 
 | Feature                    | Abstract Class          | Interface                  |
@@ -28,9 +31,14 @@
 
 > Use an Interface for a contract and multiple implementations. Use an Abstract Class when classes share common state and behavior.
 
+</details>
+
 ---
 
 # 2. When Would You Use an Interface?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Use When
 
@@ -66,9 +74,14 @@ Different implementations can be injected without changing client code.
 
 > Interfaces are heavily used in Spring applications for loose coupling.
 
+</details>
+
 ---
 
 # 3. When Would You Use an Abstract Class?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Use When
 
@@ -100,9 +113,14 @@ abstract class Employee {
 
 > Abstract classes are preferred when multiple subclasses share common implementation and state.
 
+</details>
+
 ---
 
 # 4. Can an Abstract Class Have a Constructor?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Answer
 
@@ -136,9 +154,14 @@ Employee Constructor
 
 Constructors initialize common state of child objects.
 
+</details>
+
 ---
 
 # 5. Can an Abstract Class Have Static Methods?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Answer
 
@@ -163,9 +186,14 @@ Employee.companyInfo();
 
 > Static methods belong to the class, not the object, so abstract classes can contain them.
 
+</details>
+
 ---
 
 # 6. Can an Interface Have Static Methods?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Answer
 
@@ -190,9 +218,14 @@ Utility.print();
 
 > Interface static methods are called using the interface name and are not inherited by implementing classes.
 
+</details>
+
 ---
 
 # 7. Can an Interface Have Private Methods?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Answer
 
@@ -222,9 +255,14 @@ interface Vehicle {
 
 > Private interface methods improve code reuse within the interface itself.
 
+</details>
+
 ---
 
 # 8. What are Default Methods?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Answer
 
@@ -255,9 +293,14 @@ Adding a new method would break all implementations.
 
 Default methods solved this issue.
 
+</details>
+
 ---
 
 # 9. Why Were Default Methods Introduced?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Problem Before Java 8
 
@@ -289,9 +332,14 @@ interface Vehicle {
 
 > Default methods were introduced to add new functionality to interfaces without breaking existing implementations.
 
+</details>
+
 ---
 
 # 10. What are Static Methods in Interfaces?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Example
 
@@ -318,9 +366,14 @@ System.out.println(MathUtil.add(10, 20));
 
 > Static methods are utility/helper methods related to the interface.
 
+</details>
+
 ---
 
 # 11. Multiple Inheritance Issue with Default Methods?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Example
 
@@ -349,9 +402,14 @@ class Test implements A, B {
 
 Because JVM doesn't know which implementation to choose.
 
+</details>
+
 ---
 
 # 12. What is the Diamond Problem?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Problem
 
@@ -395,9 +453,14 @@ class D implements B, C {
 
 > Java allows multiple inheritance through interfaces but forces the class to resolve ambiguity.
 
+</details>
+
 ---
 
 # 13. If Two Interfaces Contain the Same Default Method?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Example
 
@@ -461,9 +524,14 @@ B
 
 > The implementing class must resolve the conflict by overriding the method.
 
+</details>
+
 ---
 
 # 14. What is Interface Segregation Principle (ISP)?
+
+<details>
+<summary>Show Answer</summary>
 
 One of the SOLID principles.
 
@@ -522,9 +590,14 @@ class Human implements Workable, Eatable {
 
 > ISP promotes smaller, focused interfaces instead of one large "god interface".
 
+</details>
+
 ---
 
 # 15. Marker Interfaces Examples
+
+<details>
+<summary>Show Answer</summary>
 
 ### What is a Marker Interface?
 
@@ -571,3 +644,5 @@ NotSerializableException
 ### Interview Point
 
 > Marker interfaces don't define behavior; they convey metadata or capabilities to the JVM/framework.
+
+</details>

@@ -1,5 +1,8 @@
 # 1. Difference among `public`, `private`, `protected`, and `default`
 
+<details>
+<summary>Show Answer</summary>
+
 | Access Modifier             | Same Class | Same Package | Subclass (Different Package) | Other Classes (Different Package) |
 |-----------------------------|------------|--------------|------------------------------|-----------------------------------|
 | `private`                   | ✅          | ❌            | ❌                            | ❌                                 |
@@ -28,9 +31,14 @@ public class Employee {
 private   < default < protected < public
 ```
 
+</details>
+
 ---
 
 # 2. Can a Top-Level Class be Private?
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:** ❌ No
 
@@ -59,9 +67,14 @@ class Employee {
 }
 ```
 
+</details>
+
 ---
 
 # 3. Can a Top-Level Class be Protected?
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:** ❌ No
 
@@ -84,9 +97,14 @@ protected class Employee {
 
 Because `protected` only makes sense in the context of inheritance, and top-level classes cannot participate in inheritance visibility rules.
 
+</details>
+
 ---
 
 # 4. Access Levels in Same Package
+
+<details>
+<summary>Show Answer</summary>
 
 Suppose:
 
@@ -123,9 +141,14 @@ System.out.println(e.c); // ✅
 
 > Inside the same package, everything is accessible except `private`.
 
+</details>
+
 ---
 
 # 5. Access Levels Across Packages
+
+<details>
+<summary>Show Answer</summary>
 
 ```text
 com.company.model
@@ -163,9 +186,14 @@ System.out.println(e.a); // ✅
 
 > Across packages, only `public` members are accessible unless inheritance is involved.
 
+</details>
+
 ---
 
 # 6. Difference Between `protected` and `default`
+
+<details>
+<summary>Show Answer</summary>
 
 | Feature                          | protected | default |
 |----------------------------------|-----------|---------|
@@ -202,9 +230,14 @@ public class Child extends Parent {
 
 > The only difference is that `protected` is accessible in subclasses outside the package, whereas `default` is not.
 
+</details>
+
 ---
 
 # 7. Real Project Use of `protected`
+
+<details>
+<summary>Show Answer</summary>
 
 ### Common Example: Spring Template Method Pattern
 
@@ -235,9 +268,14 @@ public class EmployeeService extends BaseService {
 
 > In real projects, `protected` is commonly used in base classes where common functionality should be reusable by subclasses but not exposed publicly.
 
+</details>
+
 ---
 
 # 8. Can Constructor be Private?
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:** ✅ Yes
 
@@ -265,9 +303,14 @@ Singleton s = Singleton.getInstance();
 * Utility Classes
 * Factory Design Pattern
 
+</details>
+
 ---
 
 # 9. Explain Encapsulation Using Access Modifiers
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:**
 
@@ -304,9 +347,14 @@ class Employee {
 
 > `private` variables + public getters/setters are the most common implementation of encapsulation.
 
+</details>
+
 ---
 
 # 10. What Happens if Access Level is Reduced While Overriding?
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:**
 
@@ -370,3 +418,5 @@ class Child extends Parent {
 ### Interview Point
 
 > Visibility can be increased during overriding, but it cannot be reduced because it would violate the parent class contract.
+
+</details>

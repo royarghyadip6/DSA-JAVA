@@ -1,5 +1,8 @@
 # 1. Why Wrapper Classes are Needed?
 
+<details>
+<summary>Show Answer</summary>
+
 **Answer:**
 
 Wrapper classes convert primitive data types into objects.
@@ -30,9 +33,14 @@ numbers.add(10); // int -> Integer (Autoboxing)
 
 > Collections and Generics are the biggest reasons wrapper classes exist.
 
+</details>
+
 ---
 
 # 2. What is Autoboxing?
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:**
 
@@ -51,9 +59,14 @@ Integer num2 = Integer.valueOf(100);
 
 > Introduced in Java 5 to reduce manual conversion code.
 
+</details>
+
 ---
 
 # 3. What is Unboxing?
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:**
 
@@ -70,9 +83,14 @@ int value = num; // Integer -> int
 int value2 = num.intValue();
 ```
 
+</details>
+
 ---
 
 # 4. Difference Between `int` and `Integer`
+
+<details>
+<summary>Show Answer</summary>
 
 | int                        | Integer                 |
 |----------------------------|-------------------------|
@@ -101,9 +119,14 @@ int salary = null; // Compilation Error
 
 Only wrappers can represent absence of value using `null`.
 
+</details>
+
 ---
 
 # 5. What is Integer Cache?
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:**
 
@@ -141,9 +164,14 @@ Integer Cache
 
 > `Integer.valueOf()` uses Integer Cache.
 
+</details>
+
 ---
 
 # 6. Output?
+
+<details>
+<summary>Show Answer</summary>
 
 ```java id="p6s8u6"
 Integer a = 127;
@@ -168,9 +196,14 @@ a ----\
 b ----/
 ```
 
+</details>
+
 ---
 
 # 7. Output?
+
+<details>
+<summary>Show Answer</summary>
 
 ```java id="vwj8if"
 Integer a = 128;
@@ -199,9 +232,14 @@ b ---> Integer(128)
 
 Different references.
 
+</details>
+
 ---
 
 # 8. Why Integer Cache Range is -128 to 127?
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:**
 
@@ -225,9 +263,14 @@ This range matches the signed **1-byte byte range**.
 
 > The range is configurable using JVM options, but the default is -128 to 127.
 
+</details>
+
 ---
 
 # 9. Why Integer is Immutable?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Example
 
@@ -257,9 +300,14 @@ The existing object is never modified.
 
 > If Integer were mutable, Integer Cache would become unsafe.
 
+</details>
+
 ---
 
 # 10. Difference Between `parseInt()` and `valueOf()`
+
+<details>
+<summary>Show Answer</summary>
 
 | parseInt()                 | valueOf()               |
 |----------------------------|-------------------------|
@@ -298,9 +346,14 @@ IntegerCache
 
 when possible.
 
+</details>
+
 ---
 
 # 11. Memory Impact of Wrappers
+
+<details>
+<summary>Show Answer</summary>
 
 ### Primitive
 
@@ -350,9 +403,14 @@ Millions of Integer objects consume significantly more memory than primitive arr
 
 > Wrappers introduce additional memory overhead because every value becomes an object.
 
+</details>
+
 ---
 
 # 12. Why Wrappers are Heavily Used in Collections?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Because Collections Store Objects
 
@@ -394,3 +452,5 @@ ages.add(30);
 ### Interview Answer
 
 > Wrapper classes are heavily used in Collections because Java Generics support only reference types. Since primitives cannot be used directly, wrapper classes act as object representations of primitive values.
+
+</details>

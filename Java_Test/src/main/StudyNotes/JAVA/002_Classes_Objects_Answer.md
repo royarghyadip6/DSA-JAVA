@@ -2,6 +2,9 @@
 
 # 1. Difference Between Class and Object
 
+<details>
+<summary>Show Answer</summary>
+
 | Class                                      | Object                                  |
 |--------------------------------------------|-----------------------------------------|
 | Blueprint/template for creating objects    | Instance of a class                     |
@@ -25,9 +28,14 @@ emp.name = "John";
 
 > A class is a blueprint, whereas an object is a runtime instance of that blueprint.
 
+</details>
+
 ---
 
 # 2. What is Constructor?
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:**
 
@@ -62,9 +70,14 @@ public class Test {
 Object Created
 ```
 
+</details>
+
 ---
 
 # 3. Default Constructor vs Parameterized Constructor
+
+<details>
+<summary>Show Answer</summary>
 
 | Default Constructor                            | Parameterized Constructor               |
 |------------------------------------------------|-----------------------------------------|
@@ -101,9 +114,14 @@ Default Constructor
 Employee: John
 ```
 
+</details>
+
 ---
 
 # 4. Constructor Overloading
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:**
 
@@ -132,9 +150,14 @@ class Employee {
 
 > Constructor overloading provides multiple ways to create objects.
 
+</details>
+
 ---
 
 # 5. Can Constructor Be Private?
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:** ✅ Yes.
 
@@ -165,9 +188,14 @@ Singleton s = Singleton.getInstance(); // Allowed
 * Singleton Design Pattern
 * Utility classes
 
+</details>
+
 ---
 
 # 6. What is Copy Constructor?
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:**
 
@@ -208,9 +236,14 @@ John
 
 > Copy constructor creates a new object by copying values from an existing object.
 
+</details>
+
 ---
 
 # 7. Can a Constructor Call Another Constructor?
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:** ✅ Yes.
 
@@ -247,9 +280,14 @@ Default Constructor
 
 > `this()` must be the first statement inside a constructor.
 
+</details>
+
 ---
 
 # 8. this() vs super()
+
+<details>
+<summary>Show Answer</summary>
 
 | this()                                          | super()                                           |
 |-------------------------------------------------|---------------------------------------------------|
@@ -284,9 +322,14 @@ Parent
 Child
 ```
 
+</details>
+
 ---
 
 # 9. What is Object Cloning?
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:**
 
@@ -347,9 +390,15 @@ Both objects point to same Address
 Deep Copy
 Each object has its own Address
 ```
+
+</details>
+
 ---
 
 # 10. Deep Copy vs Shallow Copy
+
+<details>
+<summary>Show Answer</summary>
 
 | Shallow Copy                                  | Deep Copy                                                      |
 |-----------------------------------------------|----------------------------------------------------------------|
@@ -398,9 +447,14 @@ System.out.println(e1.address.city); // Pune
 
 > In shallow copy, both objects share the same nested object reference.
 
+</details>
+
 ---
 
 # 11. How Cloneable Works?
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:**
 
@@ -433,9 +487,14 @@ class Employee implements Cloneable {
 
 > `Cloneable` doesn't provide methods. It simply tells JVM that cloning is allowed.
 
+</details>
+
 ---
 
 # 12. Why clone() is Protected?
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:**
 
@@ -464,9 +523,14 @@ class Employee implements Cloneable {
 
 > Java forces developers to explicitly decide whether cloning should be supported.
 
+</details>
+
 ---
 
 # 13. Can Object Be Created Without `new` Keyword?
+
+<details>
+<summary>Show Answer</summary>
 
 **Answer:** ✅ Yes.
 
@@ -504,9 +568,14 @@ Employee emp = (Employee) in.readObject();
 
 > Even when you don't explicitly write `new`, JVM eventually allocates memory for the object.
 
+</details>
+
 ---
 
 # 14. Ways to Create Objects in Java
+
+<details>
+<summary>Show Answer</summary>
 
 ### 1. Using `new` Keyword
 
@@ -557,9 +626,14 @@ Internally the factory method creates and returns an object.
 
 > Common ways are: `new`, Reflection, Cloning, Deserialization, and Factory Methods.
 
+</details>
+
 ---
 
 # 15. What Happens Internally When `new` Keyword is Used?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Example
 
@@ -651,9 +725,14 @@ emp  ─────────────► Employee Object
 
 > The most important steps are: **Class Loading → Memory Allocation → Default Initialization → Constructor Execution → Reference Assignment**.
 
+</details>
+
 ---
 
 # 16. Explain Object Creation Process from Memory Perspective
+
+<details>
+<summary>Show Answer</summary>
 
 ### Example
 
@@ -749,9 +828,14 @@ Employee Object
 
 > The object lives in the Heap, the reference variable lives in the Stack (for local variables), and class metadata lives in Metaspace.
 
+</details>
+
 ---
 
 # 17. What Happens in JVM When an Object Becomes Unreachable?
+
+<details>
+<summary>Show Answer</summary>
 
 ### Example
 
@@ -831,9 +915,14 @@ obj = new Employee();
 method scope ends;
 ```
 
+</details>
+
 ---
 
 # 18. Difference Between Object Reference and Object Itself
+
+<details>
+<summary>Show Answer</summary>
 
 | Object Reference                      | Object                       |
 |---------------------------------------|------------------------------|
@@ -899,3 +988,5 @@ Both references point to the same object.
 ### Interview Point
 
 > A reference is like a house address, while the object is the actual house. Multiple references can point to the same object, but the object exists only once in memory.
+
+</details>

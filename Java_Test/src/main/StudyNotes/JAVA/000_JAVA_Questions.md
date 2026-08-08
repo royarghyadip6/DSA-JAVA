@@ -929,7 +929,7 @@ This is one of the most heavily tested areas for **5+ years Java developers**.
 
 ---
 
-# 14. Multithreading Fundamentals
+# 16. Multithreading Fundamentals
 
 ## Basics
 
@@ -952,7 +952,7 @@ This is one of the most heavily tested areas for **5+ years Java developers**.
 
 ---
 
-# 15. Thread Lifecycle
+# 17. Thread Lifecycle
 
 ## Most Asked
 
@@ -984,7 +984,7 @@ TERMINATED
 
 ---
 
-# 16. Thread Methods
+# 18. Thread Methods
 
 ## Frequently Asked
 
@@ -1028,7 +1028,7 @@ TERMINATED
 
 ---
 
-# 17. Synchronization
+# 19. Synchronization
 
 ## Basics
 
@@ -1067,7 +1067,7 @@ TERMINATED
 
 ---
 
-# 18. Deadlock
+# 20. Deadlock
 
 ## Very Common
 
@@ -1092,7 +1092,7 @@ TERMINATED
 
 ---
 
-# 19. Inter-Thread Communication
+# 21. Inter-Thread Communication
 
 ## Most Asked
 
@@ -1120,7 +1120,7 @@ TERMINATED
 
 ---
 
-# 20. Volatile Keyword
+# 22. Volatile Keyword
 
 ## Most Asked
 
@@ -1147,7 +1147,7 @@ TERMINATED
 
 ---
 
-# 21. Java Memory Model (JMM)
+# 23. Java Memory Model (JMM)
 
 ## Senior-Level Topic
 
@@ -1168,7 +1168,7 @@ TERMINATED
 
 ---
 
-# 22. Atomic Classes
+# 24. Atomic Classes
 
 ## Frequently Asked
 
@@ -1197,7 +1197,7 @@ TERMINATED
 
 ---
 
-# 23. Locks Framework
+# 25. Locks Framework
 
 ## ReentrantLock
 
@@ -1233,7 +1233,7 @@ TERMINATED
 
 ---
 
-# 24. Executor Framework
+# 26. Executor Framework
 
 ## Most Important for 5+ Years
 
@@ -1280,7 +1280,7 @@ TERMINATED
 
 ---
 
-# 25. Callable and Future
+# 27. Callable and Future
 
 ## Frequently Asked
 
@@ -1299,7 +1299,7 @@ TERMINATED
 
 ---
 
-# 26. CompletableFuture
+# 28. CompletableFuture
 
 ## Extremely Important (Java 8+)
 
@@ -1350,7 +1350,7 @@ TERMINATED
 
 ---
 
-# 27. Fork Join Framework
+# 29. Fork Join Framework
 
 ## Frequently Asked
 
@@ -1374,7 +1374,7 @@ TERMINATED
 
 ---
 
-# 28. Concurrent Collections
+# 30. Concurrent Collections
 
 ## ConcurrentHashMap
 
@@ -1408,7 +1408,7 @@ TERMINATED
 
 ---
 
-# 29. Producer Consumer
+# 31. Producer Consumer
 
 ## Most Asked Scenario
 
@@ -1425,7 +1425,7 @@ TERMINATED
 
 ---
 
-# 30. Thread Safety
+# 32. Thread Safety
 
 ## Frequently Asked
 
@@ -1444,7 +1444,7 @@ TERMINATED
 
 ---
 
-# 31. ThreadLocal
+# 33. ThreadLocal
 
 ## Important Production Topic
 
@@ -1462,7 +1462,7 @@ TERMINATED
 
 ---
 
-# 32. Concurrency Design Questions
+# 34. Concurrency Design Questions
 
 ### Frequently Asked in Product Companies
 
@@ -1476,7 +1476,7 @@ TERMINATED
 
 ---
 
-# High-Frequency Multithreading Questions (Asked Repeatedly)
+# 35. High-Frequency Multithreading Questions (Asked Repeatedly)
 
 1. start() vs run()
 2. sleep() vs wait()
@@ -1513,7 +1513,7 @@ These topics are heavily asked in **L2, L3, Lead Developer, Senior Java Develope
 
 ---
 
-# 33. Exception Handling
+# 36. Exception Handling
 
 ## Basics
 
@@ -1588,7 +1588,7 @@ These topics are heavily asked in **L2, L3, Lead Developer, Senior Java Develope
 
 ---
 
-# 34. Serialization & Deserialization
+# 37. Serialization & Deserialization
 
 ## Basics
 
@@ -1640,7 +1640,7 @@ These topics are heavily asked in **L2, L3, Lead Developer, Senior Java Develope
 
 ---
 
-# 35. Reflection API
+# 38. Reflection API
 
 ## Basics
 
@@ -1677,7 +1677,7 @@ These topics are heavily asked in **L2, L3, Lead Developer, Senior Java Develope
 
 ---
 
-# 36. Annotations
+# 39. Annotations
 
 ## Basics
 
@@ -1722,7 +1722,7 @@ These topics are heavily asked in **L2, L3, Lead Developer, Senior Java Develope
 
 ---
 
-# 37. Immutable Class
+# 40. Immutable Class
 
 ## Most Asked
 
@@ -1756,7 +1756,7 @@ These topics are heavily asked in **L2, L3, Lead Developer, Senior Java Develope
 
 ---
 
-# 38. Singleton Design Pattern
+# 41. Singleton Design Pattern
 
 ## Most Important Pattern
 
@@ -1786,7 +1786,7 @@ These topics are heavily asked in **L2, L3, Lead Developer, Senior Java Develope
 
 ---
 
-# 39. Factory Design Pattern
+# 42. Factory Design Pattern
 
 ## Frequently Asked
 
@@ -1804,7 +1804,7 @@ These topics are heavily asked in **L2, L3, Lead Developer, Senior Java Develope
 
 ---
 
-# 40. Builder Design Pattern
+# 43. Builder Design Pattern
 
 ## Most Asked in Modern Java
 
@@ -1822,7 +1822,7 @@ These topics are heavily asked in **L2, L3, Lead Developer, Senior Java Develope
 
 ---
 
-# 41. Strategy Pattern
+# 44. Strategy Pattern
 
 ## Frequently Asked
 
@@ -1840,7 +1840,7 @@ These topics are heavily asked in **L2, L3, Lead Developer, Senior Java Develope
 
 ---
 
-# 42. Observer Pattern
+# 45. Observer Pattern
 
 ## Commonly Asked
 
@@ -1857,7 +1857,7 @@ These topics are heavily asked in **L2, L3, Lead Developer, Senior Java Develope
 
 ---
 
-# 43. Other Important Design Patterns
+# 46. Other Important Design Patterns
 
 ## Creational
 
@@ -1899,7 +1899,7 @@ These topics are heavily asked in **L2, L3, Lead Developer, Senior Java Develope
 
 ---
 
-# 44. SOLID Principles
+# 47. SOLID Principles
 
 ## Extremely Important
 
@@ -1945,7 +1945,7 @@ These topics are heavily asked in **L2, L3, Lead Developer, Senior Java Develope
 
 ---
 
-# 45. JVM Advanced Questions
+# 48. JVM Advanced Questions
 
 ## Class Loading
 
@@ -1982,7 +1982,7 @@ These topics are heavily asked in **L2, L3, Lead Developer, Senior Java Develope
 
 ---
 
-# 46. Java 11 Interview Questions
+# 49. Java 11 Interview Questions
 
 ## Features
 
@@ -2009,7 +2009,7 @@ These topics are heavily asked in **L2, L3, Lead Developer, Senior Java Develope
 
 ---
 
-# 47. Java 17 Interview Questions
+# 50. Java 17 Interview Questions
 
 ## Frequently Asked
 
@@ -2029,7 +2029,7 @@ These topics are heavily asked in **L2, L3, Lead Developer, Senior Java Develope
 
 ---
 
-# 48. Java 21 Interview Questions
+# 51. Java 21 Interview Questions
 
 ## Modern Interviews
 
@@ -2056,7 +2056,7 @@ These topics are heavily asked in **L2, L3, Lead Developer, Senior Java Develope
 
 ---
 
-# 49. Coding & Scenario-Based Questions (5–8 Years)
+# 52. Coding & Scenario-Based Questions (5–8 Years)
 
 ## Collections
 
@@ -2098,7 +2098,7 @@ These topics are heavily asked in **L2, L3, Lead Developer, Senior Java Develope
 
 ---
 
-# Top 50 Questions Every 5+ Year Java Developer Must Master
+# 53. Top 50 Questions Every 5+ Year Java Developer Must Master
 
 1. HashMap internal working
 2. ConcurrentHashMap internal working
@@ -2161,7 +2161,7 @@ This section covers the majority of questions asked in **service-based companies
 
 ---
 
-# 50. Spring Framework Fundamentals
+# 54. Spring Framework Fundamentals
 
 ## Spring Core
 
@@ -2225,7 +2225,7 @@ This section covers the majority of questions asked in **service-based companies
 
 ---
 
-# 51. Spring Annotations
+# 55. Spring Annotations
 
 ## Frequently Asked
 
@@ -2254,7 +2254,7 @@ This section covers the majority of questions asked in **service-based companies
 
 ---
 
-# 52. Spring AOP
+# 56. Spring AOP
 
 ## Very Frequently Asked
 
@@ -2300,7 +2300,7 @@ This section covers the majority of questions asked in **service-based companies
 
 ---
 
-# 53. Spring Boot
+# 57. Spring Boot
 
 ## Basics
 
@@ -2359,7 +2359,7 @@ This section covers the majority of questions asked in **service-based companies
 
 ---
 
-# 54. REST API
+# 58. REST API
 
 ## Basics
 
@@ -2420,7 +2420,7 @@ This section covers the majority of questions asked in **service-based companies
 
 ---
 
-# 55. Exception Handling in Spring Boot
+# 59. Exception Handling in Spring Boot
 
 ## Frequently Asked
 
@@ -2439,7 +2439,7 @@ This section covers the majority of questions asked in **service-based companies
 
 ---
 
-# 56. Spring Data JPA
+# 60. Spring Data JPA
 
 ## Basics
 
@@ -2477,7 +2477,7 @@ This section covers the majority of questions asked in **service-based companies
 
 ---
 
-# 57. Hibernate Internals
+# 61. Hibernate Internals
 
 ## Most Asked
 
@@ -2524,7 +2524,7 @@ This section covers the majority of questions asked in **service-based companies
 
 ---
 
-# 58. Transactions
+# 62. Transactions
 
 ## Extremely Important
 
@@ -2568,7 +2568,7 @@ This section covers the majority of questions asked in **service-based companies
 
 ---
 
-# 59. SQL & Database Questions
+# 63. SQL & Database Questions
 
 ## Frequently Asked
 
@@ -2607,7 +2607,7 @@ This section covers the majority of questions asked in **service-based companies
 
 ---
 
-# 60. Microservices
+# 64. Microservices
 
 ## Basics
 
@@ -2651,7 +2651,7 @@ This section covers the majority of questions asked in **service-based companies
 
 ---
 
-# 61. Kafka
+# 65. Kafka
 
 ## Extremely Important
 
@@ -2715,7 +2715,7 @@ This section covers the majority of questions asked in **service-based companies
 
 ---
 
-# 62. Spring Security
+# 66. Spring Security
 
 ## Basics
 
@@ -2759,7 +2759,7 @@ This section covers the majority of questions asked in **service-based companies
 
 ---
 
-# 63. Docker
+# 67. Docker
 
 ## Basics
 
@@ -2795,7 +2795,7 @@ This section covers the majority of questions asked in **service-based companies
 
 ---
 
-# 64. Kubernetes
+# 68. Kubernetes
 
 ## Basics
 
@@ -2832,7 +2832,7 @@ This section covers the majority of questions asked in **service-based companies
 
 ---
 
-# 65. System Design (Backend Developer)
+# 69. System Design (Backend Developer)
 
 ## Frequently Asked
 
@@ -2877,7 +2877,7 @@ This section covers the majority of questions asked in **service-based companies
 
 ---
 
-# 66. Production Support Questions
+# 70. Production Support Questions
 
 ## Real Experience Based
 

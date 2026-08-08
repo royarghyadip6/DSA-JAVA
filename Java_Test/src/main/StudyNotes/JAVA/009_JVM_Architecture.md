@@ -117,7 +117,7 @@ JVM Memory
 5. Native Method Stack
 ```
 
-![JVM_Architecture.png](Images/JVM_Architecture.png)
+[JVM_Architecture.png](Images/JVM_Architecture.png)
 
 ### Memory Diagram
 

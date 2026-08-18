@@ -319,6 +319,8 @@ map.entrySet().iterator() // insertion order
 
 **Answer:**
 
+In `LinkedHashMap`, access-order mode `rearranges the internal doubly-linked list every time an element is read or modified`. Instead of maintaining elements in the sequence they were first added, `it continuously moves the most recently used element to the very end (tail) of the list`.
+
 By default, `LinkedHashMap` uses **insertion-order**. With `accessOrder = true`, it switches to **access-order**—reorders entries on every `get()` or `put()`.
 
 ### Constructor
@@ -382,6 +384,8 @@ Access-order is the foundation for **LRU (Least Recently Used) cache**—oldest 
 
 **Answer:**
 
+An LRU (**Least Recently Used**) Cache is a `fixed-capacity data structure that discards the least recently accessed items first when it reaches its limit to make room for new data`. It operates on the predictive principle that data used recently is highly likely to be used again soon.
+
 LRU cache evicts the **least recently used** entry when capacity is exceeded. `LinkedHashMap` with **access-order** + `removeEldestEntry()` provides a built-in LRU cache.
 
 ### LRU Principle
@@ -427,6 +431,41 @@ cache.put("D", "4"); // capacity exceeded → remove eldest (B)
 // Cache: C → A → D
 ```
 
+```java
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+public class LRUCache<K, V> extends LinkedHashMap<K, V> {
+    private final int maxCapacity;
+
+    public LRUCache(int maxCapacity) {
+        // Must pass 'true' as the 3rd parameter to turn on access-order mode
+        super(maxCapacity, 0.75f, true);
+        this.maxCapacity = maxCapacity;
+    }
+
+    @Override
+    protected boolean removeEldestEntry(Map.Entry<K, V> eldest) {
+        // If this returns true, the map automatically deletes the 'head' element
+        return this.size() > maxCapacity;
+    }
+
+    public static void main(String[] args) {
+        LRUCache<Integer, String> cache = new LRUCache<>(3);
+        
+        cache.put(1, "Alpha");
+        cache.put(2, "Beta");
+        cache.put(3, "Gamma"); // Order: [1, 2, 3]
+        
+        cache.get(1);          // Accessing 1 moves it to the tail. Order: [2, 3, 1]
+        
+        cache.put(4, "Delta"); // Exceeds size 3. Evicts '2' (the head). Order: [3, 1, 4]
+        
+        System.out.println(cache.keySet()); // Outputs: [3, 1, 4]
+    }
+}
+```
+
 ### How removeEldestEntry() Works
 
 ```text
@@ -447,11 +486,11 @@ Cache<String, Object> cache = Caffeine.newBuilder()
 
 ### Why LinkedHashMap LRU Works
 
-| Feature | Role in LRU |
-|---------|-------------|
-| Access-order | Tracks recency on get/put |
-| Doubly linked list | O(1) move to tail |
-| removeEldestEntry() | O(1) eviction hook |
+| Feature             | Role in LRU               |
+|---------------------|---------------------------|
+| Access-order        | Tracks recency on get/put |
+| Doubly linked list  | O(1) move to tail         |
+| removeEldestEntry() | O(1) eviction hook        |
 
 **Interview Point:**
 

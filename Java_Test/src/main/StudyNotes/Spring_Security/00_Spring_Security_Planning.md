@@ -1,371 +1,234 @@
-# 🚀 SPRING SECURITY COMPLETE SYLLABUS (BEGINNER → EXPERT)
+# Spring Security — Master Index (Senior Backend Engineer Track)
+
+> **Audience:** Java backend engineers with 5–8 years of experience.
+> **Baseline:** Spring Security **6.x** on Spring Boot **3.x** (Jakarta namespace, Java 17+).
+> **Deltas covered in every file:** what changed coming from 5.x, and what breaks in 7.x.
 
 ---
 
-# 🟢 MODULE 1: Prerequisites (Non-Negotiable)
+## New To Spring Security? Start Here Instead
 
-## 1.1 HTTP & Web Basics
-
-* HTTP methods (GET, POST, PUT, DELETE)
-* Request/Response lifecycle
-* Headers (Authorization, Cookies, etc.)
-* Status codes (200, 401, 403, 404)
-* Stateless vs Stateful communication
-
-## 1.2 Authentication & Authorization Concepts
-
-* What is Authentication?
-* What is Authorization?
-* Identity vs Principal
-* Roles vs Authorities
-
-## 1.3 Cryptography Basics
-
-* Hashing vs Encryption
-* Symmetric vs Asymmetric encryption
-* Salting
-* Password storage best practices
-
-## 1.4 Servlet Basics
-
-* Filters vs Interceptors
+If you are a beginner, **do not start with this index.** Read
+[`00A_Start_Here_Beginner_Primer.md`](00A_Start_Here_Beginner_Primer.md) first. It explains the
+whole subject in plain language with no prior knowledge assumed, defines every recurring term
+in a glossary, and gives you a six-week learning path. Come back here once it makes sense.
 
 ---
 
-# 🟡 MODULE 2: Spring Security Fundamentals
+## How To Use These Notes
 
-## 2.1 Introduction
+Each file is self-contained and follows the same structure, so you can jump straight to a
+topic without reading linearly. But if you are studying end-to-end, follow the module order
+below — later modules assume the vocabulary established earlier.
 
-* What is Spring Security?
-* Features & capabilities
-* Architecture overview
+**Every file is written for two audiences at once.** The explanatory sections are pitched so a
+newcomer can follow them; the interview sections are pitched at five to eight years of
+experience and deliberately do not get easier.
 
-## 2.2 Core Components
+| Reading for | Read these sections, in this order | Skip on the first pass |
+|---|---|---|
+| **Learning the subject** | In Plain English, then Core Concepts (read the "In simple terms" lead of every subsection first, then go back for detail), then Working Code, then Debugging Playbook | Version Matrix, Internals, Interview Q&A |
+| **Interview preparation** | Quick Recall, then Interview Q&A (answer out loud *before* expanding each block), then Internals, then Version Matrix | In Plain English |
 
-* SecurityContext
-* SecurityContextHolder
-* Authentication
-* GrantedAuthority
-* UserDetails
-* UserDetailsService
+Every file contains four things you will not find in typical notes:
 
-## 2.3 Security Filter Chain (CRITICAL)
-
-* DelegatingFilterProxy
-* FilterChainProxy
-* Default filters list
-* Filter ordering
-* Request flow through filters
-
----
-
-# 🟠 MODULE 3: Authentication Mechanisms
-
-## 3.1 Authentication Flow
-
-* UsernamePasswordAuthenticationToken
-* AuthenticationManager
-* AuthenticationProvider
-* ProviderManager
-
-## 3.2 In-Memory Authentication
-
-* Configuring users
-* Roles and authorities
-
-## 3.3 JDBC Authentication
-
-* Database schema
-* Queries customization
-* DataSource configuration
-
-## 3.4 Custom Authentication
-
-* Custom UserDetailsService
-* Custom AuthenticationProvider
-
-## 3.5 Password Encoding
-
-* BCryptPasswordEncoder
-* DelegatingPasswordEncoder
-* Password storage strategies
+1. **An "In Plain English" section** — an everyday analogy, a jargon-free walkthrough, and a
+   table translating every term used in that file into plain words.
+2. **"In simple terms" leads** on each Core Concepts subsection, so you get the idea before
+   the detail.
+3. **Interview Q&A with counter-questions.** Each answer is followed by the follow-up probes
+   a senior interviewer actually asks next, with answers. Answers are inside collapsible
+   `<details>` blocks so you can self-test. These are **not** simplified for beginners — treat
+   them as a target to work towards.
+4. **A debugging playbook** — symptom → root cause → fix — because at this level you are
+   judged on how fast you diagnose, not on whether you can recite definitions.
 
 ---
 
-# 🔵 MODULE 4: Authorization (Access Control)
+## The Standard File Structure
 
-## 4.1 URL-Based Authorization
-
-* requestMatchers()
-* hasRole(), hasAuthority()
-* permitAll(), denyAll()
-
-## 4.2 Method-Level Security
-
-* @EnableMethodSecurity
-* @PreAuthorize
-* @PostAuthorize
-* @Secured
-
-## 4.3 Expression-Based Access Control
-
-* SpEL in security
-* Custom expressions
-
-## 4.4 Role vs Authority Deep Dive
-
-* ROLE_ prefix
-* Hierarchical roles
+| Section | What it gives you |
+|---|---|
+| Version Matrix | 6.x baseline, 5.x delta, 7.x delta for that topic |
+| Why This Exists | The problem the component solves, and where it sits in the request flow |
+| Core Concepts | Real interface signatures, not paraphrases |
+| Flow Diagram | Mermaid diagram of the runtime flow or class relationships |
+| Working Code | Config bean + component + test, written to be compilable |
+| Internals | What the framework actually does, with named classes and methods |
+| Configuration Reference | Option → effect → default |
+| Production Concerns | Pitfalls and anti-patterns seen in real systems |
+| Debugging Playbook | Symptom → root cause → fix |
+| Interview Q&A | Senior-level questions, each with nested counter-questions |
+| Design Scenario | An architect-level open-ended question |
+| Quick Recall | A compressed cheat block for revision |
 
 ---
 
-# 🟣 MODULE 5: Spring Security Configuration (Modern Approach)
+## Version Baseline (Read This Once)
 
-## 5.1 SecurityFilterChain Bean
+These notes teach Spring Security 6.x. The three versions you will meet in the wild:
 
-* Replacing WebSecurityConfigurerAdapter
-* Java-based configuration
+| | Spring Security 5.7/5.8 | **Spring Security 6.x** | Spring Security 7.0 |
+|---|---|---|---|
+| Ships with | Boot 2.7 | **Boot 3.x** | Boot 4.0 (Nov 2025) |
+| Namespace | `javax.*` | **`jakarta.*`** | `jakarta.*` |
+| Config style | `WebSecurityConfigurerAdapter` (deprecated 5.7) | **`SecurityFilterChain` bean** | `SecurityFilterChain` bean only |
+| URL matching | `antMatchers()` / `mvcMatchers()` | **`requestMatchers()`** | `requestMatchers()` + `PathPatternRequestMatcher` |
+| Authorization API | `authorizeRequests()` + `AccessDecisionManager` | **`authorizeHttpRequests()` + `AuthorizationManager`** | `authorizeHttpRequests()` only; `AccessDecisionManager` moved out to `spring-security-access` |
+| DSL chaining | `.and()` chaining | **Lambda DSL (preferred)** | Lambda DSL only — `.and()` removed |
+| Context persistence | `SecurityContextPersistenceFilter` | **`SecurityContextHolderFilter` + explicit `SecurityContextRepository`** | same |
+| Custom DSL | `.apply(...)` | `.apply(...)` (deprecated) / `.with(...)` | `.with(...)` only |
 
-## 5.2 HttpSecurity Deep Dive
+**The seven hard removals in 7.0** that stop an app from starting:
 
-* authorizeHttpRequests()
-* formLogin()
-* httpBasic()
-* logout()
+1. `.and()` chaining — every configurer must use its own lambda.
+2. `authorizeRequests()` — use `authorizeHttpRequests()`.
+3. `AntPathRequestMatcher` / `MvcRequestMatcher` — use `PathPatternRequestMatcher`.
+4. `AccessDecisionManager` / `AccessDecisionVoter` — moved to the `spring-security-access` module.
+5. `AuthorizationManager#check` — renamed to `AuthorizationManager#authorize`.
+6. `HttpSecurity.apply(...)` — use `HttpSecurity.with(...)`.
+7. OAuth2 Resource Owner Password Credentials grant — deleted outright.
 
-## 5.3 Custom Configuration
-
-* Custom login page
-* Custom success/failure handlers
-
----
-
-# 🔴 MODULE 6: Session Management & CSRF
-
-## 6.1 Session Management
-
-* Session creation policy
-* Session fixation
-* Concurrent sessions
-
-## 6.2 CSRF Protection
-
-* What is CSRF?
-* CSRF tokens
-* When to disable CSRF (REST APIs)
-
-## 6.3 CORS (Important)
-
-* Cross-Origin issues
-* Configuration in Spring Security
+**New in 7.0 worth knowing:** first-class multi-factor authentication support,
+`Authentication.Builder` for mutating/merging authentications, `AuthorizationManagerFactory`,
+`AllAuthoritiesAuthorizationManager`, and SPA-friendly CSRF configuration.
 
 ---
 
-# 🟤 MODULE 7: JWT (Stateless Authentication)
+## Module Map
 
-## 7.1 JWT Fundamentals
+### Module 0 — Orientation
 
-* Structure (Header, Payload, Signature)
-* Signing algorithms
+- [`00A_Start_Here_Beginner_Primer.md`](00A_Start_Here_Beginner_Primer.md) — the whole subject in plain English: what problem security solves, why HTTP's lack of memory causes everything else, the six objects you will meet everywhere, passwords, roles, 401 vs 403, CSRF vs CORS, a first working configuration explained line by line, a full glossary, and a six-week learning path
 
-## 7.2 JWT Implementation
+### Module 1 — Prerequisites
 
-* Token generation
-* Token validation
-* Claims handling
+You cannot reason about Spring Security without these. Interviewers use them to separate
+people who memorised config from people who understand the protocol.
 
-## 7.3 Integrating JWT with Spring Security
+- [`01_M1_T1_HTTP_Web_Basics.md`](01_M1_T1_HTTP_Web_Basics.md) — HTTP methods, safety/idempotency, the `Authorization` header, cookie attributes (`HttpOnly`, `Secure`, `SameSite`), 401 vs 403 vs 419, statelessness
+- [`02_M1_T2_Authentication_Authorization.md`](02_M1_T2_Authentication_Authorization.md) — AuthN vs AuthZ vs accounting, identity/principal/subject, roles vs authorities vs permissions, the confused-deputy problem
+- [`03_M1_T3_Cryptography.md`](03_M1_T3_Cryptography.md) — hashing vs encryption vs encoding, symmetric/asymmetric, salt vs pepper, KDFs (bcrypt/scrypt/Argon2), HMAC vs digital signature, constant-time comparison
+- [`04_M1_T4_Servlet_Basics.md`](04_M1_T4_Servlet_Basics.md) — servlet lifecycle and threading, `Filter` vs `HandlerInterceptor` vs AOP, `OncePerRequestFilter`, `DispatcherServlet`, async dispatch and `ERROR` dispatch
 
-* Custom JWT filter
-* OncePerRequestFilter
-* SecurityContext setup
+### Module 2 — Spring Security Fundamentals
 
-## 7.4 Token Strategies
+- [`05_M2_T1_Spring_Security_Introduction.md`](05_M2_T1_Spring_Security_Introduction.md) — what the framework is, what auto-configuration actually registers, the architecture in one picture
+- [`06_M2_T2_Core_Components.md`](06_M2_T2_Core_Components.md) — `SecurityContext`, `SecurityContextHolder`, `Authentication`, `GrantedAuthority`, `UserDetails`, `UserDetailsService`
+- [`07_M2_T3_Security_Filter_Chain.md`](07_M2_T3_Security_Filter_Chain.md) — `DelegatingFilterProxy`, `FilterChainProxy`, `VirtualFilterChain`, the ordered default filter list, chain selection
 
-* Access token vs Refresh token
-* Expiry & renewal
+### Module 3 — Authentication
 
----
+- [`08_M3_T1_Authentication_Mechanism.md`](08_M3_T1_Authentication_Mechanism.md) — `AuthenticationManager`, `ProviderManager`, `AuthenticationProvider`, token lifecycle, `AuthenticationEventPublisher`
+- [`09_M3_T2_InMemory_Authentication.md`](09_M3_T2_InMemory_Authentication.md) — `InMemoryUserDetailsManager`, when it is legitimate, when it is a liability
+- [`10_M3_T3_JDBC_Authentication.md`](10_M3_T3_JDBC_Authentication.md) — `JdbcUserDetailsManager`, the default schema, custom queries, group-based authorities
+- [`11_M3_T4_Custom_Authentication.md`](11_M3_T4_Custom_Authentication.md) — custom `UserDetailsService` vs custom `AuthenticationProvider`, and how to choose
+- [`12_M3_T5_Password_Encoding.md`](12_M3_T5_Password_Encoding.md) — `PasswordEncoder`, `DelegatingPasswordEncoder`, `{id}` prefixes, cost tuning, upgrade-on-login
 
-# ⚫ MODULE 8: Filters Deep Dive (HIGHLY IMPORTANT)
+### Module 4 — Authorization
 
-## 8.1 Default Filters
+- [`13_M4_T1_Authorization_URL_Based.md`](13_M4_T1_Authorization_URL_Based.md) — `authorizeHttpRequests`, matcher ordering, `AuthorizationFilter`, `permitAll` vs `ignoring()`
+- [`14_M4_T2_Method_Level_Security.md`](14_M4_T2_Method_Level_Security.md) — `@EnableMethodSecurity`, `@PreAuthorize`/`@PostAuthorize`/`@PreFilter`/`@PostFilter`, `@Secured`, JSR-250
+- [`15_M4_T3_Expression_Based_Access_Control.md`](15_M4_T3_Expression_Based_Access_Control.md) — SpEL in security, `MethodSecurityExpressionRoot`, custom expression beans, `@P` and `#root`
+- [`16_M4_T4_Role_Authority.md`](16_M4_T4_Role_Authority.md) — the `ROLE_` prefix contract, `hasRole` vs `hasAuthority`, `RoleHierarchy`, scope-vs-role in OAuth2
 
-* UsernamePasswordAuthenticationFilter
-* BasicAuthenticationFilter
-* SecurityContextPersistenceFilter
+### Module 5 — Modern Configuration
 
-## 8.2 Custom Filters
+- [`17_M5_T1_SecurityFilterChain_Bean.md`](17_M5_T1_SecurityFilterChain_Bean.md) — the bean-based model, multiple chains, `@Order`, `securityMatcher`
+- [`18_M5_T2_HttpSecurity_DSL.md`](18_M5_T2_HttpSecurity_DSL.md) — the DSL as a builder of configurers, every major configurer, `SharedObject`s, custom DSL with `.with()`
+- [`19_M5_T3_Custom_Login_And_Handlers.md`](19_M5_T3_Custom_Login_And_Handlers.md) — custom login pages, `AuthenticationSuccessHandler`/`FailureHandler`, `LogoutHandler`, JSON login
 
-* Creating custom filter
-* Filter execution order
-* addFilterBefore / addFilterAfter
+### Module 6 — Session, CSRF, CORS
 
-## 8.3 Filter Chain Internals
+- [`20_M6_T1_Session_Management.md`](20_M6_T1_Session_Management.md) — `SessionCreationPolicy`, session fixation protection, concurrent session control, Spring Session
+- [`21_M6_T2_CSRF_Protection.md`](21_M6_T2_CSRF_Protection.md) — the attack, token repositories, the BREACH-safe handler, SPA patterns, when disabling is actually safe
+- [`22_M6_T3_CORS.md`](22_M6_T3_CORS.md) — preflight mechanics, `CorsConfigurationSource`, why CORS is not a security control
 
-* How filters are invoked
-* Debugging filter chain
+### Module 7 — JWT
 
----
+- [`23_M7_T1_JWT_Fundamentals.md`](23_M7_T1_JWT_Fundamentals.md) — JOSE, JWS vs JWE, registered claims, HS256 vs RS256 vs ES256, `alg: none` and confusion attacks
+- [`24_M7_T2_JWT_Spring_Integration.md`](24_M7_T2_JWT_Spring_Integration.md) — resource server vs hand-rolled filter, `JwtDecoder`, `JwtAuthenticationConverter`, `OncePerRequestFilter`
+- [`25_M7_T3_Token_Strategies.md`](25_M7_T3_Token_Strategies.md) — access/refresh split, rotation and reuse detection, revocation, storage on the client
 
-# 🟠 MODULE 9: Exception Handling
+### Module 8 — Filters Deep Dive
 
-## 9.1 Authentication Errors
+- [`26_M8_T1_Default_Filters.md`](26_M8_T1_Default_Filters.md) — the full ordered filter catalogue with the job of each
+- [`27_M8_T2_Custom_Filters.md`](27_M8_T2_Custom_Filters.md) — writing filters, `addFilterBefore/After/At`, the double-registration trap, debugging the chain
 
-* AuthenticationEntryPoint
+### Module 9 — Exception Handling
 
-## 9.2 Authorization Errors
+- [`28_M9_T1_Security_Exception_Handling.md`](28_M9_T1_Security_Exception_Handling.md) — `ExceptionTranslationFilter`, `AuthenticationEntryPoint`, `AccessDeniedHandler`, RFC 7807 problem details, why `@ControllerAdvice` does not catch filter exceptions
 
-* AccessDeniedHandler
+### Module 10 — OAuth2 & OpenID Connect
 
-## 9.3 Custom Error Responses
+- [`29_M10_T1_OAuth2_OIDC_Fundamentals.md`](29_M10_T1_OAuth2_OIDC_Fundamentals.md) — roles, grants, PKCE, OIDC on top of OAuth2, ID token vs access token
+- [`30_M10_T2_OAuth2_Client.md`](30_M10_T2_OAuth2_Client.md) — `oauth2Login`, `ClientRegistration`, `OAuth2AuthorizedClient`, mapping the provider's claims to authorities
+- [`31_M10_T3_Resource_Server.md`](31_M10_T3_Resource_Server.md) — JWT validation, JWKS caching, opaque token introspection, audience and issuer validation
 
-* JSON error handling
-* Global exception handling
+### Module 11 — Advanced
 
----
+- [`32_M11_T1_SecurityContext_Internals.md`](32_M11_T1_SecurityContext_Internals.md) — `SecurityContextHolderStrategy`, ThreadLocal, async/`@Async`/`CompletableFuture` propagation, `DelegatingSecurityContext*`
+- [`33_M11_T2_Multi_Step_Authentication.md`](33_M11_T2_Multi_Step_Authentication.md) — OTP/2FA/MFA flows, partial authentication tokens, step-up authentication
+- [`34_M11_T3_Multi_Tenancy.md`](34_M11_T3_Multi_Tenancy.md) — tenant resolution, per-tenant issuers, tenant-scoped authorization, data isolation
+- [`35_M11_T4_Method_Security_Internals_ACL.md`](35_M11_T4_Method_Security_Internals_ACL.md) — how the AOP interceptors are wired, `AuthorizationManagerBeforeMethodInterceptor`, domain-object ACLs
 
-# 🔵 MODULE 10: OAuth2 & OpenID Connect
+### Module 12 — Production Hardening
 
-## 10.1 OAuth2 Basics
+- [`36_M12_T1_Security_Headers_HTTPS.md`](36_M12_T1_Security_Headers_HTTPS.md) — HSTS, CSP, `X-Frame-Options`, `Referrer-Policy`, `requiresChannel`, TLS termination behind a proxy
+- [`37_M12_T2_Brute_Force_Protection.md`](37_M12_T2_Brute_Force_Protection.md) — lockout, exponential backoff, rate limiting, credential stuffing, user enumeration
+- [`38_M12_T3_Auditing_And_Monitoring.md`](38_M12_T3_Auditing_And_Monitoring.md) — authentication events, Spring Data auditing, what to log and what never to log
 
-* Authorization flow
-* Grant types
+### Module 13 — Microservices Security
 
-## 10.2 Spring Security OAuth2 Client
+- [`39_M13_T1_Gateway_Security.md`](39_M13_T1_Gateway_Security.md) — centralised authentication at the edge, token translation, trust boundaries
+- [`40_M13_T2_Service_To_Service.md`](40_M13_T2_Service_To_Service.md) — token propagation, client credentials, token exchange, mTLS
 
-* Google login
-* GitHub login
+### Module 14 — Testing
 
-## 10.3 Resource Server
+- [`41_M14_T1_Testing_Spring_Security.md`](41_M14_T1_Testing_Spring_Security.md) — `spring-security-test`, `@WithMockUser`, `@WithUserDetails`, custom annotations, request post-processors, testing the filter chain
 
-* JWT validation
-* Token introspection
+### Module 15 — Real-World Patterns
 
----
+- [`42_M15_T1_RBAC_ABAC_Patterns.md`](42_M15_T1_RBAC_ABAC_Patterns.md) — RBAC vs ABAC vs ReBAC, permission modelling, `PermissionEvaluator`, externalised policy (OPA/Cedar)
 
-# 🟣 MODULE 11: Advanced Security Topics
+### Module 16 — Performance
 
-## 11.1 SecurityContext Internals
+- [`43_M16_T1_Performance_Optimization.md`](43_M16_T1_Performance_Optimization.md) — filter chain cost, static-resource bypass, caching `UserDetails`, bcrypt strength vs latency, JWKS and introspection caching
 
-* ThreadLocal behavior
-* Async propagation
+### Module 17 — Interview Deep Dive
 
-## 11.2 Custom Authentication Flow
+- [`44_M17_T1_Interview_Deep_Dive.md`](44_M17_T1_Interview_Deep_Dive.md) — cross-topic questions, whiteboard flows, and full system-design answers
 
-* Multi-step authentication
+### Module 18 — Modern & Adjacent (added beyond the original syllabus)
 
-## 11.3 Multi-Tenancy Security
-
-## 11.4 Method Security Internals
-
-## 11.5 ACL (Access Control Lists)
-
----
-
-# 🔴 MODULE 12: Security Hardening (Production-Level)
-
-## 12.1 Security Headers
-
-* HSTS
-* X-Frame-Options
-* XSS Protection
-* CSP
-
-## 12.2 HTTPS Enforcement
-
-## 12.3 Brute Force Protection
-
-* Account locking
-* Rate limiting
-
-## 12.4 Logging & Monitoring
-
-* Security events
-* Audit logs
+- [`45_M18_T1_Reactive_WebFlux_Security.md`](45_M18_T1_Reactive_WebFlux_Security.md) — `SecurityWebFilterChain`, `ReactiveSecurityContextHolder`, why ThreadLocal reasoning collapses
+- [`46_M18_T2_Spring_Authorization_Server.md`](46_M18_T2_Spring_Authorization_Server.md) — running your own OAuth2/OIDC provider
+- [`47_M18_T3_Modern_Auth_Mechanisms.md`](47_M18_T3_Modern_Auth_Mechanisms.md) — passkeys/WebAuthn, one-time-token login, remember-me, LDAP, SAML2, Actuator endpoint security
 
 ---
 
-# ⚫ MODULE 13: Microservices Security
+## The Ten Things You Must Be Able To Whiteboard
 
-## 13.1 API Gateway Security
+If you can do these from memory, you are interview-ready:
 
-* Centralized authentication
-
-## 13.2 JWT Across Services
-
-* Token propagation
-
-## 13.3 Service-to-Service Security
-
-* OAuth2
-* mTLS (basic idea)
-
----
-
-# 🟠 MODULE 14: Testing Spring Security
-
-## 14.1 Unit Testing
-
-* MockMvc
-* @WithMockUser
-
-## 14.2 Integration Testing
-
-* Testing secured endpoints
+1. The full request path from socket to controller, naming every Spring Security component.
+2. The authentication lifecycle: unauthenticated token → `ProviderManager` → authenticated token → `SecurityContextRepository`.
+3. Why 401 and 403 are produced by different code paths, and by which classes.
+4. CSRF vs CORS — different problems, different solutions, commonly conflated.
+5. Role vs authority, and exactly where the `ROLE_` prefix is added and stripped.
+6. Session-based vs token-based authentication, with the revocation trade-off stated honestly.
+7. JWT structure, what the signature does and does not protect, and the `alg` confusion attack.
+8. Where method security sits relative to the filter chain, and what that means for `@PostAuthorize`.
+9. How you would secure a microservices estate: edge, service-to-service, and data layer.
+10. How you would migrate a Boot 2.7 / Security 5.7 app to Boot 3 / Security 6 without downtime.
 
 ---
 
-# 🔵 MODULE 15: Real-World Implementation Patterns
+## Practice Projects
 
-## 15.1 RBAC (Role-Based Access Control)
+Build these in order. Each one forces you to hit the failure modes described in the notes.
 
-## 15.2 ABAC (Attribute-Based Access Control)
-
-## 15.3 Multi-role systems
-
-## 15.4 Custom permission evaluators
-
----
-
-# 🟣 MODULE 16: Performance & Optimization
-
-* Filter optimization
-* Stateless vs Stateful performance
-* Caching user details
-
----
-
-# 🔴 MODULE 17: Interview Deep Dive
-
-## Must Master Topics
-
-* Complete filter chain flow
-* Authentication lifecycle
-* JWT internals
-* CSRF vs CORS
-* Role vs Authority
-* Session vs Token
-
----
-
-# 🧪 FINAL PROJECTS (MANDATORY)
-
-## Project 1:
-
-* Form login + in-memory auth
-
-## Project 2:
-
-* DB authentication + roles
-
-## Project 3:
-
-* JWT-based authentication system
-
-## Project 4 (Advanced):
-
-* Microservices security (Gateway + JWT)
-
----
-
+1. **Form login + in-memory users.** Add a custom login page, success handler, and logout. Then break it on purpose: wrong `PasswordEncoder`, matcher order inverted, CSRF token missing.
+2. **Database-backed authentication with roles.** Custom `UserDetailsService`, bcrypt, role hierarchy, method security on the service layer.
+3. **Stateless JWT API.** Issue and validate tokens, add refresh-token rotation with reuse detection, and wire `AuthenticationEntryPoint` + `AccessDeniedHandler` to return RFC 7807 JSON.
+4. **Microservices estate.** Gateway performs OIDC login, exchanges for an internal token, propagates it downstream; downstream services run as resource servers with audience validation and mTLS between them.

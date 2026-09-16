@@ -2,6 +2,7 @@
 
 > **Module 3 · Topic 3** · Authentication
 > Baseline: Spring Security 6.x on Boot 3.x, Java 17+
+> New to this? Read **In Plain English** below first, then come back to the Version Matrix.
 
 ---
 
@@ -46,9 +47,110 @@ write your own `UserDetailsService` instead.
 
 ---
 
+## In Plain English
+
+**The one-line version:** Instead of listing your users inside the application's code, you keep them
+in ordinary database tables, and Spring Security runs a couple of small SQL queries on every login to
+find the person and the list of things they are allowed to do.
+
+**An analogy.** Think of a filing clerk with a card index. You hand him a name, he opens the first
+drawer, pulls out that person's card, then walks to a second drawer to look up what that person is
+permitted to do, and brings both back.
+
+The clerk is fast and reliable, but he is also strangely literal in three ways, and those three
+quirks are most of this topic. First, he does not read the labels on the card — he reads *positions*.
+He has been told "the name is always on the first line, the password on the second, and whether the
+account is switched on is the third". Rewrite a card with lines two and three swapped and he will not
+complain; he will simply read the wrong values and hand you nonsense with total confidence. Second,
+he insists on the second drawer being a separate trip, so every lookup is at least two journeys.
+Third, and most importantly, if the second drawer has no card for that person at all, he comes back
+and announces "there is no such person" — while their card from the first drawer is still in his hand.
+That last quirk is the single most time-consuming bug in this class, and the sections below spell it
+out precisely.
+
+**How it actually works, step by step.**
+
+The framework ships with a fixed pair of tables. A `users` table holds the username, the scrambled
+password, and an `enabled` true-or-false column. An `authorities` table holds one row per permission
+per person, so `alice` with two permissions has two rows. That pair, plus three optional tables for
+groups, is what the built-in code knows how to read. The reference file that creates them is called
+`users.ddl` (DDL means "data definition language", the SQL that creates tables) and it lives inside
+the framework's own jar.
+
+Two classes sit in front of those tables. `JdbcDaoImpl` is the read-only half: it implements
+`UserDetailsService`, the one-method interface whose whole job is to fetch a single user's record by
+name. It talks to the database through a `JdbcTemplate`, which is Spring's thin helper for running
+plain SQL. `JdbcUserDetailsManager` extends it and adds the write half — create a user, delete a
+user, change a password, manage groups. Nothing in either class scrambles a password for you: if you
+hand `createUser` a raw password, a raw password is exactly what lands in the column.
+
+Each login runs two queries. The first fetches one row from `users`. The second fetches every row
+from `authorities` for that username. The results are combined into one `UserDetails` record and
+handed back to `DaoAuthenticationProvider`, which then asks the `PasswordEncoder` whether the typed
+password matches the stored one. If you also switch groups on, a third query joins the three group
+tables and its results are added to the same set.
+
+Now the positional part, because it is the thing beginners trip over. You are allowed to replace those
+three SQL strings with your own, so the store can read your real tables instead of the framework's. But
+the code that reads each result row reads it *by column number*, not by column name. The users query
+must return username first, password second, enabled third. The authorities query must have the
+permission in column two, which means you need a throwaway first column that nothing ever reads,
+purely to push the permission into position two. There is exactly one exception: if your users query
+returns more than three columns, three extra values are looked up by the literal names `acc_locked`,
+`acc_expired`, and `creds_expired`, so those aliases are mandatory if you want them.
+
+The famous trap follows from how the two queries are combined. After loading the user and the
+permissions, the code checks whether the permission list came back empty, and if it did, it throws
+`UsernameNotFoundException` — the "no such user" error — even though the row exists and the password
+is perfectly correct. A separate setting called `hideUserNotFoundExceptions`, on by default, then
+rewrites that into the generic "Bad credentials" message so attackers cannot tell which usernames
+exist. The net effect is that a user with a valid password and no permission rows is told their
+password is wrong.
+
+Finally, the cost. Neither query runs inside a transaction, so each one borrows a database connection
+from the pool and gives it back. Two logins at once is four connection checkouts. That is why the
+sections below tell you to size the connection pool for your login rate, not just your page-view rate.
+
+**Why should a beginner care?** This is the first user store you can actually deploy, so the mistakes
+here are production mistakes. Get the column order wrong in a custom query and you can end up reading
+`is_locked` where the code expects `is_enabled`, which silently lets locked accounts in and shuts
+valid ones out with no error anywhere. Forget to insert a permission row for a new user and that user
+is told their password is wrong forever. And store a password without scrambling it first, because
+this class will not do it for you, and you have put plaintext passwords in a database table.
+
+**Words you will meet in this file**
+
+| Term | In plain words |
+|---|---|
+| JDBC | Java's standard way of talking to a relational database with SQL. |
+| `DataSource` | The object that hands out database connections. In practice it is a pool of reusable connections. |
+| Connection pool / HikariCP | A fixed set of open database connections that are borrowed and returned, because opening a new one is slow. |
+| `JdbcTemplate` | Spring's small helper for running a SQL string and turning each result row into an object. |
+| DDL | The SQL that creates tables and indexes, as opposed to the SQL that reads and writes data. |
+| `JdbcDaoImpl` | The read-only user store: given a username, run the queries and return the user record. |
+| `JdbcUserDetailsManager` | `JdbcDaoImpl` plus the ability to create, update, and delete users and groups. |
+| `GroupManager` | The extra interface for managing groups and their permissions, which this class does implement. |
+| Positional query | A query whose contract is the *order* of the columns it returns, because the reading code uses column numbers. |
+| Filler column | A column that exists only to occupy a position so the next column lands where the reader expects it. |
+| `rolePrefix` | A string prepended to every permission read from the database. It is empty by default, so values are used exactly as stored. |
+| `acc_locked`, `acc_expired`, `creds_expired` | The three column aliases the reader looks up *by name* to fill in the other status flags. |
+| `usernameBasedPrimaryKey` | Chooses whether the logged-in name is the spelling stored in the database or the spelling the user typed. |
+| `hideUserNotFoundExceptions` | The default safety setting that rewrites "no such user" into "bad credentials" so usernames cannot be probed. |
+| `UserCache` | An optional in-memory shortcut that skips the queries. Whatever expiry you choose is also how long a revoked account keeps working. |
+| `UserDetailsPasswordService` | The interface that would let a store re-scramble a password with a stronger algorithm at login. This class does not implement it. |
+
+**If you remember only one thing:** the custom queries are read by column position, not column name,
+and a user with no permission rows is reported as "bad credentials" even when the password is right.
+
+---
+
 ## Core Concepts
 
 ### 1. The two classes
+
+**In simple terms:** One class only reads users out of the database, and the other adds the ability to
+create and change them, so pick the read-only one unless your application genuinely needs to write
+users itself.
 
 ```java
 // org.springframework.security.core.userdetails.jdbc
@@ -74,6 +176,10 @@ so unlike `InMemoryUserDetailsManager` it will not re-hash a password on login w
 bcrypt therefore needs your own `UserDetailsPasswordService`, or a forced reset.
 
 ### 2. The default schema
+
+**In simple terms:** These are the two tables the built-in code expects, and they are a test
+convenience rather than a design for a real application, because they have no identifier, no email,
+and no place to record that an account is locked.
 
 The DDL ships inside `spring-security-core` at
 `org/springframework/security/core/userdetails/jdbc/users.ddl`:
@@ -103,6 +209,10 @@ cascades. And **`enabled` is the only status column**: locked, expired, and cred
 no home in the default schema even though `UserDetails` exposes all four.
 
 ### 3. The default queries, and why they are positional
+
+**In simple terms:** You can swap in your own SQL, but the code reads each result row by column
+number rather than by column name, so getting the order wrong produces wrong values instead of an
+error message.
 
 ```java
 public static final String DEF_USERS_BY_USERNAME_QUERY =
@@ -155,6 +265,10 @@ empty string, so the `authority` column value is used verbatim and the rows must
 
 ### 4. `loadUserByUsername`, and two surprises
 
+**In simple terms:** This is the method that runs the queries and assembles the user, and it hides two
+traps: a user with no permission rows is reported as "no such user", and if your query returns several
+rows for one username it quietly uses the first one.
+
 ```java
 public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
     List<UserDetails> users = loadUsersByUsername(username);            // query 1
@@ -189,6 +303,10 @@ username as spelled in the *database row*. Set it to `false` and the username as
 returned instead, which matters when your query is case-insensitive.
 
 ### 5. Group-based authorities
+
+**In simple terms:** Instead of giving every person their own list of permissions, you attach the
+permissions to a named group and then put people in that group, so adding a permission for the whole
+support team is one row rather than one row per person.
 
 Three tables, and they are additive rather than alternative:
 
@@ -229,6 +347,10 @@ authorities. Below that scale the two extra tables and the extra join are not wo
 you are usually reaching for a permission model the framework's schema cannot express anyway.
 
 ### 6. The cost per login
+
+**In simple terms:** Every login borrows a database connection twice, or three times with groups
+enabled, so a burst of logins can run your connection pool dry and start failing ordinary page
+requests that had nothing to do with logging in.
 
 ```mermaid
 sequenceDiagram
@@ -279,6 +401,10 @@ For context, the bcrypt verification is deliberately 100 to 500 milliseconds of 
 are rarely the *latency* problem. They are a *connection* and *throughput* problem.
 
 ### 7. Caching
+
+**In simple terms:** You can keep recently loaded users in memory to skip the queries, but whatever
+expiry time you choose is also how long a disabled account or a removed permission keeps working, so
+the setting is a security decision rather than a performance one.
 
 ```java
 public interface UserCache {

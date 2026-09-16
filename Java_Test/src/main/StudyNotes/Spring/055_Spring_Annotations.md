@@ -1,607 +1,655 @@
-# 55. Spring Annotations
+# 55. Spring Configuration and Annotations
 
-## 55. Spring Annotations
+[← 054_2 Lifecycle and Scopes](054_2_Bean_Lifecycle_and_Scopes.md) | [Course map](00_COURSE_MAP.md) | **Next:** [056 AOP →](056_Spring_AOP.md)
 
-## Frequently Asked
+Teaching is simple first. **Interview Q&A at the end is 5–8 year standard.**
 
 ---
 
-# 1. @Autowired
+## Simple first
 
-<details>
-<summary>Show Answer</summary>
+You have to **tell Spring which objects exist**. There are three common ways:
 
-**Answer:**
+| Way | You write | Everyday meaning |
+|-----|-----------|------------------|
+| **Scan** | `@Service` on *your* class | “Spring, find my classes in this package.” |
+| **Factory method** | `@Bean` method that `return new RestTemplate()` | “I will build this object; you manage it.” Used for library classes you cannot sticker. |
+| **Import** | `@Import(MailConfig.class)` | “Also load that other recipe book.” |
 
-`@Autowired` tells Spring to **automatically inject** a matching bean from the container into a field, constructor, setter, or method parameter.
-
-```java
-@Service
-public class OrderService {
-
-    // Constructor (preferred — no @Autowired needed for single constructor)
-    private final OrderRepository repo;
-    public OrderService(OrderRepository repo) { this.repo = repo; }
-
-    // Field injection (works but not recommended)
-    @Autowired
-    private PaymentGateway gateway;
-
-    // Setter injection (optional dependencies)
-    @Autowired
-    public void setAuditService(AuditService audit) { }
-}
-```
-
-### How It Works
+**Wiring** = picking *which* bean to plug in when there are two of the same type.
 
 ```text
-1. Spring finds @Autowired on field/constructor/setter
-2. Looks up bean by type in ApplicationContext
-3. Injects via reflection (field/setter) or constructor call
-4. Fails at startup if no match (required=true by default)
+Spring looks at the type (PaymentGateway)
+  → if two exist, look at @Qualifier (a name tag)
+  → if no tag, look at @Primary (the default)
+  → if still confused, the app **fails at startup** (this is good)
 ```
 
-| Attribute | Default | Meaning |
-|-----------|---------|---------|
-| `required` | `true` | Fail if no bean found |
-| `required = false` | optional | Leaves null if no bean |
+**`${...}` vs `#{...}`**
 
-**Interview Point:**
+- `${app.port}` = read a **property** (from a file / env var)
+- `#{...}` = a small **formula** (SpEL — next-but-one chapter)
 
-> @Autowired = inject by type. Prefer constructor injection. Post-processor `AutowiredAnnotationBeanPostProcessor` handles it at startup.
-
-</details>
+**Full vs lite `@Bean` (the beginner trap):** if the class is `@Configuration`, calling another `@Bean` method still goes through Spring (one object). If the class is only `@Component`, a normal Java call runs — you can accidentally create a **second** object that Spring does not know about.
 
 ---
 
-# 2. @Qualifier
+## When you interview (5–8 years)
 
-<details>
-<summary>Show Answer</summary>
+Annotations are not a cheat sheet. The real topic is **how Spring learns about beans** and **how it chooses among them**.
 
-**Answer:**
+They will ask: `@Bean` inside `@Component` creating two `RestTemplate`s; `@Import` vs scan; `@Qualifier` vs `@Primary`; `@Conditional` vs `@Profile`; `@Value` vs `Environment`.
 
-`@Qualifier` specifies **which bean by name** when multiple beans of the **same type** exist.
+---
+
+## 1. Three configuration styles
+
+| Style | How | Use now |
+|-------|-----|---------|
+| XML | `<bean class="..."/>` | Legacy, some namespaces |
+| Annotation scan | `@ComponentScan` + `@Service` | Your application classes |
+| Java config | `@Configuration` + `@Bean` | Third-party objects, explicit wiring, imports |
+
+They compose. A `@SpringBootApplication` (later course) is `@Configuration` + `@ComponentScan` + `@EnableAutoConfiguration`. In Core you write:
 
 ```java
-public interface NotificationSender { void send(String msg); }
+@Configuration
+@ComponentScan("com.app")
+@PropertySource("classpath:app.properties")
+@Import(MailConfig.class)
+public class AppConfig {
 
-@Service("emailSender")
-public class EmailSender implements NotificationSender { }
-
-@Service("smsSender")
-public class SmsSender implements NotificationSender { }
-
-@Service
-public class AlertService {
-    private final NotificationSender sender;
-
-    public AlertService(@Qualifier("emailSender") NotificationSender sender) {
-        this.sender = sender;  // injects EmailSender, not SmsSender
+    @Bean
+    public Clock clock() {
+        return Clock.systemUTC();
     }
 }
 ```
 
-```text
-Without @Qualifier → NoUniqueBeanDefinitionException (2 beans of same type)
-With @Qualifier("emailSender") → picks exact bean by name
+```java
+ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
 ```
 
-**Interview Point:**
+### What `@ComponentScan` actually does
 
-> @Qualifier = disambiguate by bean name when multiple implementations exist. Use with @Autowired on constructor/field.
+- Walks the base package
+- Picks up `@Component` / `@Service` / `@Repository` / `@Controller` / `@Configuration` / custom meta-annotations
+- Filters: `includeFilters`, `excludeFilters` (`ASSIGNABLE_TYPE`, `ANNOTATION`, `REGEX`, `ASPECTJ`, `CUSTOM`)
+- Spring 5.3+ indexed scan (`spring.components` file) speeds large apps
 
-</details>
+Default base package if you pass a `@Configuration` class to `AnnotationConfigApplicationContext`: **that class’s package**, not the whole classpath.
+
+Scanning the whole `com` or a library package is how you accidentally create duplicate beans.
 
 ---
 
-# 3. @Primary
+## 2. `@Configuration` full mode vs lite `@Bean`
 
-<details>
-<summary>Show Answer</summary>
+This is the highest-value annotation question. **In simple words first:**
 
-**Answer:**
+- `@Configuration` = Spring **subclasses** your config class. When one `@Bean` method calls another, that call is redirected to the container → **one** object.
+- Only `@Component` + `@Bean` = a normal Java call → **two** objects possible.
 
-`@Primary` marks a bean as the **default choice** when multiple beans match the same type — no @Qualifier needed.
+You can avoid the trap entirely: do not call `@Bean` methods on `this`. Inject the other bean as a **method parameter**.
+
+### Full mode
+
+Class annotated `@Configuration`. Spring CGLIB-subclasses it. Calls to `@Bean` methods are intercepted → `getBean` → **one singleton**.
+
+```java
+@Configuration
+public class HttpConfig {
+
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate(requestFactory());
+    }
+
+    @Bean
+    public ClientHttpRequestFactory requestFactory() {
+        return new HttpComponentsClientHttpRequestFactory();
+    }
+}
+```
+
+`restTemplate()` calling `requestFactory()` hits the **container**, not a raw Java call. One factory bean.
+
+`@Configuration(proxyBeanMethods = true)` is the default (Spring 5.2 named the flag). `proxyBeanMethods = false` = lite-like, faster, no CGLIB config subclass — you must not call `@Bean` methods directly; inject parameters instead:
+
+```java
+@Bean
+public RestTemplate restTemplate(ClientHttpRequestFactory factory) {
+    return new RestTemplate(factory);
+}
+```
+
+That parameter style is the modern recommendation even in full mode (clearer, AOT-friendly).
+
+### Lite mode
+
+`@Bean` methods on a class that is **only** `@Component` (or a non-annotated class registered somehow) — **not** `@Configuration`.
+
+```java
+@Component
+public class HttpConfigLite {
+    @Bean
+    public RestTemplate restTemplate() {
+        return new RestTemplate(requestFactory()); // RAW CALL
+    }
+
+    @Bean
+    public ClientHttpRequestFactory requestFactory() {
+        return new HttpComponentsClientHttpRequestFactory();
+    }
+}
+```
+
+`requestFactory()` is invoked twice: once as `@Bean`, once from `restTemplate()`. Two factories. The `RestTemplate`’s factory is **not** the singleton in the container.
+
+**Memory trick:** `@Configuration` = container intercepts `@Bean` calls. `@Component` + `@Bean` = plain Java.
+
+`@Configuration` is itself a `@Component`, so it is scanned. You do not also put `@Component` on it.
+
+Final classes cannot be `@Configuration` in full mode (cannot subclass). `proxyBeanMethods = false` or inject-by-parameter.
+
+---
+
+## 3. `@Import`, `ImportSelector`, `ImportBeanDefinitionRegistrar`
+
+| Mechanism | What you import |
+|-----------|-----------------|
+| `@Import(MailConfig.class)` | Another `@Configuration` / `@Component` |
+| `@Import(SomeSelector.class)` | `ImportSelector` — returns class names to import (can be conditional) |
+| `@Import(SomeRegistrar.class)` | `ImportBeanDefinitionRegistrar` — programmatic `BeanDefinition` registration |
+
+```java
+public class MonitoringSelector implements ImportSelector {
+    @Override
+    public String[] selectImports(AnnotationMetadata metadata) {
+        return new String[] { MetricsConfig.class.getName() };
+    }
+}
+
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Import(MonitoringSelector.class)
+public @interface EnableMonitoring { }
+```
+
+This is how `@Enable*` works in Core: `@EnableTransactionManagement`, `@EnableAsync`, `@EnableWebMvc`, `@EnableCaching` are `@Import` of selectors/registrars.
+
+`DeferredImportSelector` is what Boot auto-config uses (run after user configs). Know the name; details are Boot.
+
+`ImportBeanDefinitionRegistrar` is how `@MapperScan` and similar libraries register beans you did not annotate.
+
+---
+
+## 4. Wiring: `@Autowired`, `@Qualifier`, `@Primary`, `@Resource`
+
+### `@Autowired`
+
+- Inject **by type**
+- Places: constructor, setter, field, method parameters, `@Bean` method parameters
+- `required = true` by default → missing bean fails refresh
+- Processed by `AutowiredAnnotationBeanPostProcessor`
+
+Single constructor: annotation optional (Spring 4.3+).
+
+### Resolution order when several beans match a type
+
+```text
+1. Collect candidates of that type (autowireCandidate = true)
+2. If @Qualifier (or @Qualifier-composing annotation) on injection point
+      → keep names / qualifier values that match
+3. Else if parameter/field name matches a bean name
+      (and compilation retained names, or @Qualifier implicit in some versions)
+      → may match by name  — do not rely on this in production
+4. Else if one @Primary among remaining
+      → use it
+5. Else if exactly one candidate
+      → use it
+6. Else
+      → NoUniqueBeanDefinitionException
+```
+
+`@Qualifier` **beats** `@Primary`.
 
 ```java
 @Service
-@Primary  // default when injecting PaymentGateway
+@Primary
 public class StripeGateway implements PaymentGateway { }
 
 @Service
+@Qualifier("paypal")
 public class PayPalGateway implements PaymentGateway { }
 
 @Service
 public class CheckoutService {
-    private final PaymentGateway gateway;
-    public CheckoutService(PaymentGateway gateway) {
-        this.gateway = gateway;  // gets StripeGateway ( @Primary )
+    public CheckoutService(
+            @Qualifier("paypal") PaymentGateway gateway) {
+        // PayPal, not Stripe
     }
 }
 ```
 
-| @Qualifier vs @Primary |
-|------------------------|
-| @Qualifier = explicit choice at injection point |
-| @Primary = default bean for that type everywhere |
+Custom annotation:
 
-```text
-Rule: @Qualifier beats @Primary when both are present
+```java
+@Qualifier
+@Retention(RetentionPolicy.RUNTIME)
+public @interface Paypal { }
+
+@Service
+@Paypal
+public class PayPalGateway implements PaymentGateway { }
+
+public CheckoutService(@Paypal PaymentGateway gateway) { }
 ```
 
-**Interview Point:**
+### `@Resource` (Jakarta)
 
-> @Primary = default bean for a type. Use when one implementation is standard. @Qualifier overrides @Primary.
+- JSR-250 / Jakarta annotation
+- Default: inject **by name** (field name or `@Resource(name = "beanName")`), then by type
+- No `required` flag like `@Autowired`
+- Useful when you think in names; Spring teams usually stay on `@Autowired` + `@Qualifier` for consistency
 
-</details>
+### `@Inject` (Jakarta Inject)
+
+Almost `@Autowired` (JSR-330). `Optional` handling differs slightly. In Spring shops, `@Autowired` is the common dialect.
+
+### Injecting all implementations
+
+```java
+public ReportService(List<Notifier> notifiers) { }           // all, including @Primary
+public ReportService(Map<String, Notifier> notifiers) { }    // name → bean
+public ReportService(ObjectProvider<Notifier> notifiers) { } // lazy stream
+```
+
+`@Order` / `Ordered` on the beans controls `List` order.
+
+`@Autowired(required = false) List<Notifier>` → empty list if none, not fail.
 
 ---
 
-# 4. @Value
+## 5. `@Value`, Environment, `@PropertySource`
 
-<details>
-<summary>Show Answer</summary>
+```java
+@Value("${app.mail.host}")
+String host;
 
-**Answer:**
+@Value("${app.mail.port:587}")
+int port;
 
-`@Value` injects **values from properties files, environment variables, or SpEL expressions** into fields, constructor params, or method params.
+@Value("#{systemProperties['user.name']}")
+String osUser;
+```
+
+| Syntax | Engine |
+|--------|--------|
+| `${...}` | Placeholder → `Environment` / property sources |
+| `#{...}` | SpEL ([056_1](056_1_Events_SpEL_Resources.md)) |
+
+`PropertySourcesPlaceholderConfigurer` / `EmbeddedValueResolver` must be registered. `AnnotationConfigApplicationContext` and Boot do this. A bare `DefaultListableBeanFactory` does not resolve `${}` unless you add the BFPP.
+
+**`Environment`** is the typed API:
 
 ```java
 @Service
-public class EmailService {
-
-    @Value("${app.mail.host}")
-    private String mailHost;
-
-    @Value("${app.mail.port:587}")  // default 587 if missing
-    private int mailPort;
-
-    @Value("#{systemProperties['user.name']}")  // SpEL
-    private String systemUser;
-}
-```
-
-```properties
-# application.properties
-app.mail.host=smtp.gmail.com
-app.mail.port=465
-```
-
-| Syntax | Example |
-|--------|---------|
-| `${key}` | Property from properties/env |
-| `${key:default}` | With default value |
-| `#{expression}` | SpEL expression |
-
-**Interview Point:**
-
-> @Value injects config values — properties, env vars, defaults. Use for simple config; `@ConfigurationProperties` for grouped config in larger apps.
-
-</details>
-
----
-
-# 5. @Bean
-
-<details>
-<summary>Show Answer</summary>
-
-**Answer:**
-
-`@Bean` marks a **method** inside a `@Configuration` class — Spring calls the method and registers the **return value** as a bean in the container.
-
-```java
-@Configuration
-public class AppConfig {
-
-    @Bean
-    public RestTemplate restTemplate() {
-        return new RestTemplate();  // Spring manages this object
-    }
-
-    @Bean(name = "primaryDataSource")
-    public DataSource dataSource() {
-        HikariDataSource ds = new HikariDataSource();
-        ds.setJdbcUrl("jdbc:postgresql://localhost/mydb");
-        return ds;
+public class MailProps {
+    public MailProps(Environment env) {
+        String host = env.getProperty("app.mail.host");
+        int port = env.getProperty("app.mail.port", Integer.class, 587);
     }
 }
 ```
 
-### When to Use @Bean vs @Component
+`@PropertySource("classpath:mail.properties")` on a `@Configuration` adds a file. It does **not** replace `application.properties` (that is Boot). You can use `${}` inside the location: `@PropertySource("classpath:mail-${spring.profiles.active}.properties")` — fragile if multiple profiles.
 
-| @Component | @Bean |
-|------------|-------|
-| On your own class | On method — for third-party classes |
-| Auto-scanned | You control creation logic |
-| `new MyService()` by Spring | `return new RestTemplate()` by you |
+**`@Value` vs grouped config:** `@Value` is fine for a few keys. A bag of related keys belongs in a dedicated `@Configuration` bean you construct yourself, or later Boot `@ConfigurationProperties` (type-safe, validated). At 5–8 YOE, say: “`@Value` does not bind hierarchical YAML to an object graph well; that’s why Boot added `@ConfigurationProperties`.”
 
-**Interview Point:**
-
-> @Bean = programmatic bean registration. Use for third-party classes you can't annotate (@Component). Method name = default bean name.
-
-</details>
+Property source **priority** (Framework): programmatic `Environment` > system properties > env vars > `@PropertySource` (order of declaration). Boot adds its own longer list (command line, `application-{profile}.yml`, …). For Core interviews, “Environment is an ordered list of PropertySources; first match wins.”
 
 ---
 
-# 6. @Configuration
+## 6. `@Profile`
 
-<details>
-<summary>Show Answer</summary>
-
-**Answer:**
-
-`@Configuration` marks a class as a **source of bean definitions** — contains `@Bean` methods. Spring creates a **CGLIB proxy** so `@Bean` methods return singletons (not new object each call).
-
-```java
-@Configuration
-public class SecurityConfig {
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
-    @Bean
-    public UserDetailsService userDetailsService() {
-        return new InMemoryUserDetailsManager(...);
-    }
-}
-```
-
-```text
-@Configuration class = Java-based config (replaces XML)
-@Bean methods inside = bean factory methods
-CGLIB proxy ensures @Bean method called once per container
-```
-
-**Interview Point:**
-
-> @Configuration = Java config class with @Bean methods. Replaces XML. CGLIB-enhanced so @Bean methods don't create duplicate instances.
-
-</details>
-
----
-
-## Advanced
-
----
-
-# 7. @Lazy
-
-<details>
-<summary>Show Answer</summary>
-
-**Answer:**
-
-`@Lazy` delays bean creation until **first use** — instead of at application startup (default for singletons is eager).
-
-```java
-@Service
-@Lazy
-public class HeavyReportService {
-    public HeavyReportService() {
-        // expensive init — only runs when first bean is used
-    }
-}
-
-@Configuration
-public class AppConfig {
-    @Bean
-    @Lazy
-    public ExpensiveClient client() { return new ExpensiveClient(); }
-}
-```
-
-| Eager (default) | Lazy |
-|-----------------|------|
-| Created at startup | Created on first injection/getBean |
-| Fail-fast for config errors | Faster startup, delayed failure |
-| Good for most beans | Good for rarely used heavy beans |
-
-**Interview Point:**
-
-> @Lazy = create bean on first access, not startup. Speeds startup. Can hide config errors until runtime.
-
-</details>
-
----
-
-# 8. @DependsOn
-
-<details>
-<summary>Show Answer</summary>
-
-**Answer:**
-
-`@DependsOn` ensures specified beans are **initialized before** this bean — controls startup order.
-
-```java
-@Service
-@DependsOn({"databaseInitializer", "cacheWarmer"})
-public class UserService {
-    // UserService created ONLY after databaseInitializer and cacheWarmer are ready
-}
-
-@Bean
-@DependsOn("dataSource")
-public JdbcTemplate jdbcTemplate(DataSource dataSource) {
-    return new JdbcTemplate(dataSource);
-}
-```
-
-```text
-Use when: Bean B needs Bean A fully initialized first
-Does NOT inject dependency — only controls ORDER
-For actual dependency, use constructor injection
-```
-
-**Interview Point:**
-
-> @DependsOn = initialization order only, not injection. Use when one bean must exist before another starts, but no direct dependency link.
-
-</details>
-
----
-
-# 9. @Profile
-
-<details>
-<summary>Show Answer</summary>
-
-**Answer:**
-
-`@Profile` registers a bean **only when a specific profile is active** — enables environment-specific configuration.
+A bean or `@Configuration` is registered **only** if the profile is active.
 
 ```java
 @Configuration
 @Profile("dev")
-public class DevConfig {
+public class DevMailConfig {
     @Bean
-    public DataSource dataSource() {
-        return new EmbeddedDatabaseBuilder().build();  // H2 for dev
-    }
+    JavaMailSender sender() { return new MockMailSender(); }
 }
 
 @Configuration
 @Profile("prod")
-public class ProdConfig {
+public class ProdMailConfig {
     @Bean
-    public DataSource dataSource() {
-        return new HikariDataSource();  // real DB for prod
+    JavaMailSender sender() { return realSender(); }
+}
+```
+
+Activate: `ctx.getEnvironment().setActiveProfiles("dev")` before refresh, or `spring.profiles.active=dev`.
+
+Expressions (Spring 5.1+ / 4.x `Profile`): `@Profile("dev | local")`, `!prod`.
+
+`@Profile` is implemented as a **`@Conditional`** (`ProfileCondition`). It is a special case of the general engine below.
+
+---
+
+## 7. `@Conditional` (Framework, not Boot)
+
+```java
+public class OnLinuxCondition implements Condition {
+    @Override
+    public boolean matches(ConditionContext ctx, AnnotatedTypeMetadata md) {
+        return ctx.getEnvironment().getProperty("os.name", "")
+                .toLowerCase().contains("linux");
     }
 }
+
+@Bean
+@Conditional(OnLinuxCondition.class)
+public WatchService linuxWatcher() { ... }
 ```
 
-```properties
-# application-dev.properties
-spring.profiles.active=dev
+`ConditionContext` gives `Environment`, `BeanDefinitionRegistry`, `ClassLoader`.
 
-# Or command line
-java -jar app.jar --spring.profiles.active=prod
-```
+**Do not** call `getBean()` inside `matches` — beans may not exist; you can only look at **definitions** and the Environment.
 
-| Use Case | Example |
-|----------|---------|
-| Dev vs Prod DB | Different DataSource beans |
-| Mock services | @Profile("test") |
-| Feature flags | @Profile("feature-x") |
+Boot annotations (`@ConditionalOnClass`, `@ConditionalOnMissingBean`, `@ConditionalOnProperty`) are conditions on this same SPI. If asked “how auto-config decides,” the Core answer is: **`@Conditional` + `DeferredImportSelector`**.
 
-**Interview Point:**
-
-> @Profile = conditional bean registration by environment. Activate via `spring.profiles.active`. Clean way to separate dev/test/prod config.
-
-</details>
+`@Conditional` on a `@Configuration` class skips **all** its `@Bean` methods.
 
 ---
 
-# 10. @PropertySource
+## 8. `@Lazy`, `@DependsOn`, `@Scope`, `@Primary` recap
 
-<details>
-<summary>Show Answer</summary>
+| Annotation | Role |
+|------------|------|
+| `@Lazy` on class/`@Bean` | Singleton created on first use |
+| `@Lazy` on injection point | Inject a proxy; real getBean on first method |
+| `@DependsOn` | Init **order** only, no injection |
+| `@Scope` | singleton / prototype / web / custom |
+| `@Primary` | Default candidate among many of one type |
 
-**Answer:**
+`@Lazy` on a class that is the *only* dependency of an eager singleton still starts at startup — unless the injection point is also lazy.
 
-`@PropertySource` loads **additional property files** into Spring's Environment — beyond default `application.properties`.
+`@DependsOn` is for side-effect beans (static init, register JDBC driver). If you can inject, inject.
+
+---
+
+## 9. Meta-annotations and composed annotations
+
+Spring annotations are often **meta-annotated**. `@Service` includes `@Component`. Your own:
 
 ```java
-@Configuration
-@PropertySource("classpath:mail.properties")
-@PropertySource("classpath:payment-${spring.profiles.active}.properties")
-public class AppConfig {
-
-    @Value("${mail.smtp.host}")
-    private String smtpHost;
-}
-```
-
-```properties
-# mail.properties
-mail.smtp.host=smtp.company.com
-mail.smtp.port=25
-```
-
-```text
-Default: application.properties / application.yml (auto-loaded by Boot)
-@PropertySource: extra custom property files
-Access via @Value or Environment.getProperty()
-```
-
-**Interview Point:**
-
-> @PropertySource loads extra property files. Spring Boot auto-loads application.properties/yml. Use for modular config files.
-
-</details>
-
----
-
-## Scenario
-
----
-
-# 11. What happens when multiple beans of same type exist?
-
-<details>
-<summary>Show Answer</summary>
-
-**Answer:**
-
-When Spring finds **more than one bean** matching the injection type, it throws:
-
-```text
-NoUniqueBeanDefinitionException:
-  expected single matching bean but found 2: emailSender, smsSender
-```
-
-```java
-@Service("emailSender")
-public class EmailSender implements Notifier { }
-
-@Service("smsSender")
-public class SmsSender implements Notifier { }
-
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
 @Service
-public class AlertService {
-    @Autowired
-    private Notifier notifier;  // ❌ FAILS — which one?
-}
+@Transactional
+public @interface ApplicationService { }
 ```
 
-### Solutions
+Scan sees `@Component` through the meta-annotation. This is how you keep stereotypes consistent.
 
-```text
-1. @Qualifier("emailSender")  → pick by name
-2. @Primary on one bean       → default choice
-3. Use @Resource(name="...")  → JSR-250 by name
-4. Inject List<Notifier>      → get all implementations
-5. Inject Map<String, Notifier> → all beans keyed by name
+`@AliasFor` (Spring 4.2+) maps attributes of composed annotations to the inner ones. `@SpringBootApplication` uses this heavily.
+
+---
+
+## 10. XML leftovers you should still recognize
+
+```xml
+<beans>
+  <context:component-scan base-package="com.app"/>
+  <context:property-placeholder location="classpath:app.properties"/>
+  <bean id="clock" class="java.time.Clock" factory-method="systemUTC"/>
+</beans>
 ```
 
-**Interview Point:**
-
-> Multiple same-type beans without @Qualifier/@Primary = startup failure. Fix with @Qualifier, @Primary, or inject collection.
-
-</details>
+`ClassPathXmlApplicationContext` vs `AnnotationConfigApplicationContext`. Mixing: `@ImportResource("classpath:legacy.xml")` on a Java config class.
 
 ---
 
-# 12. How Spring resolves dependency ambiguity?
+## Production pitfalls
 
-<details>
-<summary>Show Answer</summary>
-
-**Answer:**
-
-Spring follows this **resolution order** when injecting by type:
-
-```text
-1. Find all beans matching the required type
-2. If exactly ONE → inject it ✅
-3. If ZERO → NoSuchBeanDefinitionException (unless required=false)
-4. If MULTIPLE → try @Qualifier on injection point
-5. If no @Qualifier → look for @Primary bean
-6. If still ambiguous → NoUniqueBeanDefinitionException ❌
-```
-
-| Priority | Mechanism |
-|----------|-----------|
-| 1 | @Qualifier on field/parameter |
-| 2 | @Primary on one candidate bean |
-| 3 | Bean name matches parameter name (constructor) |
-| 4 | Fail with exception |
-
-```java
-// Parameter name "emailSender" matches bean name — works in Spring 4+
-public AlertService(Notifier emailSender) { }  // injects bean named emailSender
-```
-
-```text
-Best practice: Don't rely on parameter name matching
-Use @Qualifier or @Primary explicitly — clear and portable
-```
-
-**Interview Point:**
-
-> Resolution: type match → @Qualifier → @Primary → parameter name match → fail. Always be explicit with @Qualifier or @Primary in production code.
-
-</details>
+1. **Lite `@Bean` + method calls** — extra instances, not in the graph.
+2. **Scan too wide** — duplicate beans from test configs or libraries.
+3. **Relying on parameter names** without `-parameters` compiler flag — breaks in CI.
+4. **`@Autowired` on two beans of same type with no qualifier** — works on your machine because of `@Primary` you forgot you added.
+5. **`@Value` for 15 related keys** — no validation, typos at runtime.
+6. **`@Profile("dev")` on a class and forgetting prod counterpart** — empty `JavaMailSender` in prod.
+7. **Condition that calls `getBean`** — random startup failures.
+8. **`@Resource` by field name** after a rename — silent wrong bean if types still match poorly.
 
 ---
 
-# 5–8 Year Interview Rapid Fire
+## Interview Ready Q&A (5–8 year standard)
 
-### Q: @Autowired on constructor — needed?
+The notes explained stickers and recipe books. **Here, talk resolution order, full vs lite mode, ImportSelector, and `@Conditional`.**
 
-<details>
-<summary>Show Answer</summary>
+### Q1. `@Component` vs `@Bean`?
 
-**Answer:**
+**Answer:** `@Component` (and stereotypes) mark **your** class for scanning; Spring calls the constructor. `@Bean` is a **factory method** that returns an object, used for third-party types or when creation needs code (builders, conditionals).
 
-**No** — if there is only one constructor, Spring 4.3+ auto-wires it without `@Autowired`.
+**Counter:** Can you `@Bean` a class that is also `@Component`?
 
-</details>
-
----
-
-### Q: @Bean vs @Component?
-
-<details>
-<summary>Show Answer</summary>
-
-**Answer:**
-
-`@Component` on class — Spring creates it. `@Bean` on method — you create and return object (usually third-party classes).
-
-</details>
+**Counter-answer:** Yes, and you get **two** beans unless you exclude one. That is a common duplicate-`DataSource` story. Pick one registration path.
 
 ---
 
-### Q: Can @Value inject List?
+### Q2. Why is constructor injection preferred, and do you need `@Autowired`?
 
-<details>
-<summary>Show Answer</summary>
+**Answer:** Required deps, `final` fields, tests, fail-fast. No `@Autowired` if there is a single constructor (4.3+).
 
-**Answer:**
+**Counter:** Two constructors, one for JPA (`protected` no-arg) and one for Spring?
 
-**Yes** — `@Value("${app.allowed-roles}")` with comma-separated values, or use `@ConfigurationProperties` for complex binding.
-
-</details>
+**Counter-answer:** Put `@Autowired` on the injecting constructor. Keep the no-arg for the persistence provider. Do not make the no-arg `public` if you can avoid it.
 
 ---
 
-### Q: @Profile on class vs method?
+### Q3. Full `@Configuration` vs lite `@Bean`?
 
-<details>
-<summary>Show Answer</summary>
+**Answer:** `@Configuration` CGLIB proxy intercepts `@Bean` methods so internal calls go to the container (one singleton). Lite (`@Bean` on `@Component`) is a raw call — extra instances. `proxyBeanMethods = false` is explicit lite-like; inject `@Bean` products as method parameters instead of calling methods.
 
-**Answer:**
+**Counter:** Why does Boot use `proxyBeanMethods = false` on many auto-configs?
 
-Both work. On `@Configuration` class — all `@Bean` methods inside follow profile. On individual `@Service`/`@Bean` — only that bean is conditional.
-
-</details>
+**Counter-answer:** Startup cost (no CGLIB subclass per config) and AOT. Auto-config authors inject parameters and never call `@Bean` methods on `this`. User application configs often still use full mode. Either is correct if you do not call `@Bean` methods directly.
 
 ---
 
-### Q: What if @Autowired required=false and no bean?
+### Q4. How does Spring resolve multiple beans of one type?
 
-<details>
-<summary>Show Answer</summary>
+**Answer:** Qualifier on the injection point → (optionally) parameter name → `@Primary` → exactly one left → else `NoUniqueBeanDefinitionException`. You can also inject `List`/`Map`/`ObjectProvider`.
 
-**Answer:**
+**Counter:** `@Primary` on two beans?
 
-Field stays **null** — no exception. Use with caution; can cause NPE later if not checked.
-
-</details>
+**Counter-answer:** Still ambiguous. `@Primary` must be unique among the remaining candidates.
 
 ---
 
-<details>
-<summary>Show Answer</summary>
+### Q5. `@Qualifier` vs `@Primary`?
 
-### Interview One-Liner
+**Answer:** `@Primary` = default when the injection point says nothing. `@Qualifier` = explicit choice; wins over primary.
 
-> @Autowired injects by type. Multiple beans → @Qualifier (by name) or @Primary (default). @Value for properties. @Bean + @Configuration for Java config. @Lazy delays creation. @DependsOn controls init order. @Profile for environment-specific beans. Ambiguity resolution: Qualifier > Primary > parameter name > fail.
+**Counter:** Should libraries mark a bean `@Primary`?
 
-</details>
+**Counter-answer:** Dangerous — they steal the default from the application. Prefer unique types or qualifiers. `@Primary` belongs to **application** config (“this is *our* DataSource”).
+
+---
+
+### Q6. `@Autowired` vs `@Resource` vs `@Inject`?
+
+**Answer:** `@Autowired` = Spring, by type, `required` flag, supports `List`. `@Resource` = by name first. `@Inject` = JSR-330, similar to `@Autowired`. Stay consistent; Spring codebases use `@Autowired`.
+
+**Counter:** Will `@Resource(name = "x")` use `@Primary` if `x` is missing?
+
+**Counter-answer:** Name lookup fails first. It does not fall back to `@Primary` the way unmatched `@Autowired` might. Missing name → exception.
+
+---
+
+### Q7. What is `@Import` for?
+
+**Answer:** Pull in other configuration classes without scanning them. Also the implementation of `@Enable*` via `ImportSelector` / `ImportBeanDefinitionRegistrar`.
+
+**Counter:** Why not always `@ComponentScan` the library package?
+
+**Counter-answer:** You would pick up internal `@Component`s you do not want, or nothing if the library used `@Configuration` in a package you do not scan. `@EnableFoo` + `@Import` is the public switch.
+
+---
+
+### Q8. `ImportSelector` vs `ImportBeanDefinitionRegistrar`?
+
+**Answer:** Selector returns class names to import as configurations/components. Registrar gets a `BeanDefinitionRegistry` and can register arbitrary definitions (dynamic names, scanned mappers).
+
+**Counter:** When is `DeferredImportSelector` needed?
+
+**Counter-answer:** When imports must run **after** user beans are registered so conditions like `@ConditionalOnMissingBean` see them. That is Boot auto-config. Core `@EnableAsync` is a normal import, not deferred.
+
+---
+
+### Q9. `@Value` vs `Environment`?
+
+**Answer:** `@Value` injects one placeholder or SpEL into a field/param. `Environment` is the API to query properties, profiles, and typed conversion. `@Value` is implemented **using** the Environment (and SpEL).
+
+**Counter:** `@Value("${missing}")` with no default?
+
+**Counter-answer:** Context fails (placeholder resolution exception) unless you configured ignore-unresolvable. Prefer defaults or `env.getProperty` with a default for optional keys.
+
+---
+
+### Q10. `@Profile` vs `@Conditional`?
+
+**Answer:** `@Profile` is a condition on active profiles. `@Conditional` is the general SPI (any `Condition` implementation). Profiles are conditions; not all conditions are profiles.
+
+**Counter:** Can you replace `@Profile("dev")` with a condition?
+
+**Counter-answer:** Yes — `ProfileCondition` already does. Custom conditions can mix profiles, class presence, and properties. Prefer `@Profile` when the only axis is environment name — it is obvious in ops.
+
+---
+
+### Q11. How do you activate profiles in Core (no Boot)?
+
+**Answer:** `environment.setActiveProfiles("dev")` before `refresh()`, or system property / env `spring.profiles.active`. `ConfigurableEnvironment`.
+
+**Counter:** Two active profiles `dev,mysql`. What beans start?
+
+**Counter-answer:** Any bean whose `@Profile` matches **at least one** (OR), unless you used a more specific expression. A bean with no `@Profile` always starts. Conflicting `@Bean` methods of the same name in two matching configs → last-wins or override rules depending on `allowBeanDefinitionOverriding`.
+
+---
+
+### Q12. What is `allowBeanDefinitionOverriding`?
+
+**Answer:** If two definitions share a name, later registration overrides the earlier when this flag is true (historical default). Boot 2.1+ defaulted it to **false** — duplicate names fail fast.
+
+**Counter:** Is overriding a good way to replace a library bean?
+
+**Counter-answer:** Better: `@ConditionalOnMissingBean` (Boot) or a different name + `@Primary`, or exclude the auto-config. Name override is easy to do by accident with scan.
+
+---
+
+### Q13. `@Lazy` on class vs on constructor parameter?
+
+**Answer:** Class/`@Bean`: that singleton is not created in `preInstantiateSingletons`. Parameter: inject a proxy; the target is created on first use (and this can break constructor cycles).
+
+**Counter:** Lazy bean injected into eager bean without `@Lazy` on the param?
+
+**Counter-answer:** Eager creation pulls the lazy bean immediately. Lazy is skipped.
+
+---
+
+### Q14. `@DependsOn` vs injection?
+
+**Answer:** `@DependsOn` only orders initialization. Injection creates a real dependency and also orders. Prefer injection.
+
+**Counter:** Example where `@DependsOn` is justified?
+
+**Counter-answer:** Bean A must run static registration (license, JDBC driver, logging) before bean B constructs, but B does not need a reference to A. Rare.
+
+---
+
+### Q15. How does `@ComponentScan` decide the base package?
+
+**Answer:** Explicit `basePackages` / `basePackageClasses`, or the package of the class that declares `@ComponentScan`.
+
+**Counter:** Why did my `com.app.api` test pick up `com.app.batch` jobs?
+
+**Counter-answer:** Scan from `com.app` includes both. Narrow the scan or use filters. In tests, import a slice config instead of the whole app ([056_4](056_4_Spring_Testing.md)).
+
+---
+
+### Q16. `@Autowired` on a `List<Foo>` — order and empty list?
+
+**Answer:** All `Foo` beans, ordered by `@Order`/`Ordered`/`@Priority`. If required and none exist → fail. `required = false` → empty list (or use `ObjectProvider.orderedStream()`).
+
+**Counter:** Does the list include the `@Primary` only?
+
+**Counter-answer:** No. Collections get **all** candidates. `@Primary` is for injecting a **single** `Foo`.
+
+---
+
+### Q17. What does `@Qualifier` on a `@Bean` method mean?
+
+**Answer:** It attaches a qualifier to the produced bean (in addition to its name). Injection points with the same qualifier match.
+
+**Counter:** Bean name vs qualifier — are they the same?
+
+**Counter-answer:** Default qualifier is often the bean name, but `@Qualifier("special")` can differ from the method name. Do not assume. Prefer explicit `@Qualifier` on both sides.
+
+---
+
+### Q18. How do `@EnableTransactionManagement` and friends work without Boot?
+
+**Answer:** They are meta-annotated with `@Import` of a selector/registrar that registers advisors, `TransactionInterceptor`, proxy creators. You still must provide a `PlatformTransactionManager` `@Bean`. See [056_3](056_3_Jdbc_and_Transaction_Abstraction.md).
+
+**Counter:** If I forget `@EnableTransactionManagement`, does `@Transactional` still work?
+
+**Counter-answer:** No in plain Framework. Boot’s auto-config enables it for you. Core interview: name the `@Enable*` switch.
+
+---
+
+### Q19. `@Value` with a list?
+
+**Answer:** Comma-separated `${app.roles}` into `String[]` or `List` works with conversion. Nested maps/YAML trees are painful. That limitation is why Boot `@ConfigurationProperties` exists.
+
+**Counter:** SpEL `#{'${app.roles}'.split(',')}` — good idea?
+
+**Counter-answer:** It works; it is noisy and error-prone. Prefer conversion or a dedicated properties object.
+
+---
+
+### Q20. `proxyBeanMethods = false` and calling `this.otherBean()`?
+
+**Answer:** You get a plain Java instance, not the container singleton. Possible double `@PreDestroy`, missing AOP, broken identity.
+
+**Counter:** How should those configs be written?
+
+**Counter-answer:** `@Bean B b(A a)` — parameter injection. Never `this.a()`.
+
+---
+
+### Q21. Can `@Autowired` inject `Optional<Foo>`?
+
+**Answer:** Yes (Spring 4.1+). Empty if no bean. Cleaner than `required = false` + null.
+
+**Counter:** `Optional` of a collection?
+
+**Counter-answer:** Prefer `List<Foo>` with `required = false` or `ObjectProvider`. `Optional<List<Foo>>` is awkward and uncommon.
+
+---
+
+### Q22. What is a composed annotation and why write one?
+
+**Answer:** An annotation that meta-annotates Spring annotations (`@Service` + `@Transactional`). One import in app code, consistent defaults (rollback, timeout).
+
+**Counter:** Does custom `@ApplicationService` get picked up by scan?
+
+**Counter-answer:** Yes if it is meta-annotated with `@Component`/`@Service`. Spring searches meta-annotations.
+
+---
+
+### Interview one-liner
+
+> Scan your classes; `@Bean` third-party types; `@Import` for `@Enable*`. `@Configuration` intercepts `@Bean` methods; lite mode does not. Injection is by type, then `@Qualifier`, then `@Primary`. `@Profile` is one `@Conditional`. `@Value` reads Environment; do not use it for large config objects.

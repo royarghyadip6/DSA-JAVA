@@ -14,8 +14,8 @@ Each subfolder matches one course section. We fill them **one topic at a time**.
 |--------|----------------|--------|
 | [01_Fundamentals](01_Fundamentals/00_Section_Overview.md) | Introduction | Ready — start here |
 | [02_Networking_and_Communication](02_Networking_and_Communication/00_Section_Overview.md) | Networking & Communication | Ready — theory + interview Q&A |
-| [03_Protocols](03_Protocols/README.md) | Protocols | Later |
-| [04_Architectural_Patterns](04_Architectural_Patterns/README.md) | Architectural Patterns | Later |
+| [03_Protocols](03_Protocols/00_Section_Overview.md) | Protocols | Ready — theory + interview Q&A |
+| [04_Architectural_Patterns](04_Architectural_Patterns/00_Section_Overview.md) | Architectural Patterns | Ready — theory + interview Q&A |
 | [05_Web_Concepts](05_Web_Concepts/README.md) | Web Concepts in System Design | Later |
 | [06_Scalability](06_Scalability/README.md) | Scalability in System Design | Later |
 | [07_Storage_Database](07_Storage_Database/README.md) | Storage — Database and Storage | Later |
@@ -50,4 +50,6 @@ Do not jump to case studies first. First learn the building blocks. Then design 
 1. Finish [01_Fundamentals](01_Fundamentals/00_Section_Overview.md) if you have not.
 2. Open [02_Networking_and_Communication/00_Section_Overview.md](02_Networking_and_Communication/00_Section_Overview.md)
 3. Read files `01`–`08` in [02_Networking_and_Communication](02_Networking_and_Communication/00_Section_Overview.md) (theory + Q&A in the same file)
-4. Next course section: **Protocols** — share those PDFs when you are ready.
+4. Then read `01`–`05` in [03_Protocols](03_Protocols/00_Section_Overview.md)
+5. Then read `01`–`04` in [04_Architectural_Patterns](04_Architectural_Patterns/00_Section_Overview.md)
+6. Next course section: **Web Concepts** — share those PDFs when you are ready.

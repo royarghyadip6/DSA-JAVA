@@ -1,5 +1,5 @@
 # 04 — Architectural Patterns
 
-Notes for this section will be added later (monolith, microservices, and related patterns).
+Start here: [00_Section_Overview.md](00_Section_Overview.md)
 
-Placeholder only.
+Each numbered file is **theory + interview Q&A** for one topic. Read `01` through `04` in order.

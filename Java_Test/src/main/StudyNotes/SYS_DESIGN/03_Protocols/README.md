@@ -1,5 +1,5 @@
 # 03 — Protocols
 
-Notes for this section will be added after Networking & Communication.
+Start here: [00_Section_Overview.md](00_Section_Overview.md)
 
-Placeholder only.
+Each numbered file is **theory + interview Q&A** for one topic. Read `01` through `05` in order.
